@@ -36,7 +36,7 @@ feature "Prospective user" do
       expect(page).to have_content("Sign up for newsletter?")
     end
 
-    scenario "user fills in sign-up form correctly and is redirected to the homepage"
+    scenario "user fills in sign-up form correctly and is redirected to the homepage" do
       visit "/new"
       fill_in "First Name", :with => user1.first_name
       fill_in "Last Name", :with => user1.last_name
@@ -50,7 +50,7 @@ feature "Prospective user" do
       expect(page).to have_current_path(movies_path, url: true)
     end
 
-    scenario "user fills in sign-up form correctly and sees flash message confirming signup"
+    scenario "user fills in sign-up form correctly and sees flash message confirming signup" do
       visit "/new"
       fill_in "First Name", :with => user1.first_name
       fill_in "Last Name", :with => user1.last_name
@@ -63,7 +63,7 @@ feature "Prospective user" do
       expect(page).to have_content("Signed up successfully.")
     end
 
-    scenario "user leaves first name blank and sees flash message with error"
+    scenario "user leaves first name blank and sees flash message with error" do
       visit "/new"
       fill_in "Last Name", :with => user1.last_name
       fill_in "Username", :with => user1.username
@@ -76,7 +76,7 @@ feature "Prospective user" do
       expect(page).to have_content("First name can't be blank")
     end
 
-    scenario "user leaves last name blank and sees flash message with error"
+    scenario "user leaves last name blank and sees flash message with error" do
       visit "/new"
       fill_in "First Name", :with => user1.first_name
       fill_in "Username", :with => user1.username

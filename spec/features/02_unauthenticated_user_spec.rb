@@ -31,7 +31,7 @@ feature "Unauthenticated user" do
       expect(page).to have_content("Password")
     end
 
-    scenario "user fills in sign-in form correctly and is redirected to the homepage"
+    scenario "user fills in sign-in form correctly and is redirected to the homepage" do
       visit "/"
       click_link("Sign In")
       fill_in "Username", :with => user1.username
@@ -41,7 +41,7 @@ feature "Unauthenticated user" do
       expect(page).to have_current_path(movies_path, url: true)
     end
 
-    scenario "user fills in sign-in form correctly and sees flash message confirming signin"
+    scenario "user fills in sign-in form correctly and sees flash message confirming signin" do
       visit "/"
       click_link("Sign In")
       fill_in "Username", :with => user1.username
@@ -52,7 +52,7 @@ feature "Unauthenticated user" do
       expect(page).to have_content("Signed in successfully!")
     end
 
-    scenario "user fills in sign-in form incorrectly and sees flash message with error"
+    scenario "user fills in sign-in form incorrectly and sees flash message with error" do
       visit "/"
       click_link("Sign In")
       fill_in "Username", :with => "incorrect"
@@ -62,7 +62,7 @@ feature "Unauthenticated user" do
       expect(page).to have_content("Username invalid, Try again!")
     end
 
-    scenario "user fills in sign-up form incorrectly and sees flash message with error"
+    scenario "user fills in sign-up form incorrectly and sees flash message with error" do
       visit "/"
       click_link("Sign In")
       fill_in "Username", :with => user1.username
@@ -72,7 +72,7 @@ feature "Unauthenticated user" do
       expect(page).to have_content("Password invalid, Try again!")
     end
 
-    scenario "user fills in sign-in form correctly, sees flash message confirming signin, and successfully clicks on a movie_link."
+    scenario "user fills in sign-in form correctly, sees flash message confirming signin, and successfully clicks on a movie_link." do
       visit "/"
       click_link("Sign In")
       fill_in "Username", :with => user1.username
