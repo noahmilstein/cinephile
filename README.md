@@ -23,4 +23,7 @@ Things you may want to cover:
 
 * ...
 # Cinephile
-Your app description, here.
+
+![Build Status](https://codeship.com/projects/69a45620-6ba7-0134-f930-7ea83503a0a9/status?branch=master)
+![Code Climate](https://codeclimate.com/github/noahmilstein/cinephile.png)
+![Coverage Status](https://coveralls.io/repos/noahmilstein/cinephile/badge.png)
