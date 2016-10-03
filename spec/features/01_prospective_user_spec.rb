@@ -3,7 +3,7 @@
 # So that I can post items and review them
 
 # Accpetance Criteria
-# [] User clicks sign up link and fills in the form for email(username), password, neccessary forms for new user.
+# [] User clicks sign up link and fills in the form for username, password, email, and neccessary forms for new user.
 # [] User clicks sign up and fills in the form for email as username and password correctly and the rest of the form. User should be redirected to the home page with a message that welcomes them to the site "Welcome to Cinephile!".
 # [] User clicks sign up and fills in the form incorrectly. User should be redirected to the same sign up page and be asked to fill in all the required fields with a message.
 # [] User should be prompted to pick another username if its already exists in the new user form page with a message.
