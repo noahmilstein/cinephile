@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature "Authenticated user" do
   context "as as Authenticated user" do
-
     scenario "user signs in and signs out" do
       user1 = User.create(
         first_name: "John",
@@ -22,7 +21,8 @@ feature "Authenticated user" do
       expect(page).to have_content("Signed out successfully.")
     end
 
-    scenario "user signs in, clicks on the link my account, and clicks on edit which redirects them to the user edit page" do
+    scenario "user signs in, clicks on the link my account, and "\
+      "clicks on edit which redirects them to the user edit page" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -40,7 +40,8 @@ feature "Authenticated user" do
       expect(page).to have_current_path(edit_user_registration_path)
     end
 
-    scenario "user is on my user edit page, fills in the necessary changes, clicks save, and redirects to the home page with a success message" do
+    scenario "user is on my user edit page, fills in the necessary changes,"\
+      " clicks save, and redirects to the home page with a success message" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -67,7 +68,8 @@ feature "Authenticated user" do
       expect(page).to have_current_path("/")
     end
 
-    scenario "user is on my user edit page, fills the username and password incorrectly which redirects them to the user edit page with an error message" do
+    scenario "user is on my user edit page, fills the username and password"\
+      " incorrectly which redirects them to the user edit page with an error message" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -95,7 +97,8 @@ feature "Authenticated user" do
       expect(page).to have_current_path(users_path)
     end
 
-    scenario "user is on my user edit page, fills the username incorrectly which redirects them to the user edit page with an error message" do
+    scenario "user is on my user edit page, fills the username incorrectly"\
+      " which redirects them to the user edit page with an error message" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -122,7 +125,8 @@ feature "Authenticated user" do
       expect(page).to have_current_path(users_path)
     end
 
-    scenario "user is on my user edit page, fills the password incorrectly which redirects them to the user edit page with an error message" do
+    scenario "user is on my user edit page, fills the password"\
+      " incorrectly which redirects them to the user edit page with an error message" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -148,7 +152,8 @@ feature "Authenticated user" do
       expect(page).to have_current_path(users_path)
     end
 
-    scenario "user is on my user edit page, fills the email incorrectly which redirects them to the user edit page with an error message" do
+    scenario "user is on my user edit page, fills the email incorrectly"\
+      " which redirects them to the user edit page with an error message" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -173,7 +178,8 @@ feature "Authenticated user" do
       expect(page).to have_content("Email can't be blank")
       expect(page).to have_current_path(users_path)
     end
-    scenario "user in on my user edit page, clicks delete, and is redirected to the home page with a message saying that the user is deleted!" do
+    scenario "user in on my user edit page, clicks delete, and is redirected"\
+      " to the home page with a message saying that the user is deleted!" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
