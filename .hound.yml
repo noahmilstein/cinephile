@@ -1,3 +1,6 @@
+ruby:
+  config_file: config/rubocop.yml
+
 AllCops:
   Exclude:
     - db/schema.rb
@@ -270,12 +273,6 @@ Style/MultilineOperationIndentation:
 
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
-
-Style/StringLiterals:
-  EnforcedStyle: single_quotes
-  SupportedStyles:
-    - single_quotes
-    - double_quotes
 
 Style/UnneededPercentQ:
   Enabled: false
