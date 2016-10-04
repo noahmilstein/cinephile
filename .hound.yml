@@ -275,6 +275,9 @@ Style/MultilineOperationIndentation:
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   SupportedStyles:
