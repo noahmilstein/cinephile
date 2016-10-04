@@ -1,4 +1,5 @@
 <h1>Welcome to Cinephile!</h1>
+Your source for movie reviews
 
 <% @movies.each do |movie| %>
 <p><%= link_to movie.title, movie_path(movie) %></p>
