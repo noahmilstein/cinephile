@@ -125,7 +125,8 @@ feature "Authenticated user" do
       expect(page).to have_current_path(users_path)
     end
     scenario "user in on my user edit page, clicks delete, and is redirected to the home page with a message saying that the user is deleted!" do
-      user1 = User.create(first_name: "John",
+      user1 = User.create(
+        first_name: "John",
         last_name: "Doe",
         username: "johndoe",
         email: "john@doe.com",
