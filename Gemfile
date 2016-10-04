@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'listen'
 gem 'devise'
+gem 'ruby_dep', '~> 1.4'
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
