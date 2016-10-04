@@ -65,7 +65,9 @@ feature "Authenticated user" do
       fill_in "Confirm Password", with: user1.password
       fill_in "Current Password", with: user1.password
       click_button "Update"
-      expect(page).to have_content("Your account has been updated successfully.")
+      expect(page).to have_content(
+        "Your account has been updated successfully."
+      )
       expect(page).to have_current_path("/")
     end
 
