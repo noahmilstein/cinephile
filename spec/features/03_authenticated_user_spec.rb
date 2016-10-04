@@ -37,7 +37,7 @@ feature "Authenticated user" do
       click_button "Sign In"
       click_link "My Account"
       click_link "Edit"
-      expect(page).to have_current_path(edit_user_path(user1.id), url: true)
+      expect(page).to have_current_path(edit_user_registration_path(user1.id), url: true)
     end
 
     scenario "user is on my user edit page, fills in the necessary changes, clicks save, and redirects to the home page with a success message" do
@@ -61,13 +61,13 @@ feature "Authenticated user" do
       click_link "Edit"
       fill_in "First Name", :with => user1.first_name
       fill_in "Last Name", :with => user1.last_name
-      fill_in "Username", :with => "username123"
+      fill_in "Username", :with => ""
       fill_in "Email", :with => user1.email
       fill_in "Enter Password", :with => ""
       fill_in "Confirm Password", :with => ""
       click_button "Save"
       expect(page).to have_content("Error, not a valid username and password!")
-      expect(page).to have_current_path(edit_user_path(user1.id), url: true)
+      expect(page).to have_current_path(edit_user_registration_path(user1.id), url: true)
     end
 
     scenario "user is on my user edit page, fills the username incorrectly which redirects them to the user edit page with an error message" do
@@ -82,7 +82,7 @@ feature "Authenticated user" do
       fill_in "Confirm Password", :with => user1.password
       click_button "Save"
       expect(page).to have_content("Error, not a valid username!")
-      expect(page).to have_current_path(edit_user_path(user1.id), url: true)
+      expect(page).to have_current_path(edit_user_registration_path(user1.id), url: true)
     end
     scenario "user is on my user edit page, fills the password incorrectly which redirects them to the user edit page with an error message" do
       visit "/user/{user1.id}/edit"
@@ -96,7 +96,7 @@ feature "Authenticated user" do
       fill_in "Confirm Password", :with => ""
       click_button "Save"
       expect(page).to have_content("Error, not a valid password!")
-      expect(page).to have_current_path(edit_user_path(user1.id), url: true)
+      expect(page).to have_current_path(edit_user_registration_path(user1.id), url: true)
     end
 
     scenario "user is on my user edit page, fills the email incorrectly which redirects them to the user edit page with an error message" do
@@ -106,16 +106,16 @@ feature "Authenticated user" do
       fill_in "First Name", :with => user1.first_name
       fill_in "Last Name", :with => user1.last_name
       fill_in "Username", :with => user1.username
-      fill_in "Email", :with => user1.email
+      fill_in "Email", :with => ""
       fill_in "Enter Password", :with => user1.password
       fill_in "Confirm Password", :with => user1.password
       click_button "Save"
       expect(page).to have_content("Error, not a valid email")
-      expect(page).to have_current_path(edit_user_path(user1.id), url: true)
+      expect(page).to have_current_path(edit_user_registration_path(user1.id), url: true)
     end
 
 
-    scenario "user in on my user edit page, clicks delete, and is redirected to the home page with a message saying that the user is deleted!"
+    scenario "user in on my user edit page, clicks delete, and is redirected to the home page with a message saying that the user is deleted!" do
       id = user1.id
       visit "/user/{user1.id}/edit"
       click_link "My Account"

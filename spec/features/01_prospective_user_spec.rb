@@ -89,7 +89,7 @@ feature "Prospective user" do
       expect(page).to have_content("Last name can't be blank")
     end
 
-    scenario "user leaves username blank and sees flash message with error"
+    scenario "user leaves username blank and sees flash message with error" do
       visit "/new"
       fill_in "First Name", :with => user1.first_name
       fill_in "Last Name", :with => user1.last_name
@@ -102,7 +102,7 @@ feature "Prospective user" do
       expect(page).to have_content("Username can't be blank")
     end
 
-    scenario "user leaves email blank and sees flash message with error"
+    scenario "user leaves email blank and sees flash message with error" do
       visit "/new"
       fill_in "First Name", :with => user1.first_name
       fill_in "Last Name", :with => user1.last_name
@@ -115,7 +115,7 @@ feature "Prospective user" do
       expect(page).to have_content("Email can't be blank")
     end
 
-    scenario "user leaves Enter Password field blank and sees flash message with error"
+    scenario "user leaves Enter Password field blank and sees flash message with error" do
       visit "/new"
       fill_in "First Name", :with => user1.first_name
       fill_in "Last Name", :with => user1.last_name
@@ -128,7 +128,7 @@ feature "Prospective user" do
       expect(page).to have_content("Password can't be blank")
     end
 
-    scenario "user leaves Confirm Password field blank and sees flash message with error"
+    scenario "user leaves Confirm Password field blank and sees flash message with error" do
       visit "/new"
       fill_in "First Name", :with => user1.first_name
       fill_in "Last Name", :with => user1.last_name
@@ -141,7 +141,7 @@ feature "Prospective user" do
       expect(page).to have_content("Password can't be blank")
     end
 
-    scenario "user leaves newsletter field blank and sees flash message with error"
+    scenario "user leaves newsletter field blank and sees flash message with error" do
       visit "/new"
       fill_in "First Name", :with => user1.first_name
       fill_in "Last Name", :with => user1.last_name
@@ -154,7 +154,7 @@ feature "Prospective user" do
       expect(page).to have_content("Newsletter can't be blank")
     end
 
-    scenario "user selects username that is taken and is prompted to choose another"
+    scenario "user selects username that is taken and is prompted to choose another" do
       visit "/new"
       fill_in "First Name", :with => user2.first_name
       fill_in "Last Name", :with => user2.last_name
@@ -168,7 +168,7 @@ feature "Prospective user" do
       expect(page).to have_content("Please choose another username.")
     end
 
-    scenario "user inputs email that is already used and is prompted to choose another"
+    scenario "user inputs email that is already used and is prompted to choose another" do
       visit "/new"
       fill_in "First Name", :with => user2.first_name
       fill_in "Last Name", :with => user2.last_name
@@ -182,7 +182,7 @@ feature "Prospective user" do
       expect(page).to have_content("Please choose another username.")
     end
 
-    scenario "user inputs malformed password and is prompted to choose another"
+    scenario "user inputs malformed password and is prompted to choose another" do
       visit "/new"
       fill_in "First Name", :with => user2.first_name
       fill_in "Last Name", :with => user2.last_name
@@ -196,7 +196,7 @@ feature "Prospective user" do
       expect(page).to have_content("Please choose a password of at least 6 characters with at least one number and one letter.")
     end
 
-    scenario "user attempts to navigate to movie show page/make a review and is redirected to homepage with message to sign in"
+    scenario "user attempts to navigate to movie show page/make a review and is redirected to homepage with message to sign in" do
       visit "/movies"
       click_link (movie1.title)
       expect(page).to have_current_path(movies_path, url: true)

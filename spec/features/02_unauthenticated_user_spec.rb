@@ -24,7 +24,7 @@ feature "Unauthenticated user" do
       expect(page).to have_link("Sign In")
     end
 
-    scenario "click sign up link and see fields to complete for registration" do
+    scenario "click sign in link and see fields to complete for registration" do
       visit "/"
       click_link("Sign In")
       expect(page).to have_content("Username")
@@ -58,7 +58,7 @@ feature "Unauthenticated user" do
       fill_in "Username", :with => "incorrect"
       fill_in "Password", :with => user1.password
       click_button "Sign In"
-      expect(page).to have_current_path(sign_in_path, url: true) ##check path later
+      expect(page).to have_current_path(new_user_session_path, url: true)
       expect(page).to have_content("Username invalid, Try again!")
     end
 
@@ -68,7 +68,7 @@ feature "Unauthenticated user" do
       fill_in "Username", :with => user1.username
       fill_in "Password", :with => "incorrect"
       click_button "Sign In"
-      expect(page).to have_current_path(sign_in_path, url: true) ##check path later
+      expect(page).to have_current_path(new_user_session_path, url: true) 
       expect(page).to have_content("Password invalid, Try again!")
     end
 
