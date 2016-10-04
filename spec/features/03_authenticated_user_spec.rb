@@ -131,7 +131,8 @@ feature "Authenticated user" do
         username: "johndoe",
         email: "john@doe.com",
         password: "abcdef1",
-        newsletter: true)
+        newsletter: true
+        )
       id = user1.id
       visit "/"
       click_link("Sign In")
