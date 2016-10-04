@@ -2,15 +2,15 @@ require "rails_helper"
 
 feature "Authenticated user" do
   let!(:populate_db) do
-    @user1 = FactoryGirl.create(:user)
+    user1 = FactoryGirl.create(:user)
     @movies2 = FactoryGirl.create_list(:movie, 5)
   end
 
   describe "the signin process" do
     before :each do
       visit new_user_session_path
-      fill_in "Email", with: @user1.email
-      fill_in "Password", with: @user1.password
+      fill_in "Email", with: user1.email
+      fill_in "Password", with: user1.password
       click_button "Sign In"
       expect(page).to have_content("Welcome to Cinephile!")
     end
