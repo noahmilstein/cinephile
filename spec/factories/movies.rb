@@ -1,5 +1,3 @@
-require 'factory_girl'
-
 FactoryGirl.define do
   factory :movie do
     sequence(:title) { |n| "#{n}title" }
