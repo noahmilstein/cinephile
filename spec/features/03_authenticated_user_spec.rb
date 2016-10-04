@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 feature "Authenticated user" do
   context "as as Authenticated user" do
