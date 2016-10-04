@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
 RSpec.configure do |config|
-  config.before(:all) do
+  config.before(:each) do
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before(:all) do
+  config.before(:each) do
     # DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:all, js: true) do
+  config.before(:each, js: true) do
     DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:all) do
+  config.before(:each) do
     DatabaseCleaner.start
   end
 
-  config.after(:all) do
+  config.after(:each) do
     DatabaseCleaner.clean
   end
 
-  config.after(:all) do
+  config.after(:each) do
   end
 end
