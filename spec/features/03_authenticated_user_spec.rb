@@ -138,7 +138,12 @@ feature "Authenticated user" do
       expect(page).to have_current_path(users_path)
     end
     scenario "user in on my user edit page, clicks delete, and is redirected to the home page with a message saying that the user is deleted!" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true)
       id = user1.id
       visit "/"
       click_link("Sign In")
@@ -147,7 +152,8 @@ feature "Authenticated user" do
       click_button "Sign In"
       click_link "Edit registration"
       click_button "Cancel my account"
-      expect(page).to have_content("Bye! Your account has been successfully cancelled. We hope to see you again soon.")
+      expect(page).to have_content(
+        "Bye! Your account has been successfully cancelled. We hope to see you again soon.")
       expect(page).to have_current_path("/")
       expect { User.find(id) }.to raise_exception(ActiveRecord::RecordNotFound)
     end
