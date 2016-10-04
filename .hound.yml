@@ -1,3 +1,9 @@
+ruby:
+  config_file: config/rubocop.yml
+
+Documentation:
+  Enabled: false
+
 AllCops:
   Exclude:
     - db/schema.rb
@@ -64,9 +70,6 @@ Delegate:
 DeprecatedHashMethods:
   Enabled: false
 
-Documentation:
-  Enabled: false
-
 DotPosition:
   EnforcedStyle: trailing
 
@@ -118,8 +121,11 @@ LambdaCall:
 LineEndConcatenation:
   Enabled: false
 
-LineLength:
-  Max: 80
+Metrics/LineLength:
+  Enabled: false
+  Max: 205
+  Exclude:
+    - 'db/schema.rb'
 
 MethodLength:
   Enabled: false
@@ -270,6 +276,13 @@ Style/MultilineOperationIndentation:
 
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+  Enabled: true
 
 Style/UnneededPercentQ:
   Enabled: false
