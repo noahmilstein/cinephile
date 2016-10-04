@@ -123,6 +123,7 @@ LineEndConcatenation:
 
 LineLength:
   Max: 205
+  Enabled: true
 
 MethodLength:
   Enabled: false
@@ -279,6 +280,7 @@ Style/StringLiterals:
   SupportedStyles:
     - single_quotes
     - double_quotes
+  Enabled: true
 
 Style/UnneededPercentQ:
   Enabled: false
