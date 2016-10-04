@@ -19,8 +19,8 @@ feature "Authenticated user" do
   scenario "See an index of movies" do
     visit movies_path
     @movies2.each_with_index do |movie, i|
-      expect(page).to have_content(@movies2[i-1].title)
-      expect(page).to have_link(@movies2[i-1].title)
+      expect(page).to have_content(@movies2[i - 1].title)
+      expect(page).to have_link(@movies2[i - 1].title)
     end
   end
 
@@ -38,5 +38,4 @@ feature "Authenticated user" do
       click_button "Back to Index"
     end
   end
-
 end
