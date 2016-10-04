@@ -4,7 +4,14 @@ feature "Authenticated user" do
   context "as as Authenticated user" do
 
     scenario "user signs in and signs out" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
@@ -16,7 +23,14 @@ feature "Authenticated user" do
     end
 
     scenario "user signs in, clicks on the link my account, and clicks on edit which redirects them to the user edit page" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
@@ -27,7 +41,14 @@ feature "Authenticated user" do
     end
 
     scenario "user is on my user edit page, fills in the necessary changes, clicks save, and redirects to the home page with a success message" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
@@ -47,7 +68,14 @@ feature "Authenticated user" do
     end
 
     scenario "user is on my user edit page, fills the username and password incorrectly which redirects them to the user edit page with an error message" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
@@ -68,7 +96,14 @@ feature "Authenticated user" do
     end
 
     scenario "user is on my user edit page, fills the username incorrectly which redirects them to the user edit page with an error message" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
@@ -88,7 +123,14 @@ feature "Authenticated user" do
     end
 
     scenario "user is on my user edit page, fills the password incorrectly which redirects them to the user edit page with an error message" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
@@ -107,7 +149,14 @@ feature "Authenticated user" do
     end
 
     scenario "user is on my user edit page, fills the email incorrectly which redirects them to the user edit page with an error message" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email

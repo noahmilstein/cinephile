@@ -2,9 +2,32 @@ require 'rails_helper'
 
 feature "Prospective user" do
   context "as prospective user" do
-    user1 = User.new(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "sixchr1",  newsletter: true)
-    user2 = User.new(first_name: "Jane", last_name: "Doe", username: "janedoe", email: "jane@doe.com", password: "sixchr1",  newsletter: true)
-    movie1 = Movie.create(title: "Citizen Kane", studio: "Studio", year: 1940, rating: "R", genre: "drama", cast: "Cast Member 1, Cast Member 2", director: "Director 1", screen_writer: "Screen Writer 1")
+    user1 = User.new(
+      first_name: "John",
+      last_name: "Doe",
+      username: "johndoe",
+      email: "john@doe.com",
+      password: "sixchr1",
+      newsletter: true
+    )
+    user2 = User.new(
+      first_name: "Jane",
+      last_name: "Doe",
+      username: "janedoe",
+      email: "jane@doe.com",
+      password: "sixchr1",
+      newsletter: true
+    )
+    movie1 = Movie.create(
+      title: "Citizen Kane",
+      studio: "Studio",
+      year: 1940,
+      rating: "R",
+      genre: "drama",
+      cast: "Cast Member 1, Cast Member 2",
+      director: "Director 1",
+      screen_writer: "Screen Writer 1"
+    )
 
     scenario "sees sign up link" do
       visit "/"
@@ -140,7 +163,14 @@ feature "Prospective user" do
     end
 
     scenario "user selects username that is taken and is prompted to choose another" do
-      user3 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "sixchr1",  newsletter: true)
+      user3 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "sixchr1",
+        newsletter: true
+      )
       visit new_user_registration_path
       fill_in "First Name", with: user2.first_name
       fill_in "Last Name", with: user2.last_name
@@ -155,7 +185,14 @@ feature "Prospective user" do
     end
 
     scenario "user inputs email that is already used and is prompted to choose another" do
-      user3 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "sixchr1",  newsletter: true)
+      user3 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "sixchr1",
+        newsletter: true
+      )
       visit new_user_registration_path
       fill_in "First Name", with: user2.first_name
       fill_in "Last Name", with: user2.last_name
@@ -180,16 +217,29 @@ feature "Prospective user" do
       check "Sign up for newsletter?"
       click_button "Submit"
       expect(page).to have_current_path(users_path)
-      expect(page).to have_content("Password is too short (minimum is 6 characters)")
+      expect(page).to have_content(
+        "Password is too short (minimum is 6 characters)"
+      )
     end
 
     scenario "user attempts to navigate to movie show page/make a review"\
       " and is redirected to homepage with message to sign in" do
-      movie1 = Movie.create(title: "Citizen Kane", studio: "Studio", year: 1940, rating: "R", genre: "drama", cast: "Cast Member 1, Cast Member 2", director: "Director 1", screen_writer: "Screen Writer 1")
+      movie1 = Movie.create(
+        title: "Citizen Kane",
+        studio: "Studio",
+        year: 1940,
+        rating: "R",
+        genre: "drama",
+        cast: "Cast Member 1, Cast Member 2",
+        director: "Director 1",
+        screen_writer: "Screen Writer 1"
+      )
       visit "/movies"
       click_link (movie1.title)
       expect(page).to have_current_path("/")
-      expect(page).to have_content("Please sign in or sign up in order to view this movie and its reviews")
+      expect(page).to have_content(
+        "Please sign in or sign up in order to view this movie and its reviews"
+      )
     end
   end
 end

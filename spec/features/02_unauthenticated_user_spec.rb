@@ -2,8 +2,23 @@ require 'rails_helper'
 
 feature "Unauthenticated user" do
   context "as as unauthenticated user" do
-    user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
-    movie1 = Movie.create(title: "Citizen Kane", studio: "Studio", year: 1940, rating: "R", genre: "drama", cast: "Cast Member 1, Cast Member 2", director: "Director 1", screen_writer: "Screen Writer 1")
+    user1 = User.create(
+      first_name: "John",
+      last_name: "Doe",
+      username: "johndoe",
+      email: "john@doe.com",
+      password: "abcdef1",
+      newsletter: true
+    )
+    movie1 = Movie.create(
+      title: "Citizen Kane",
+      studio: "Studio",
+      year: 1940,
+      rating: "R",
+      genre: "drama",
+      cast: "Cast Member 1, Cast Member 2",
+      director: "Director 1", screen_writer: "Screen Writer 1"
+    )
 
     scenario "sees sign in link" do
       visit "/"
@@ -18,7 +33,14 @@ feature "Unauthenticated user" do
     end
 
     scenario "user fills in sign-in form correctly and is redirected to the homepage" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
@@ -29,7 +51,14 @@ feature "Unauthenticated user" do
     end
 
     scenario "user fills in sign-in form correctly and sees flash message confirming signin" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
@@ -41,7 +70,14 @@ feature "Unauthenticated user" do
     end
 
     scenario "user fills in sign-in form incorrectly and sees flash message with error" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: "incorrect"
@@ -52,7 +88,14 @@ feature "Unauthenticated user" do
     end
 
     scenario "user fills in sign-up form incorrectly and sees flash message with error" do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
@@ -63,8 +106,24 @@ feature "Unauthenticated user" do
     end
 
     scenario "user fills in sign-in form correctly, sees flash message confirming signin, and successfully clicks on a movie_link." do
-      user1 = User.create(first_name: "John", last_name: "Doe", username: "johndoe", email: "john@doe.com", password: "abcdef1",  newsletter: true)
-      movie1 = Movie.create(title: "Citizen Kane", studio: "Studio", year: 1940, rating: "R", genre: "drama", cast: "Cast Member 1, Cast Member 2", director: "Director 1", screen_writer: "Screen Writer 1")
+      user1 = User.create(
+        first_name: "John",
+        last_name: "Doe",
+        username: "johndoe",
+        email: "john@doe.com",
+        password: "abcdef1",
+        newsletter: true
+      )
+      movie1 = Movie.create(
+        title: "Citizen Kane",
+        studio: "Studio",
+        year: 1940,
+        rating: "R",
+        genre: "drama",
+        cast: "Cast Member 1, Cast Member 2",
+        director: "Director 1",
+        screen_writer: "Screen Writer 1"
+      )
       visit "/"
       click_link("Sign In")
       fill_in "Email", with: user1.email
