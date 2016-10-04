@@ -41,7 +41,8 @@ feature "Authenticated user" do
     end
 
     scenario "user is on my user edit page, fills in the necessary changes,"\
-      " clicks save, and redirects to the home page with a success message" do
+      " clicks save, and redirects to the home page with a "\
+      "success message" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -69,7 +70,8 @@ feature "Authenticated user" do
     end
 
     scenario "user is on my user edit page, fills the username and password"\
-      " incorrectly which redirects them to the user edit page with an error message" do
+      " incorrectly which redirects them to the user edit page with an "\
+      "error message" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -126,7 +128,8 @@ feature "Authenticated user" do
     end
 
     scenario "user is on my user edit page, fills the password"\
-      " incorrectly which redirects them to the user edit page with an error message" do
+      " incorrectly which redirects them to the user edit page with an"\
+      " error message" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -153,7 +156,8 @@ feature "Authenticated user" do
     end
 
     scenario "user is on my user edit page, fills the email incorrectly"\
-      " which redirects them to the user edit page with an error message" do
+      " which redirects them to the user edit page with an error"\
+      " message" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -178,8 +182,9 @@ feature "Authenticated user" do
       expect(page).to have_content("Email can't be blank")
       expect(page).to have_current_path(users_path)
     end
-    scenario "user in on my user edit page, clicks delete, and is redirected"\
-      " to the home page with a message saying that the user is deleted!" do
+    scenario "user in on my user edit page, clicks delete, and is"\
+    " redirected to the home page with a message saying that the "\
+    "user is deleted!" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",

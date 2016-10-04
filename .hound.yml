@@ -1,6 +1,9 @@
 ruby:
   config_file: config/rubocop.yml
 
+Documentation:
+  Enabled: false
+
 AllCops:
   Exclude:
     - db/schema.rb
@@ -65,9 +68,6 @@ Delegate:
   Enabled: false
 
 DeprecatedHashMethods:
-  Enabled: false
-
-Documentation:
   Enabled: false
 
 DotPosition:

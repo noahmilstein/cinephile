@@ -25,14 +25,16 @@ feature "Unauthenticated user" do
       expect(page).to have_link("Sign In")
     end
 
-    scenario "click sign up link and see fields to complete form registration" do
+    scenario "click sign up link and see fields to complete form"\
+    " registration" do
       visit "/"
       click_link("Sign In")
       expect(page).to have_content("Email")
       expect(page).to have_content("Password")
     end
 
-    scenario "user fills in sign-in form correctly and is redirected to the homepage" do
+    scenario "user fills in sign-in form correctly and is"\
+    " redirected to the homepage" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -50,7 +52,8 @@ feature "Unauthenticated user" do
       expect(page).to have_current_path("/")
     end
 
-    scenario "user fills in sign-in form correctly and sees flash message confirming signin" do
+    scenario "user fills in sign-in form correctly and sees flash "\
+    "message confirming signin" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -69,7 +72,8 @@ feature "Unauthenticated user" do
       expect(page).to have_content("Signed in successfully.")
     end
 
-    scenario "user fills in sign-in form incorrectly and sees flash message with error" do
+    scenario "user fills in sign-in form incorrectly and sees flash"\
+    " message with error" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -87,7 +91,8 @@ feature "Unauthenticated user" do
       expect(page).to have_content("Invalid Email or password.")
     end
 
-    scenario "user fills in sign-up form incorrectly and sees flash message with error" do
+    scenario "user fills in sign-up form incorrectly and sees flash"\
+    " message with error" do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
@@ -105,7 +110,8 @@ feature "Unauthenticated user" do
       expect(page).to have_content("Invalid Email or password.")
     end
 
-    scenario "user fills in sign-in form correctly, sees flash message confirming signin, and successfully clicks on a movie_link." do
+    scenario "user fills in sign-in form correctly, sees flash message"\
+    " confirming signin, and successfully clicks on a movie_link." do
       user1 = User.create(
         first_name: "John",
         last_name: "Doe",
