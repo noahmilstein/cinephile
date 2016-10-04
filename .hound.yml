@@ -278,6 +278,9 @@ Style/EmptyLinesAroundBlockBody:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+FrozenStringLiteral:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   SupportedStyles:
