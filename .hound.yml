@@ -121,9 +121,11 @@ LambdaCall:
 LineEndConcatenation:
   Enabled: false
 
-LineLength:
+Metrics/LineLength:
+  Enabled: false
   Max: 205
-  Enabled: true
+  Exclude:
+    - 'db/schema.rb'
 
 MethodLength:
   Enabled: false
