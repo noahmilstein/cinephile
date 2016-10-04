@@ -18,23 +18,23 @@ feature "Authenticated user" do
 
   scenario "See an index of movies" do
     visit movies_path
-    @movies2.each_with_index do |movie, i|
-      expect(page).to have_content(@movies2[i - 1].title)
-      expect(page).to have_link(@movies2[i - 1].title)
+    @movies2.each do |movie|
+      expect(page).to have_content(movie.title)
+      expect(page).to have_link(movie.title)
     end
   end
 
   scenario "click on movie to review" do
-    @movies2[5..-1].each_with_index do |movie, q|
-      click_link @movies2[q].title
-      expect(page).to have_content(@movies2[q].title)
-      expect(page).to have_content(@movies2[q].studio)
-      expect(page).to have_content(@movies2[q].year)
-      expect(page).to have_content(@movies2[q].rating)
-      expect(page).to have_content(@movies2[q].genre)
-      expect(page).to have_content(@movies2[q].cast)
-      expect(page).to have_content(@movies2[q].director)
-      expect(page).to have_content(@movies2[q].screen_writer)
+    @movies2[5..-1].each do |movie|
+      click_link movie.title
+      expect(page).to have_content(movie.title)
+      expect(page).to have_content(movie.studio)
+      expect(page).to have_content(movie.year)
+      expect(page).to have_content(movie.rating)
+      expect(page).to have_content(movie.genre)
+      expect(page).to have_content(movie.cast)
+      expect(page).to have_content(movie.director)
+      expect(page).to have_content(movie.screen_writer)
       click_button "Back to Index"
     end
   end
