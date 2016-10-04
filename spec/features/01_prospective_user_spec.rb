@@ -183,7 +183,8 @@ feature "Prospective user" do
       expect(page).to have_content("Password is too short (minimum is 6 characters)")
     end
 
-    scenario "user attempts to navigate to movie show page/make a review and is redirected to homepage with message to sign in" do
+    scenario "user attempts to navigate to movie show page/make a review"\
+      " and is redirected to homepage with message to sign in" do
       movie1 = Movie.create(title: "Citizen Kane", studio: "Studio", year: 1940, rating: "R", genre: "drama", cast: "Cast Member 1, Cast Member 2", director: "Director 1", screen_writer: "Screen Writer 1")
       visit "/movies"
       click_link (movie1.title)
