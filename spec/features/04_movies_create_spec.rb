@@ -1,14 +1,4 @@
 require "rails_helper"
-# As an authenticated user
-# I want to add an item
-# So that others can review it
-#
-# Acceptance Criteria
-# [] User is already signed in, clicks on the link to add movie, and should be redirected to the new movie form.
-# [] User is on the new movie form and sees the required fields for creating a new movie.
-# [] User is on the new movie form, correctly fills in the required fields, clicks submit, and is redirected to the show page of the new entry.
-# [] User is on the new movie form, incorrectly fills in the required fields, clicks submit, and is redirected to the new movie form with the following errors.
-
 
 feature "Create Movies" do
   context "As an authenticated user" do
@@ -62,7 +52,6 @@ feature "Create Movies" do
 
     scenario "User is on the new movie form, fills in all the required"\
       " field correctly, and is redircted to the submitted movie show page" do
-      movie1
       visit "/"
       click_link "Add New Movie"
       fill_in "Title", with: movie1.title
@@ -100,7 +89,6 @@ feature "Create Movies" do
       expect(page).to have_content("Title can't be blank")
       expect(page).to have_current_path(movies_path)
     end
-
 
     scenario "user is in new movie form, leaves studio blank, and sees"\
       " a flash message with an error in the new movie form" do
