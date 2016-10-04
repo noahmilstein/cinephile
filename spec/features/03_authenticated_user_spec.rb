@@ -142,7 +142,8 @@ feature "Authenticated user" do
       click_link "Edit registration"
       click_button "Cancel my account"
       expect(page).to have_content(
-        "Bye! Your account has been successfully cancelled. We hope to see you again soon.")
+        "Bye! Your account has been successfully cancelled. We hope to see you again soon."
+      )
       expect(page).to have_current_path("/")
       expect { User.find(id) }.to raise_exception(ActiveRecord::RecordNotFound)
     end
