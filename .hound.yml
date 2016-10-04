@@ -275,15 +275,6 @@ Style/MultilineOperationIndentation:
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
-  EnforcedStyle: when_needed
-  SupportedStyles:
-    - when_needed
-  Enabled: true
-
-FrozenStringLiteral:
-  Enabled: false
-
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   SupportedStyles:
