@@ -23,8 +23,8 @@ feature "Create Movies" do
       )
       visit "/"
       click_link("Sign In")
-      fill_in "Email", :with => user1.email
-      fill_in "Password", :with => user1.password
+      fill_in "Email", with: user1.email
+      fill_in "Password", with: user1.password
       click_button "Sign In"
     end
 
@@ -65,14 +65,14 @@ feature "Create Movies" do
       movie1
       visit "/"
       click_link "Add New Movie"
-      fill_in "Title", :with => movie1.title
-      fill_in "Studio", :with => movie1.studio
-      fill_in "Year", :with => movie1.year
-      fill_in "Rating", :with => movie1.rating
-      fill_in "Genre", :with => movie1.genre
-      fill_in "Cast", :with => movie1.cast
-      fill_in "Director", :with => movie1.director
-      fill_in "Screen Writer", :with => movie1.screen_writer
+      fill_in "Title", with: movie1.title
+      fill_in "Studio", with: movie1.studio
+      fill_in "Year", with: movie1.year
+      fill_in "Rating", with: movie1.rating
+      fill_in "Genre", with: movie1.genre
+      fill_in "Cast", with: movie1.cast
+      fill_in "Director", with: movie1.director
+      fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
       expect(page).to have_current_path(movie_path(Movie.all[0].id))
       expect(page).to have_content("You successfully added a movie")
@@ -90,12 +90,12 @@ feature "Create Movies" do
       " a flash message with an error in the new movie form" do
       visit "/"
       click_link "Add New Movie"
-      fill_in "Year", :with => movie1.year
-      fill_in "Rating", :with => movie1.rating
-      fill_in "Genre", :with => movie1.genre
-      fill_in "Cast", :with => movie1.cast
-      fill_in "Director", :with => movie1.director
-      fill_in "Screen Writer", :with => movie1.screen_writer
+      fill_in "Year", with: movie1.year
+      fill_in "Rating", with: movie1.rating
+      fill_in "Genre", with: movie1.genre
+      fill_in "Cast", with: movie1.cast
+      fill_in "Director", with: movie1.director
+      fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
       expect(page).to have_content("Title can't be blank")
       expect(page).to have_current_path(movies_path)
@@ -106,13 +106,13 @@ feature "Create Movies" do
       " a flash message with an error in the new movie form" do
       visit "/"
       click_link "Add New Movie"
-      fill_in "Title", :with => movie1.title
-      fill_in "Year", :with => movie1.year
-      fill_in "Rating", :with => movie1.rating
-      fill_in "Genre", :with => movie1.genre
-      fill_in "Cast", :with => movie1.cast
-      fill_in "Director", :with => movie1.director
-      fill_in "Screen Writer", :with => movie1.screen_writer
+      fill_in "Title", with: movie1.title
+      fill_in "Year", with: movie1.year
+      fill_in "Rating", with: movie1.rating
+      fill_in "Genre", with: movie1.genre
+      fill_in "Cast", with: movie1.cast
+      fill_in "Director", with: movie1.director
+      fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
       expect(page).to have_content("Studio can't be blank")
       expect(page).to have_current_path(movies_path)
@@ -122,13 +122,13 @@ feature "Create Movies" do
       " flash message with an error in the new movie form" do
       visit "/"
       click_link "Add New Movie"
-      fill_in "Title", :with => movie1.title
-      fill_in "Studio", :with => movie1.studio
-      fill_in "Rating", :with => movie1.rating
-      fill_in "Genre", :with => movie1.genre
-      fill_in "Cast", :with => movie1.cast
-      fill_in "Director", :with => movie1.director
-      fill_in "Screen Writer", :with => movie1.screen_writer
+      fill_in "Title", with: movie1.title
+      fill_in "Studio", with: movie1.studio
+      fill_in "Rating", with: movie1.rating
+      fill_in "Genre", with: movie1.genre
+      fill_in "Cast", with: movie1.cast
+      fill_in "Director", with: movie1.director
+      fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
       expect(page).to have_content("Year can't be blank")
       expect(page).to have_current_path(movies_path)
@@ -138,13 +138,13 @@ feature "Create Movies" do
       " flash message with an error in the new movie form" do
       visit "/"
       click_link "Add New Movie"
-      fill_in "Title", :with => movie1.title
-      fill_in "Studio", :with => movie1.studio
-      fill_in "Year", :with => movie1.year
-      fill_in "Genre", :with => movie1.genre
-      fill_in "Cast", :with => movie1.cast
-      fill_in "Director", :with => movie1.director
-      fill_in "Screen Writer", :with => movie1.screen_writer
+      fill_in "Title", with: movie1.title
+      fill_in "Studio", with: movie1.studio
+      fill_in "Year", with: movie1.year
+      fill_in "Genre", with: movie1.genre
+      fill_in "Cast", with: movie1.cast
+      fill_in "Director", with: movie1.director
+      fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
       expect(page).to have_content("Rating can't be blank")
       expect(page).to have_current_path(movies_path)
@@ -154,13 +154,13 @@ feature "Create Movies" do
       " flash message with an error in the new movie form" do
       visit "/"
       click_link "Add New Movie"
-      fill_in "Title", :with => movie1.title
-      fill_in "Studio", :with => movie1.studio
-      fill_in "Year", :with => movie1.year
-      fill_in "Rating", :with => movie1.rating
-      fill_in "Cast", :with => movie1.cast
-      fill_in "Director", :with => movie1.director
-      fill_in "Screen Writer", :with => movie1.screen_writer
+      fill_in "Title", with: movie1.title
+      fill_in "Studio", with: movie1.studio
+      fill_in "Year", with: movie1.year
+      fill_in "Rating", with: movie1.rating
+      fill_in "Cast", with: movie1.cast
+      fill_in "Director", with: movie1.director
+      fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
       expect(page).to have_content("Genre can't be blank")
       expect(page).to have_current_path(movies_path)
@@ -170,13 +170,13 @@ feature "Create Movies" do
       " flash message with an error in the new movie form" do
       visit "/"
       click_link "Add New Movie"
-      fill_in "Title", :with => movie1.title
-      fill_in "Studio", :with => movie1.studio
-      fill_in "Year", :with => movie1.year
-      fill_in "Rating", :with => movie1.rating
-      fill_in "Genre", :with => movie1.genre
-      fill_in "Director", :with => movie1.director
-      fill_in "Screen Writer", :with => movie1.screen_writer
+      fill_in "Title", with: movie1.title
+      fill_in "Studio", with: movie1.studio
+      fill_in "Year", with: movie1.year
+      fill_in "Rating", with: movie1.rating
+      fill_in "Genre", with: movie1.genre
+      fill_in "Director", with: movie1.director
+      fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
       expect(page).to have_content("Cast can't be blank")
       expect(page).to have_current_path(movies_path)
@@ -186,13 +186,13 @@ feature "Create Movies" do
       " flash message with an error in the new movie form" do
       visit "/"
       click_link "Add New Movie"
-      fill_in "Title", :with => movie1.title
-      fill_in "Studio", :with => movie1.studio
-      fill_in "Year", :with => movie1.year
-      fill_in "Rating", :with => movie1.rating
-      fill_in "Genre", :with => movie1.genre
-      fill_in "Cast", :with => movie1.cast
-      fill_in "Screen Writer", :with => movie1.screen_writer
+      fill_in "Title", with: movie1.title
+      fill_in "Studio", with: movie1.studio
+      fill_in "Year", with: movie1.year
+      fill_in "Rating", with: movie1.rating
+      fill_in "Genre", with: movie1.genre
+      fill_in "Cast", with: movie1.cast
+      fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
       expect(page).to have_content("Director can't be blank")
       expect(page).to have_current_path(movies_path)
@@ -202,13 +202,13 @@ feature "Create Movies" do
       " flash message with an error in the new movie form" do
       visit "/"
       click_link "Add New Movie"
-      fill_in "Title", :with => movie1.title
-      fill_in "Studio", :with => movie1.studio
-      fill_in "Year", :with => movie1.year
-      fill_in "Rating", :with => movie1.rating
-      fill_in "Genre", :with => movie1.genre
-      fill_in "Cast", :with => movie1.cast
-      fill_in "Director", :with => movie1.director
+      fill_in "Title", with: movie1.title
+      fill_in "Studio", with: movie1.studio
+      fill_in "Year", with: movie1.year
+      fill_in "Rating", with: movie1.rating
+      fill_in "Genre", with: movie1.genre
+      fill_in "Cast", with: movie1.cast
+      fill_in "Director", with: movie1.director
       click_button "Submit"
       expect(page).to have_content("Screen writer can't be blank")
       expect(page).to have_current_path(movies_path)
