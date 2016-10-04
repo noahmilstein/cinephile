@@ -276,6 +276,9 @@ Style/EmptyLinesAroundBlockBody:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  EnforcedStyle: when_needed
+  SupportedStyles:
+    - when_needed
   Enabled: false
 
 FrozenStringLiteral:
