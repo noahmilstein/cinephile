@@ -279,7 +279,7 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: when_needed
   SupportedStyles:
     - when_needed
-  Enabled: false
+  Enabled: true
 
 FrozenStringLiteral:
   Enabled: false
