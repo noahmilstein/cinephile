@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
   def authorize_user
     unless user_signed_in?
       flash[:notice] = "Please sign in or sign up in"\
-        " order to view this movie and its reviews"
+      " order to view this movie and its reviews"
       redirect_to root_path
     end
   end
