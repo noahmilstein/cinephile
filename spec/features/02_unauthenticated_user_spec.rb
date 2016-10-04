@@ -97,6 +97,5 @@ feature "Unauthenticated user" do
       expect(page).to have_content("Director 1")
       expect(page).to have_content("Screen Writer 1")
     end
-
   end
 end
