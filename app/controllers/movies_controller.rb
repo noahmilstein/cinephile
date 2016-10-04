@@ -14,13 +14,13 @@ class MoviesController < ApplicationController
   end
 
   def create
-   @movie = Movie.new(movie_params)
-   if @movie.save
-     redirect_to movie_path(@movie)
-     flash[:notice] = "You successfully added a movie"
-   else
-     render :new
-   end
+    @movie = Movie.new(movie_params)
+    if @movie.save
+      redirect_to movie_path(@movie)
+      flash[:notice] = "You successfully added a movie"
+    else
+      render :new
+    end
   end
 
   protected

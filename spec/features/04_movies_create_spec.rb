@@ -11,11 +11,7 @@ feature "Create Movies" do
         password: "abcdef1",
         newsletter: true
       )
-      visit "/"
-      click_link("Sign In")
-      fill_in "Email", with: user1.email
-      fill_in "Password", with: user1.password
-      click_button "Sign In"
+      user_sign_in(user1)
     end
 
     movie1 = Movie.new(
@@ -30,15 +26,15 @@ feature "Create Movies" do
     )
 
     scenario "User sees a link Add new movie" do
-      visit "/"
+      visit root_path
       expect(page).to have_content("Add New Movie")
-      expect(page).to have_current_path('/')
     end
 
     scenario "User clicks link add new movie, is redirected to"\
       " new movie form, and sees all the required fields" do
-      visit "/"
+      visit root_path
       click_link "Add New Movie"
+
       expect(page).to have_current_path(new_movie_path)
       expect(page).to have_content("Title")
       expect(page).to have_content("Studio")
@@ -51,8 +47,8 @@ feature "Create Movies" do
     end
 
     scenario "User is on the new movie form, fills in all the required"\
-      " field correctly, and is redircted to the submitted movie show page" do
-      visit "/"
+      " field correctly, and is redirected to the submitted movie show page" do
+      visit root_path
       click_link "Add New Movie"
       fill_in "Title", with: movie1.title
       fill_in "Studio", with: movie1.studio
@@ -63,6 +59,7 @@ feature "Create Movies" do
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
+
       expect(page).to have_current_path(movie_path(Movie.all[0].id))
       expect(page).to have_content("You successfully added a movie")
       expect(page).to have_content("Citizen Kane")
@@ -77,7 +74,7 @@ feature "Create Movies" do
 
     scenario "user is in new movie form, leaves title blank, and sees"\
       " a flash message with an error in the new movie form" do
-      visit "/"
+      visit root_path
       click_link "Add New Movie"
       fill_in "Year", with: movie1.year
       fill_in "Rating", with: movie1.rating
@@ -86,13 +83,14 @@ feature "Create Movies" do
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
+
       expect(page).to have_content("Title can't be blank")
       expect(page).to have_current_path(movies_path)
     end
 
     scenario "user is in new movie form, leaves studio blank, and sees"\
       " a flash message with an error in the new movie form" do
-      visit "/"
+      visit root_path
       click_link "Add New Movie"
       fill_in "Title", with: movie1.title
       fill_in "Year", with: movie1.year
@@ -102,13 +100,14 @@ feature "Create Movies" do
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
+
       expect(page).to have_content("Studio can't be blank")
       expect(page).to have_current_path(movies_path)
     end
 
     scenario "user is in new movie form, leaves year blank, and sees a"\
       " flash message with an error in the new movie form" do
-      visit "/"
+      visit root_path
       click_link "Add New Movie"
       fill_in "Title", with: movie1.title
       fill_in "Studio", with: movie1.studio
@@ -118,14 +117,16 @@ feature "Create Movies" do
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
+
       expect(page).to have_content("Year can't be blank")
       expect(page).to have_current_path(movies_path)
     end
 
     scenario "user is in new movie form, leaves rating blank, and sees a"\
       " flash message with an error in the new movie form" do
-      visit "/"
+      visit root_path
       click_link "Add New Movie"
+
       fill_in "Title", with: movie1.title
       fill_in "Studio", with: movie1.studio
       fill_in "Year", with: movie1.year
@@ -140,8 +141,9 @@ feature "Create Movies" do
 
     scenario "user is in new movie form, leaves genre blank, and sees a"\
       " flash message with an error in the new movie form" do
-      visit "/"
+      visit root_path
       click_link "Add New Movie"
+
       fill_in "Title", with: movie1.title
       fill_in "Studio", with: movie1.studio
       fill_in "Year", with: movie1.year
@@ -156,8 +158,9 @@ feature "Create Movies" do
 
     scenario "user is in new movie form, leaves cast blank, and sees a"\
       " flash message with an error in the new movie form" do
-      visit "/"
+      visit root_path
       click_link "Add New Movie"
+
       fill_in "Title", with: movie1.title
       fill_in "Studio", with: movie1.studio
       fill_in "Year", with: movie1.year
@@ -172,7 +175,7 @@ feature "Create Movies" do
 
     scenario "user is in new movie form, leaves director blank, and sees a"\
       " flash message with an error in the new movie form" do
-      visit "/"
+      visit root_path
       click_link "Add New Movie"
       fill_in "Title", with: movie1.title
       fill_in "Studio", with: movie1.studio
@@ -182,13 +185,14 @@ feature "Create Movies" do
       fill_in "Cast", with: movie1.cast
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
+
       expect(page).to have_content("Director can't be blank")
       expect(page).to have_current_path(movies_path)
     end
 
     scenario "user is in new movie form, leaves screen writer blank, and sees a"\
       " flash message with an error in the new movie form" do
-      visit "/"
+      visit root_path
       click_link "Add New Movie"
       fill_in "Title", with: movie1.title
       fill_in "Studio", with: movie1.studio
@@ -198,6 +202,7 @@ feature "Create Movies" do
       fill_in "Cast", with: movie1.cast
       fill_in "Director", with: movie1.director
       click_button "Submit"
+
       expect(page).to have_content("Screen writer can't be blank")
       expect(page).to have_current_path(movies_path)
     end
