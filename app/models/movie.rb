@@ -6,5 +6,5 @@ class Movie < ActiveRecord::Base
   validates :genre, presence: true
   validates :cast, presence: true
   validates :director, presence: true
-  validates :screen_writer, presence: true 
+  validates :screen_writer, presence: true
 end

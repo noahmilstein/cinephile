@@ -15,9 +15,11 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'httparty'
+  gem 'rb-readline'
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'launchy', require: false
   gem 'coveralls', require: false
 end
