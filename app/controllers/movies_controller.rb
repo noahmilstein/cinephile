@@ -13,6 +13,24 @@ class MoviesController < ApplicationController
     @movie = Movie.new
   end
 
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    @movie.update_attributes(movie_params)
+    if @movie.save
+      flash[:notice] = "Movie Updated!"
+      redirect_to @movie
+    else
+      @errors = @movie.errors.full_messages.join(", ")
+      flash[:alert] = "Movie Not Updated!"
+      flash[:notice] = @errors
+      render :edit
+    end
+  end
+
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
@@ -21,6 +39,13 @@ class MoviesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+    flash[:notice] = "Movie Deleted!"
+    redirect_to movies_path
   end
 
   protected
