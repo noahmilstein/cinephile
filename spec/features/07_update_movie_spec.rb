@@ -26,12 +26,6 @@ feature "Edit Movie" do
       user_sign_in(user1)
     end
 
-    scenario "User sees a link Edit movie" do
-      visit root_path
-      click_link @movie1.title
-      expect(page).to have_content("Edit")
-    end
-
     scenario "User clicks link edit movie, and is redirected to"\
       " show page with updates " do
       visit root_path

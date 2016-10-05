@@ -26,12 +26,6 @@ feature "Destroy Movie" do
       user_sign_in(user1)
     end
 
-    scenario "User sees a link Delete movie" do
-      visit root_path
-      click_link @movie1.title
-      expect(page).to have_content("Delete")
-    end
-
     scenario "User clicks link delete movie, and is redirected to"\
       " index page" do
       id = @movie1.id
