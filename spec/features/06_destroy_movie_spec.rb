@@ -13,19 +13,18 @@ feature "Destroy Movie" do
       )
 
       @movie1 = Movie.create(
-      title: "Citizen Kane",
-      studio: "Studio",
-      year: 1940,
-      rating: "R",
-      genre: "drama",
-      cast: "Cast Member 1, Cast Member 2",
-      director: "Director 1",
-      screen_writer: "Screen Writer 1"
+        title: "Citizen Kane",
+        studio: "Studio",
+        year: 1940,
+        rating: "R",
+        genre: "drama",
+        cast: "Cast Member 1, Cast Member 2",
+        director: "Director 1",
+        screen_writer: "Screen Writer 1"
       )
 
       user_sign_in(user1)
     end
-
 
     scenario "User sees a link Delete movie" do
       visit root_path
