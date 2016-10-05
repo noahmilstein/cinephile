@@ -26,7 +26,6 @@ feature "Edit Movie" do
       user_sign_in(user1)
     end
 
-
     scenario "User sees a link Edit movie" do
       visit root_path
       click_link @movie1.title
