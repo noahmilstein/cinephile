@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :authorize_user, except: [:index]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
     @movies = Movie.all
@@ -18,7 +19,6 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie = Movie.find(params[:id])
     @movie.update_attributes(movie_params)
     if @movie.save
       flash[:notice] = "Movie Updated!"
