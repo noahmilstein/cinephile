@@ -21,3 +21,10 @@ def user_sign_in(user)
   fill_in "Password", with: user.password
   click_button "Sign In"
 end
+
+def user_review(review)
+  fill_in "Title here", with: review.title
+  fill_in "Body here", with: review.body
+  select 4, :from => "Rating"
+  click_button "Submit Review"
+end
