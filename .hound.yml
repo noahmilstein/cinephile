@@ -197,6 +197,9 @@ SpecialGlobalVars:
 StringLiterals:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 VariableInterpolation:
   Enabled: false
 
