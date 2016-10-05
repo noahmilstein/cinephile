@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Authenticated user" do
+feature "Create reviews user" do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:movie1) { FactoryGirl.create(:movie) }
   let!(:movie2) { FactoryGirl.create(:movie) }
@@ -16,8 +16,8 @@ feature "Authenticated user" do
     expect(page).to have_content("Write Review")
     expect(page).to have_content("Title here")
     expect(page).to have_content("Body here")
-    expect(page).to have_selector(:link_or_button, "Rating")
-    expect(page).to have_content("Submit Review")
+    expect(page).to have_select(:rating, "Rating")
+    expect(page).to have_button("Submit Review")
   end
 
   scenario "user succesfully submits review form" do
@@ -40,7 +40,7 @@ feature "Authenticated user" do
     expect(page).to_not have_content(movie2.title)
     expect(page).to have_content("Review failed to submit")
     expect(page).to have_content("Title can't be blank")
-    expect(page).to have_content("Body can't be blank")
-    expect(page).to have_content("Rating can't be blank")
+    expect(page).to have_content("Body must be at least 50 characters")
+    expect(page).to have_content("Rating must be 1 - 5")
   end
 end

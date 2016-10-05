@@ -1,4 +1,12 @@
 class Movie < ActiveRecord::Base
+  RATINGS = [
+    [1, "1"],
+    [2, "2"],
+    [3, "3"],
+    [4, "4"],
+    [5, "5"]
+  ]
+
   validates :title, presence: true
   validates :studio, presence: true
   validates :year, presence: true
@@ -7,4 +15,7 @@ class Movie < ActiveRecord::Base
   validates :cast, presence: true
   validates :director, presence: true
   validates :screen_writer, presence: true
+
+  has_many :reviews
+  has_many :users, through: :reviews
 end

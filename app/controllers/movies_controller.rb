@@ -7,6 +7,9 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @reviews = @movie.reviews
+    @review = Review.new
+    @ratings = Movie::RATINGS
   end
 
   def new

@@ -25,6 +25,6 @@ end
 def user_review(review)
   fill_in "Title here", with: review.title
   fill_in "Body here", with: review.body
-  select 4, :from => "Rating"
+  select 4, :from => :rating
   click_button "Submit Review"
 end
