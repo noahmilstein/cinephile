@@ -5,6 +5,7 @@
   <%= f.label(:body, "Body here") %>
   <%= f.text_field(:body) %>
   <%= f.label(:rating, "Rating") %>
-  <%= select_tag(:rating, options_for_select(@ratings)) %>
+  <%= f.select(:rating, options_for_select(@ratings)) %>
+
   <%= f.submit("Submit Review") %>
 <% end %>

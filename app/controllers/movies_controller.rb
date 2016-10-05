@@ -6,10 +6,10 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
-    @reviews = @movie.reviews
     @review = Review.new
     @ratings = Movie::RATINGS
+    @movie = Movie.find(params[:id])
+    @reviews = @movie.reviews
   end
 
   def new

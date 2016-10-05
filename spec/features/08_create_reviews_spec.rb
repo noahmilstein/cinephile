@@ -4,7 +4,7 @@ feature "Create reviews user" do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:movie1) { FactoryGirl.create(:movie) }
   let!(:movie2) { FactoryGirl.create(:movie) }
-  let!(:review) { FactoryGirl.create(:review) }
+  let!(:review) { FactoryGirl.create(:review, movie_id: movie1.id) }
 
   before do
     user_sign_in(user)
@@ -24,6 +24,7 @@ feature "Create reviews user" do
     click_link movie1.title
     user_review(review)
 
+    save_and_open_page
     expect(page).to have_content(review.title)
     expect(page).to have_content(review.body)
     expect(page).to have_content(review.rating)

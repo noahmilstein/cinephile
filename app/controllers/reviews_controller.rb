@@ -3,13 +3,21 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @movie = Movie.find(params[:movie_id]) # testing this line
+    @movie = Movie.find(params[:movie_id])
+    binding.pry
+    @ratings = Movie::RATINGS
+    @review.movie_id = @movie.id
+    @user = current_user
+    @review.user_id = @user.id
+    @review.rating = params[:rating]
+    binding.pry
     if @review.save
       flash[:notice] = "Review Submitted!"
       redirect_to movie_path(@movie)
-      # render :'movies/show'
     else
       flash[:notice] = "Review failed to submit"
+      @errors = @review.errors.full_messages.join(', ')
+      flash[:notice] = @errors
       render :'movies/show'
     end
   end
@@ -30,7 +38,9 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(
       :title,
       :body,
-      :rating
+      :rating,
+      :movie_id,
+      :user_id
     )
   end
 end
