@@ -4,20 +4,16 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @movie = Movie.find(params[:movie_id])
-    binding.pry
     @ratings = Movie::RATINGS
     @review.movie_id = @movie.id
     @user = current_user
     @review.user_id = @user.id
-    @review.rating = params[:rating]
-    binding.pry
     if @review.save
       flash[:notice] = "Review Submitted!"
       redirect_to movie_path(@movie)
     else
-      flash[:notice] = "Review failed to submit"
       @errors = @review.errors.full_messages.join(', ')
-      flash[:notice] = @errors
+      flash[:notice] = "Review failed to submit: " + @errors
       render :'movies/show'
     end
   end

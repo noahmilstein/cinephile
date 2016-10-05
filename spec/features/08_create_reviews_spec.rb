@@ -16,7 +16,7 @@ feature "Create reviews user" do
     expect(page).to have_content("Write Review")
     expect(page).to have_content("Title here")
     expect(page).to have_content("Body here")
-    expect(page).to have_select(:rating, "Rating")
+    expect(page).to have_content("Rating")
     expect(page).to have_button("Submit Review")
   end
 
@@ -24,7 +24,6 @@ feature "Create reviews user" do
     click_link movie1.title
     user_review(review)
 
-    save_and_open_page
     expect(page).to have_content(review.title)
     expect(page).to have_content(review.body)
     expect(page).to have_content(review.rating)
