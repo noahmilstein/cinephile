@@ -1,10 +1,10 @@
 class ReviewsController < ApplicationController
   before_action :authorize_user, except: [:index]
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_ratings
 
   def create
     @review = Review.new(review_params)
-    @ratings = Movie::RATINGS
+    @movie = Movie.find(params[:movie_id])
     @review.movie = @movie
     @review.user = current_user
     if @review.save
@@ -18,12 +18,11 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:movie_id])
     @movie = @review.movie
-    @ratings = Movie::RATINGS
   end
 
   def update
-    @ratings = Movie::RATINGS
     @review = Review.find(params[:id])
+    @movie = Movie.find(params[:movie_id])
     @review.update_attributes(review_params)
     if @review.save
       flash[:notice] = "Review successfully updated!"
@@ -68,8 +67,8 @@ class ReviewsController < ApplicationController
     )
   end
 
-  def set_movie
-    @movie = Movie.find(params[:movie_id])
+  def set_ratings
+    @ratings = Movie::RATINGS
   end
 
   def fail_create(obj)
