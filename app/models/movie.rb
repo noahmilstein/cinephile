@@ -1,5 +1,4 @@
 class Movie < ActiveRecord::Base
-
   RATINGS = [
     ["-", ""],
     [1, "1"],
