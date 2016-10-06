@@ -11,9 +11,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review Submitted!"
       redirect_to movie_path(@movie)
     else
-      @errors = @review.errors.full_messages.join(', ')
-      flash[:notice] = "Review failed to submit: " + @errors
-      render :"movies/show"
+      fail_create(@review)
     end
   end
 
@@ -32,10 +30,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review successfully updated!"
       redirect_to movie_path(@movie)
     else
-      flash[:notice] = "Review was not updated."
-      @errors = @review.errors.full_messages.join(", ")
-      flash[:alert] = @errors
-      render action: "edit"
+      fail_update(@review)
     end
   end
 
@@ -72,5 +67,18 @@ class ReviewsController < ApplicationController
       :movie_id,
       :user_id
     )
+  end
+
+  def fail_create(obj)
+    @errors = obj.errors.full_messages.join(', ')
+    flash[:notice] = "Review failed to submit: " + @errors
+    render :"movies/show"
+  end
+
+  def fail_update(obj)
+    flash[:notice] = "Review was not updated."
+    @errors = obj.errors.full_messages.join(", ")
+    flash[:alert] = @errors
+    render action: "edit"
   end
 end
