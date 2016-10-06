@@ -19,3 +19,6 @@ Style/FrozenStringLiteralComment:
 
 Documentation:
   Enabled: false
+
+Style/GuardClause:
+  Enabled: true

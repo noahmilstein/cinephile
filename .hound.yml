@@ -103,8 +103,8 @@ FormatString:
 GlobalVars:
   Enabled: false
 
-GuardClause:
-  Enabled: false
+Style/GuardClause:
+  Enabled: true
 
 IfUnlessModifier:
   Enabled: false
