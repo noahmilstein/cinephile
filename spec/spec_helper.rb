@@ -25,6 +25,6 @@ end
 def user_review(review)
   fill_in "Review Title", with: review.title
   fill_in "Review Body", with: review.body
-  fill_in "Rating", with: "4"
+  select "4", from: "Rating"
   click_button "Submit Review"
 end
