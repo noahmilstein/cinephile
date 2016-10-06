@@ -20,7 +20,6 @@ feature "Edit Movie" do
 
   scenario "User successfully edits review" do
     visit edit_movie_review_path(movie1, review5)
-    
     click_button "Submit"
 
     expect(page).to have_content(review5.body)
