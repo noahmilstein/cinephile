@@ -70,7 +70,7 @@ class ReviewsController < ApplicationController
   end
 
   def fail_create(obj)
-    @errors = obj.errors.full_messages.join(', ')
+    @errors = obj.errors.full_messages.join(", ")
     flash[:notice] = "Review failed to submit: " + @errors
     render :"movies/show"
   end
