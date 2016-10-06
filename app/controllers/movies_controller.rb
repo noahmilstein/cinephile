@@ -10,6 +10,7 @@ class MoviesController < ApplicationController
     @review = Review.new
     @ratings = Movie::RATINGS
     @movie = Movie.find(params[:id])
+    @user = current_user
     @reviews = @movie.reviews
   end
 

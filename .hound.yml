@@ -1,6 +1,9 @@
 ruby:
   config_file: config/rubocop.yml
 
+jshint:
+  config_file: .jshintrc
+
 Documentation:
   Enabled: false
 

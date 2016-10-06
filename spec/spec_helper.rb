@@ -23,8 +23,8 @@ def user_sign_in(user)
 end
 
 def user_review(review)
-  fill_in "Title here", with: review.title
-  fill_in "Body here", with: review.body
+  fill_in "Review Title", with: review.title
+  fill_in "Review Body", with: review.body
   select "4", from: "Rating"
   click_button "Submit Review"
 end
