@@ -19,7 +19,6 @@ feature "Edit Movie" do
     end
   end
 
-
   scenario "User successfully edits review" do
     visit edit_movie_review_path(movie1, review5)
     click_button "Submit"
