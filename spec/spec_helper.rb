@@ -21,3 +21,10 @@ def user_sign_in(user)
   fill_in "Password", with: user.password
   click_button "Sign In"
 end
+
+def user_review(review)
+  fill_in "Review Title", with: review.title
+  fill_in "Review Body", with: review.body
+  fill_in "Rating", with: "4"
+  click_button "Submit Review"
+end
