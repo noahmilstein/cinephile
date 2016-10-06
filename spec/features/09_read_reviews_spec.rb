@@ -11,10 +11,10 @@ feature "User reads reviews" do
 
   before do
     user_sign_in(user)
+    visit movies_path
   end
 
   scenario "Do not see reviews on index page" do
-    visit movies_path
     expect(page).to_not have_content(review1.title)
     expect(page).to_not have_content(review1.body)
     expect(page).to_not have_content(review1.rating)
@@ -24,7 +24,6 @@ feature "User reads reviews" do
   end
 
   scenario "See a list of reviews on movie 1 show page" do
-    visit movies_path
     click_on movie1.title
 
     expect(page).to have_content(review1.title)
@@ -38,7 +37,6 @@ feature "User reads reviews" do
   end
 
   scenario "See a list of reviews on movie 2 show page" do
-    visit movies_path
     click_on movie2.title
 
     expect(page).to have_content(review3.title)

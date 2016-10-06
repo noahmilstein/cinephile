@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:movie_id])
+    @review = Review.find(params[:id])
     @movie = @review.movie
   end
 

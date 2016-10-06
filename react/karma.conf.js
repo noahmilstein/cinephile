@@ -87,7 +87,7 @@ module.exports = function(config) {
       dir: 'coverage',
       subdir: '.',
       // output coverage results as html
-      type: 'html'
+      type: 'html';
     }
   })
 }
