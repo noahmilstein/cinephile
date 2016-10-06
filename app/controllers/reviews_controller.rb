@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     else
       @errors = @review.errors.full_messages.join(', ')
       flash[:notice] = "Review failed to submit: " + @errors
-      render :'movies/show'
+      render :"movies/show"
     end
   end
 
@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review was not updated."
       @errors = @review.errors.full_messages.join(", ")
       flash[:alert] = @errors
-      render action: 'edit'
+      render action: "edit"
     end
   end
 

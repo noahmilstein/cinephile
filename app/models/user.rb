@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_many :reviews
-  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   validates :username, uniqueness: true, presence: true
