@@ -11,11 +11,19 @@
 <p><%= link_to "Back to Index", movies_path %></p>
 
 <% unless @reviews.nil? %>
-  <% @reviews.each do |review| %>
+  <% @reviews.each_with_index do |review, index| %>
     <p>
+      <% upvotes = 0 %>
+      <% downvotes = 0 %>
       <%= review.title %>
       <%= review.rating %>
       <%= review.body %>
+      <% review.votes.each do |vote|  %>
+        <%  upvotes += vote.upvote %>
+        <%  downvotes += vote.downvote %>
+      <% end %>
+      <%= button_to "Upvote",  upvote_review_votes_path(review), method: :post, id: "Upvote_#{index + 1}" %> <%= upvotes %>
+      <%= button_to "Downvote", downvote_review_votes_path(review), method: :post, id: "Downvote_#{index + 1}" %> <%=  downvotes %>
     </p>
   <% end %>
 <% end %>

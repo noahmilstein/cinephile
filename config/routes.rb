@@ -8,4 +8,13 @@ Rails.application.routes.draw do
   resources :movies do
     resources :reviews
   end
+
+  resources :reviews do
+    resources :votes do
+      collection do
+        post '/upvote', to: 'votes#upvote', as: 'upvote'
+        post '/downvote', to: 'votes#downvote', as: 'downvote'
+      end
+    end
+  end
 end
