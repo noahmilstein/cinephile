@@ -5,9 +5,8 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @movie = Movie.find(params[:movie_id])
     @ratings = Movie::RATINGS
-    @review.movie_id = @movie.id
-    @user = current_user
-    @review.user_id = @user.id
+    @review.movie = @movie
+    @review.user = current_user
     if @review.save
       flash[:notice] = "Review Submitted!"
       redirect_to movie_path(@movie)
