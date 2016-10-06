@@ -14,8 +14,8 @@ feature "Create reviews user" do
     click_link movie1.title
 
     expect(page).to have_content("Write Review")
-    expect(page).to have_content("Title here")
-    expect(page).to have_content("Body here")
+    expect(page).to have_content("Review Title")
+    expect(page).to have_content("Review Body")
     expect(page).to have_content("Rating")
     expect(page).to have_button("Submit Review")
   end
@@ -41,6 +41,6 @@ feature "Create reviews user" do
     expect(page).to have_content("Review failed to submit")
     expect(page).to have_content("Title can't be blank")
     expect(page).to have_content("Body must be at least 50 characters")
-    expect(page).to have_content("Rating must be 1 - 5")
+    expect(page).to have_content("Rating must be between 1 - 5")
   end
 end

@@ -10,7 +10,7 @@ class Movie < ActiveRecord::Base
 
   validates :title, presence: true
   validates :studio, presence: true
-  validates :year, presence: true
+  validates :year, numericality: { integer_only: true }, presence: true
   validates :rating, presence: true
   validates :genre, presence: true
   validates :cast, presence: true
