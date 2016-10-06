@@ -11,12 +11,14 @@ feature "Edit Movie" do
     visit movie_path(movie1)
   end
 
-  scenario "User clicks link edit review, and is redirected to"\
-    " review edit form " do
-    click_link "Edit Review"
+  describe "when a user clicks link to edit review" do
+    it "redirects to review edit form" do
+      click_link "Edit Review"
 
-    expect(page).to have_content("Edit Review")
+      expect(page).to have_content("Edit Review")
+    end
   end
+
 
   scenario "User successfully edits review" do
     visit edit_movie_review_path(movie1, review5)
@@ -26,16 +28,17 @@ feature "Edit Movie" do
     expect(page).to have_content("Review successfully updated!")
   end
 
-  scenario "User incorrectly fills out review form and"\
-    " review form is re-renered with error message " do
-    visit edit_movie_review_path(movie1, review5)
-    fill_in "Review Title", with: ""
-    fill_in "Review Body", with: ""
+  describe "User incorrectly fills out review form" do
+    it "re-renders review form with error message" do
+      visit edit_movie_review_path(movie1, review5)
+      fill_in "Review Title", with: ""
+      fill_in "Review Body", with: ""
 
-    click_button "Submit"
+      click_button "Submit"
 
-    expect(page).to have_content("Review was not updated.")
-    expect(page).to have_content("Title can't be blank")
-    expect(page).to have_content("Body must be at least 50 characters")
+      expect(page).to have_content("Review was not updated.")
+      expect(page).to have_content("Title can't be blank")
+      expect(page).to have_content("Body must be at least 50 characters")
+    end
   end
 end

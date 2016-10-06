@@ -11,13 +11,14 @@ feature "Destroy Movie" do
     visit movie_path(movie1)
   end
 
-  scenario "User clicks link delete review, and is redirected to"\
-    " movie show page" do
-    click_link "Delete Review"
+  describe "User clicks link delete review" do
+    it "redirects to movie show page" do
+      click_link "Delete Review"
 
-    expect(page).to_not have_content(review1.title)
-    expect(page).to_not have_content(review1.body)
-    expect(page).to_not have_content(review1.rating)
-    expect(page).to have_content("Review Deleted!")
+      expect(page).to_not have_content(review1.title)
+      expect(page).to_not have_content(review1.body)
+      expect(page).to_not have_content(review1.rating)
+      expect(page).to have_content("Review Deleted!")
+    end
   end
 end

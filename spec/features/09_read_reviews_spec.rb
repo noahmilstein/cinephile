@@ -30,10 +30,6 @@ feature "User reads reviews" do
     expect(page).to have_content(review1.body)
     expect(page).to have_content(review2.title)
     expect(page).to have_content(review2.body)
-    expect(page).to_not have_content(review3.title)
-    expect(page).to_not have_content(review3.body)
-    expect(page).to_not have_content(review4.title)
-    expect(page).to_not have_content(review4.body)
   end
 
   scenario "See a list of reviews on movie 2 show page" do
@@ -43,9 +39,5 @@ feature "User reads reviews" do
     expect(page).to have_content(review3.body)
     expect(page).to have_content(review4.title)
     expect(page).to have_content(review4.body)
-    expect(page).to_not have_content(review1.title)
-    expect(page).to_not have_content(review1.body)
-    expect(page).to_not have_content(review2.title)
-    expect(page).to_not have_content(review2.body)
   end
 end
