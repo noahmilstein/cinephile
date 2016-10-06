@@ -33,6 +33,5 @@ feature "Destroy Movie" do
 
     expect(page).to_not have_content(review1.title)
     expect(page).to_not have_content(review1.body)
-    expect(page).to_not have_content(review1.rating)
   end
 end

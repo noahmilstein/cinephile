@@ -4,7 +4,7 @@ feature "Create reviews user" do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:movie1) { FactoryGirl.create(:movie) }
   let!(:movie2) { FactoryGirl.create(:movie) }
-  let!(:review) { FactoryGirl.create(:review, title: "Testing 12 432432", movie: movie1) }
+  let!(:review) { FactoryGirl.create(:review, movie: movie1) }
 
   before do
     user_sign_in(user)
@@ -40,7 +40,7 @@ feature "Create reviews user" do
     expect(page).to_not have_content(movie2.title)
     expect(page).to have_content("Review failed to submit")
     expect(page).to have_content("Title can't be blank")
-    expect(page).to have_content("Body is too short (minimum is 50 characters)")
+    expect(page).to have_content("Body must be at least 50 characters")
     expect(page).to have_content("Rating must be between 1 - 5")
   end
 end

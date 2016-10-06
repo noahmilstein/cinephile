@@ -12,14 +12,18 @@
 
 <h3>Write Review</h3>
 
-<%= render "./reviews/review_form" %>
+<%= render "reviews/review_form" %>
 
-<% @reviews.each do |review| %>
-<%= review.title %>
-<%= review.body %>
-<%= review.rating %>
-  <% if @user.id == review.user_id %>
-    <%= link_to "Edit Review", edit_movie_review_path(review) %>
-    <%= link_to "Delete Review", movie_review_path(review), method: :delete %>
-  <% end %>
+<% unless @reviews.nil? %>
+  <% @reviews.each do |review| %>
+  <div>
+    <%= review.title %>
+    <%= review.body %>
+    <%= review.rating %>
+      <% if @user.id == review.user_id %>
+        <%= link_to "Edit Review", edit_movie_review_path(review) %>
+        <%= link_to "Delete Review", movie_review_path(review), method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>

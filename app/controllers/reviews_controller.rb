@@ -18,12 +18,15 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:movie_id])
+    @movie = @review.movie
+    @ratings = Movie::RATINGS
   end
 
   def update
+    @ratings = Movie::RATINGS
     @review = Review.find(params[:id])
-    @movie = @review.movie
+    @movie = Movie.find(params[:movie_id])
     @review.update_attributes(review_params)
     if @review.save
       flash[:notice] = "Review successfully updated!"

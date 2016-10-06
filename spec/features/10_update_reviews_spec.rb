@@ -4,7 +4,7 @@ feature "Edit Movie" do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:movie1) { FactoryGirl.create(:movie) }
   let!(:movie2) { FactoryGirl.create(:movie) }
-  let!(:review1) { FactoryGirl.create(:review, movie_id: movie1.id, user_id: user.id) }
+  let!(:review5) { FactoryGirl.create(:review, movie_id: movie1.id, user_id: user.id) }
 
   before do
     user_sign_in(user)
@@ -14,15 +14,13 @@ feature "Edit Movie" do
     " review edit form " do
     visit root_path
     click_link movie1.title
-
+    # user_review(review5)
+    # binding.pry
     click_link "Edit Review"
+
     expect(page).to have_content("Edit Review")
-    fill_in "Title", with:
-      "This new body is 50 characters long at least I think"
     click_button "Submit"
-    expect(page).to have_content(
-      "This new body is 50 characters long at least I think"
-    )
+    expect(page).to have_content(review5.body)
     expect(page).to have_content("Review successfully updated!")
   end
 
@@ -37,6 +35,6 @@ feature "Edit Movie" do
     click_button "Submit"
     expect(page).to have_content("Review was not updated.")
     expect(page).to have_content("Title can't be blank")
-    expect(page).to have_content("Body is too short (minimum is 50 characters)")
+    expect(page).to have_content("Body must be at least 50 characters")
   end
 end
