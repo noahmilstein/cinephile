@@ -46,7 +46,6 @@ feature "admin" do
   end
 
   scenario "user is not admin and cannot delete a movie from index page" do
-
     expect(page).to_not have_content("delete 1")
   end
 
