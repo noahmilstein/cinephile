@@ -10,7 +10,9 @@ Documentation:
 AllCops:
   Exclude:
     - db/schema.rb
-  #DisplayCopNames: true
+
+Metrics/AbcSize:
+  Enabled: false
 
 AccessorMethodName:
   Enabled: false

@@ -60,4 +60,15 @@ ActiveRecord::Schema.define(version: 20161007183252) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id",                null: false
+    t.integer  "review_id",              null: false
+    t.integer  "upvote",     default: 0
+    t.integer  "downvote",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["review_id"], name: "index_votes_on_review_id", using: :btree
+    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
+  end
+
 end

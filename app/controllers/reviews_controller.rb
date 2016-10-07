@@ -5,9 +5,13 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @movie = Movie.find(params[:movie_id])
+    review = Review.find_by(user: current_user.id)
     @review.movie = @movie
     @review.user = current_user
-    if @review.save
+    if !review.nil?
+      flash[:notice] = "User can only submit one review per movie"
+      redirect_to movie_path(@movie)
+    elsif @review.save
       flash[:notice] = "Review Submitted!"
       redirect_to movie_path(@movie)
     else
@@ -36,7 +40,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     flash[:notice] = "Review Deleted!"
-    redirect_to movies_path(params[:movie_id])
+    redirect_to movie_path(params[:movie_id])
   end
 
   private
