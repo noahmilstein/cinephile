@@ -15,15 +15,23 @@
 <%= render "reviews/review_form" %>
 
 <% unless @reviews.nil? %>
-  <% @reviews.each do |review| %>
-  <div>
-    <%= review.title %>
-    <%= review.body %>
-    <%= review.rating %>
+  <% @reviews.each_with_index do |review, index| %>
+    <p>
+      <% upvotes = 0 %>
+      <% downvotes = 0 %>
+      <%= review.title %>
+      <%= review.rating %>
+      <%= review.body %>
       <% if @user.id == review.user_id %>
         <%= link_to "Edit Review", edit_movie_review_path(@movie, review) %>
-        <%= link_to "Delete Review", movie_review_path(review), method: :delete %>
+        <%= link_to "Delete Review", movie_review_path(@movie, review), method: :delete %>
       <% end %>
-    <% end %>
-  </div>
+      <% review.votes.each do |vote|  %>
+        <%  upvotes += vote.upvote %>
+        <%  downvotes += vote.downvote %>
+      <% end %>
+      <%= button_to "Upvote",  upvote_review_votes_path(review), method: :post, id: "Upvote_#{index + 1}" %> <%= upvotes %>
+      <%= button_to "Downvote", downvote_review_votes_path(review), method: :post, id: "Downvote_#{index + 1}" %> <%=  downvotes %>
+    </p>
+  <% end %>
 <% end %>
