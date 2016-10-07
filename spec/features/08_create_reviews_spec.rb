@@ -54,5 +54,4 @@ feature "Create reviews user" do
     expect(page).to have_content(movie1.title)
     expect(page).to have_content("User can only submit one review per movie")
   end
-
 end

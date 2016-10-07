@@ -12,6 +12,9 @@ AllCops:
     - db/schema.rb
   #DisplayCopNames: true
 
+AbcSize:
+  Enabled: false
+
 AccessorMethodName:
   Enabled: false
 

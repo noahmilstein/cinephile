@@ -8,7 +8,6 @@ feature "User votes on reviews" do
   let!(:review2) { FactoryGirl.create(:review, movie: movie1, user: user2) }
 
   describe "User votes on a review" do
-
     before do
       user_sign_in(user1)
       visit movie_path(movie1)
@@ -34,7 +33,6 @@ feature "User votes on reviews" do
   end
 
   describe "User upvotes on the same review" do
-
     before do
       user_sign_in(user1)
       visit movie_path(movie1)
@@ -58,7 +56,6 @@ feature "User votes on reviews" do
   end
 
   describe "User2 votes on a review" do
-
     before do
       user_sign_in(user2)
       visit movie_path(movie1)
