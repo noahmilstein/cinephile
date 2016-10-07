@@ -1,7 +1,10 @@
 <% if current_user.admin %>
-<% @users.each do |user| %>
+<% unless @users.nil? %>
+<% @users.each_with_index do |user, index| %>
 <p><%= link_to user.username, user_path(user) %></p>
 <%= user.first_name %>
 <%= user.last_name %>
+<%= link_to "Delete User", user_path(user), method: :delete, id: "delete #{index + 1}" %>
+<% end %>
 <% end %>
 <% end %>

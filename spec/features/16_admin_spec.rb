@@ -25,13 +25,13 @@ feature "admin" do
   scenario "user is not admin and cannot view all users" do
     user_sign_out(admin)
     user_sign_in(user1)
-    
+
     expect(page).to_not have_content("All Users")
   end
 
   scenario "user is admin and can delete a user" do
     click_link "All Users"
-    click_button "delete 1"
+    click_link "delete 1"
 
     expect(page).to_not have_content(user1.username)
     expect(page).to have_content(user2.first_name)
@@ -39,7 +39,7 @@ feature "admin" do
   end
 
   scenario "user is admin and can delete a movie from index page" do
-    click_button "delete 1"
+    click_link "delete 1"
 
     expect(page).to_not have_content(movie1.title)
     expect(page).to have_content(movie2.title)
@@ -52,7 +52,7 @@ feature "admin" do
 
   scenario "user is admin and can delete a movie from movie show page" do
     click_link movie1.title
-    click_button "delete movie"
+    click_link "delete movie"
 
     expect(page).to_not have_content(movie1.title)
     expect(page).to have_content(movie2.title)
@@ -66,10 +66,10 @@ feature "admin" do
 
   scenario "user is admin and can delete a movie review from movie show page" do
     click_link movie1.title
-    click_button "delete review 1"
+    click_link "delete review 1"
 
     expect(page).to have_content(movie1.title)
-    expect(page).to_not have_content(review1)
-    expect(page).to have_content(review2)
+    expect(page).to_not have_content(review1.body)
+    expect(page).to have_content(review2.body)
   end
 end
