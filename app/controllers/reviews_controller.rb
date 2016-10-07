@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     flash[:notice] = "Review Deleted!"
-    redirect_to movies_path(params[:movie_id])
+    redirect_to movie_path(params[:movie_id])
   end
 
   private

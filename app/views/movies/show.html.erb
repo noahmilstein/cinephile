@@ -24,7 +24,7 @@
       <%= review.body %>
       <% if @user.id == review.user_id %>
         <%= link_to "Edit Review", edit_movie_review_path(@movie, review) %>
-        <%= link_to "Delete Review", movie_review_path(review), method: :delete %>
+        <%= link_to "Delete Review", movie_review_path(@movie, review), method: :delete %>
       <% end %>
       <% review.votes.each do |vote|  %>
         <%  upvotes += vote.upvote %>
