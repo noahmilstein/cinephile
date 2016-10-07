@@ -1,0 +1,7 @@
+<% if current_user.admin %>
+<% @users.each do |user| %>
+<p><%= link_to user.username, user_path(user) %></p>
+<%= user.first_name %>
+<%= user.last_name %>
+<% end %>
+<% end %>
