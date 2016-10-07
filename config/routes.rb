@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   resources :reviews do
     resources :votes do
       collection do
-        post '/upvote', to: 'votes#upvote', as: 'upvote'
-        post '/downvote', to: 'votes#downvote', as: 'downvote'
+        post "/upvote", to: 'votes#upvote', as: 'upvote'
+        post "/downvote", to: 'votes#downvote', as: 'downvote'
       end
     end
   end
