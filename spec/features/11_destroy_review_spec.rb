@@ -15,9 +15,7 @@ feature "Destroy Movie" do
     it "redirects to movie show page" do
       click_link "Delete Review"
 
-      expect(page).to_not have_content(review1.title)
-      expect(page).to_not have_content(review1.body)
-      expect(page).to_not have_content(review1.rating)
+      expect(page).to_not have_content("#{review1.title} " + "#{review1.body} " + "#{review1.rating}")
       expect(page).to have_content("Review Deleted!")
     end
   end
