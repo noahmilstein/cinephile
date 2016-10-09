@@ -30,8 +30,12 @@
         <%  upvotes += vote.upvote %>
         <%  downvotes += vote.downvote %>
       <% end %>
-      <%= button_to "Upvote",  upvote_review_votes_path(review), method: :post, id: "Upvote_#{index + 1}" %> <%= upvotes %>
-      <%= button_to "Downvote", downvote_review_votes_path(review), method: :post, id: "Downvote_#{index + 1}" %> <%=  downvotes %>
+      <% upvote_id = "Upvote_#{index + 1}" %>
+      <% downvote_id = "Downvote_#{index + 1}" %>
+      <%= form_for review, remote: true do |r| %>
+        <%= link_to "Upvote", upvote_path, remote: true, id: "upvote" %><div id="upvote-count"></div>
+      <% end %>
+      <%= button_to "Downvote", downvote_review_votes_path(review), method: :post, id: downvote_id %> <%=  downvotes %>
     </p>
   <% end %>
 <% end %>
