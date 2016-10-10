@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get "/downvote", to: "api/votes#downvote", defaults: { format: 'json'}
     end
 
-    resources :movies, only: [:index]
+    resources :movies, only: [:index, :show]
   end
 
 
