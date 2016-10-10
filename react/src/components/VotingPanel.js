@@ -22,7 +22,7 @@ class VotingPanel extends Component {
       success: function(data) {
         this.setState({ upvotes: data.upvotes })
         this.setState({ downvotes: data.downvotes })
-      }.bind(this);
+      }.bind(this)
     });
   }
 
