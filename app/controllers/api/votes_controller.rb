@@ -1,5 +1,3 @@
-require 'pry'
-
 class Api::VotesController < ApiController
 
   def show

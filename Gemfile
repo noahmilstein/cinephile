@@ -11,7 +11,7 @@ gem 'devise'
 gem 'ruby_dep', '~> 1.4'
 
 group :development, :test do
-  gem 'capybara'
+  gem 'capybara', '~> 2.7.0'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
@@ -19,6 +19,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'httparty'
   gem 'rb-readline'
+  gem 'capybara-webkit', '~> 1.11.1'
 end
 
 group :test do
