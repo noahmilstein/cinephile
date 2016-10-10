@@ -1,5 +1,7 @@
-import React from 'react'
-import Movie from './Movie'
+import React from 'react';
+import { Link } from 'react-router';
+import MovieTitle from './MovieTitle';
+import MovieDetails from './MovieDetails';
 
 let MoviesList = props => {
 
@@ -7,14 +9,25 @@ let MoviesList = props => {
 
     let onClick = () => props.handleMovieClick(movie.id);
 
+    // return(
+    //   <Link to={"/movies/"+movie.id} key={movie.id}>
+    //     <Movie
+    //       key={movie.id}
+    //       id={movie.id}
+    //       data={movie}
+    //       showPage={props.showPage}
+    //       onClick={onClick}
+    //     />
+    //   </Link>
+    // )
     return(
-      <Movie
-        key={movie.id}
-        id={movie.id}
-        data={movie}
-        showPage={props.showPage}
-        onClick={onClick}
-      />
+      <Link to={"/movies/"+movie.id} key={movie.id}>
+        <MovieTitle
+          key={movie.id}
+          id={movie.id}
+          data={movie}
+        />
+      </Link>
     )
   });
 

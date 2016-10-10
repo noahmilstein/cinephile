@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import MoviesList from './MoviesList'
-import Movie from './Movie'
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +29,6 @@ class App extends Component {
       contentType: 'application/json'
     })
     .done(data => {
-      debugger;
       this.setState({ selectedMovie: data.movie });
       this.setState({ selectedReviews: data.reviews })
     });
@@ -44,27 +42,34 @@ class App extends Component {
     this.setState({ intervalId: intervalId });
   }
 
+  componentWillUnMount() {
+    clearInterval(this.state.intervalId);
+  }
+
   handleMovieClick(id) {
     this.getMovie(id);
   }
 
+  navigate() {
+    this.setState({ selectedMovie: null });
+    this.setState({ selectedReviews: [] });
+    this.props.history.pushState(null, "/");
+  }
+
   render() {
     let page = "";
-    if (this.state.selectedMovie != null) {
-      page = <Movie
-        movieData={this.state.selectedMovie}
-        reviewsData={this.state.selectedReviews}
-        />;
+    if (this.props.children) {
+      page = this.props.children
     } else {
       page = <div>
         <h1>Welcome to Cinephile!</h1>
         <p>Your source for movie reviews!</p>
 
         <p>React:</p>
+        {this.props.children}
         <MoviesList
           data={this.state.movies}
           handleMovieClick={this.handleMovieClick}
-          showPage={this.state.selectedMovie}
         />
       </div>
     }

@@ -1,11 +1,19 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from "./components/App"
+import MoviesList from './components/MoviesList'
+import MovieDetails from './components/MovieDetails'
+
 
 $(function() {
   ReactDOM.render(
-    <App />,
+    <Router history={hashHistory}>
+      <Route path="/" component={App}>
+        <Route path="movies/:movie" name="detail" component={MovieDetails}></Route>
+      </Route>
+    </Router>,
     document.getElementById('app')
   );
 });
