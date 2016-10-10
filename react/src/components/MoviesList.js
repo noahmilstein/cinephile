@@ -9,17 +9,6 @@ let MoviesList = props => {
 
     let onClick = () => props.handleMovieClick(movie.id);
 
-    // return(
-    //   <Link to={"/movies/"+movie.id} key={movie.id}>
-    //     <Movie
-    //       key={movie.id}
-    //       id={movie.id}
-    //       data={movie}
-    //       showPage={props.showPage}
-    //       onClick={onClick}
-    //     />
-    //   </Link>
-    // )
     return(
       <Link to={"/movies/"+movie.id} key={movie.id}>
         <MovieTitle

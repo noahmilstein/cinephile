@@ -23,8 +23,8 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => { :format => 'json' } do
     resources :votes do
-      get "/upvote", to: "api/votes#upvote", defaults: { format: 'json'}
-      get "/downvote", to: "api/votes#downvote", defaults: { format: 'json'}
+      post "/upvote", to: "votes#upvote", defaults: { format: 'json'}
+      post "/downvote", to: "votes#downvote", defaults: { format: 'json'}
     end
 
     resources :movies, only: [:index, :show]

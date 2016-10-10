@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import UpVoteButton from './UpVoteButton'
+import DownVoteButton from './DownVoteButton'
+import VotingPanel from './VotingPanel'
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -19,7 +22,6 @@ class MovieDetails extends Component {
       this.setState({ movie: data.movie })
       this.setState({ reviews: data.reviews })
     });
-
   }
 
   componentDidMount() {
@@ -29,7 +31,12 @@ class MovieDetails extends Component {
   render() {
 
     let page = "";
+    let upVoteKey = "";
+    let downVoteKey = "";
     let reviews = this.state.reviews.map(review => {
+      upVoteKey = `upvote_${review.id}`
+      downVoteKey = `downvote_${review.id}`
+
       return(
         <div key={review.id}>
           <p>
@@ -38,6 +45,10 @@ class MovieDetails extends Component {
           <p>
             {review.body}
           </p>
+            <VotingPanel
+              key={review.id}
+              id={review.id}
+            />
         </div>
       )
     })

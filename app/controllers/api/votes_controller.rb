@@ -14,7 +14,7 @@ class Api::VotesController < ApiController
 
   def upvote
     respond_to :json
-    @review = Review.find(params[:review_id])
+    @review = Review.find(params[:vote_id])
     @user_vote = Vote.find_by(user: current_user)
     if !@user_vote
       @review.votes.create(user: current_user, review: @review, upvote: 1, downvote: 0)
@@ -29,7 +29,8 @@ class Api::VotesController < ApiController
   end
 
   def downvote
-    @review = Review.find(params[:review_id])
+    respond_to :json
+    @review = Review.find(params[:vote_id])
     @user_vote = Vote.find_by(user: current_user)
     if !@user_vote
       @review.votes.create(user: current_user, review: @review, upvote: 0, downvote: 1)
