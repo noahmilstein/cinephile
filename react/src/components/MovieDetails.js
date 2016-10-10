@@ -33,10 +33,11 @@ class MovieDetails extends Component {
     let page = "";
     let upVoteKey = "";
     let downVoteKey = "";
+    let votingPanelKey = "";
     let reviews = this.state.reviews.map(review => {
       upVoteKey = `upvote_${review.id}`
       downVoteKey = `downvote_${review.id}`
-
+      votingPanelKey = `votingPanel_${review.id}`
       return(
         <div key={review.id}>
           <p>
@@ -46,7 +47,7 @@ class MovieDetails extends Component {
             {review.body}
           </p>
             <VotingPanel
-              key={review.id}
+              key={votingPanelKey}
               id={review.id}
             />
         </div>
@@ -79,7 +80,6 @@ class MovieDetails extends Component {
       </div>
     )
   }
-
 }
 
 export default MovieDetails;

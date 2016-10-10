@@ -6,9 +6,7 @@ class App extends Component {
     super(props);
     this.state = {
       intervalId: null,
-      movies: [],
-      selectedMovie: null,
-      selectedReviews: []
+      movies: []
     }
     this.handleMovieClick = this.handleMovieClick.bind(this)
   }
@@ -23,17 +21,6 @@ class App extends Component {
     });
   }
 
-  getMovie(id) {
-    $.ajax({
-      url: `/api/movies/${id}`,
-      contentType: 'application/json'
-    })
-    .done(data => {
-      this.setState({ selectedMovie: data.movie });
-      this.setState({ selectedReviews: data.reviews })
-    });
-  }
-
   componentDidMount() {
     this.getMovies();
     let intervalId = setInterval(function() {
@@ -42,7 +29,7 @@ class App extends Component {
     this.setState({ intervalId: intervalId });
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     clearInterval(this.state.intervalId);
   }
 
@@ -51,32 +38,18 @@ class App extends Component {
   }
 
   navigate() {
-    this.setState({ selectedMovie: null });
-    this.setState({ selectedReviews: [] });
-    this.props.history.pushState(null, "/");
+    // this.props.history.pushState(null, "/");
   }
 
   render() {
-    let page = "";
-    if (this.props.children) {
-      page = this.props.children
-    } else {
-      page = <div>
+    return(
+      <div>
         <h1>Welcome to Cinephile!</h1>
         <p>Your source for movie reviews!</p>
 
-        <p>React:</p>
-        {this.props.children}
         <MoviesList
           data={this.state.movies}
-          handleMovieClick={this.handleMovieClick}
         />
-      </div>
-    }
-
-    return(
-      <div>
-        {page}
       </div>
     );
   }

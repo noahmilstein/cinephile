@@ -10,9 +10,8 @@ import MovieDetails from './components/MovieDetails'
 $(function() {
   ReactDOM.render(
     <Router history={hashHistory}>
-      <Route path="/" component={App}>
-        <Route path="movies/:movie" name="detail" component={MovieDetails}></Route>
-      </Route>
+      <Route path="/" component={App}></Route>
+      <Route path="movies/:movie" name="detail" component={MovieDetails}></Route>
     </Router>,
     document.getElementById('app')
   );
