@@ -22,3 +22,7 @@ Documentation:
 
 Style/GuardClause:
   Enabled: true
+
+AllCops:
+  Excludes:
+    - db/schema.rb
