@@ -1,13 +1,18 @@
 ruby:
   config_file: config/rubocop.yml
 
+jshint:
+  config_file: .jshintrc
+
 Documentation:
   Enabled: false
 
 AllCops:
   Exclude:
     - db/schema.rb
-  #DisplayCopNames: true
+
+Metrics/AbcSize:
+  Enabled: false
 
 AccessorMethodName:
   Enabled: false

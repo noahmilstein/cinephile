@@ -6,18 +6,34 @@
 <p><%= @movie.cast %></p>
 <p><%= @movie.screen_writer %></p>
 <p><%= @movie.director %></p>
+<% if current_user.admin %>
 <p><%= link_to "Edit", edit_movie_path(@movie) %></p>
-<p><%= link_to "Delete", movie_path(@movie), method: :delete %></p>
+<p><%= link_to "Delete Movie", movie_path(@movie), method: :delete, id: "delete movie" %></p>
+<% end %>
 <p><%= link_to "Back to Index", movies_path %></p>
 
+<h3>Write Review</h3>
+
+<%= render "reviews/review_form" %>
+
 <% unless @reviews.nil? %>
-  <% @reviews.each do |review| %>
+  <% @reviews.each_with_index do |review, index| %>
     <p>
+      <% upvotes = 0 %>
+      <% downvotes = 0 %>
       <%= review.title %>
       <%= review.rating %>
       <%= review.body %>
+      <% if @user.id == review.user_id || current_user.admin %>
+        <%= link_to "Edit Review", edit_movie_review_path(@movie, review), id: "edit review #{index + 1}" %>
+        <%= link_to "Delete Review", movie_review_path(@movie, review), method: :delete, id: "delete review #{index + 1}" %>
+      <% end %>
+      <% review.votes.each do |vote|  %>
+        <%  upvotes += vote.upvote %>
+        <%  downvotes += vote.downvote %>
+      <% end %>
+      <%= button_to "Upvote",  upvote_review_votes_path(review), method: :post, id: "Upvote_#{index + 1}" %> <%= upvotes %>
+      <%= button_to "Downvote", downvote_review_votes_path(review), method: :post, id: "Downvote_#{index + 1}" %> <%=  downvotes %>
     </p>
   <% end %>
 <% end %>
-
-<%= render "./reviews/review_form" %>

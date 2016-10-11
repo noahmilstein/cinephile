@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :reviews
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   validates :username, uniqueness: true, presence: true
@@ -11,6 +12,6 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :movies, through: :reviews
-
+  has_many :votes
   mount_uploader :image, ImageUploader
 end

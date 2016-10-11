@@ -22,9 +22,14 @@ def user_sign_in(user)
   click_button "Sign In"
 end
 
+def user_sign_out(user)
+  visit root_path
+  click_link("Sign Out")
+end
+
 def user_review(review)
-  fill_in "Title here", with: review.title
-  fill_in "Body here", with: review.body
+  fill_in "Review Title", with: review.title
+  fill_in "Review Body", with: review.body
   select "4", from: "Rating"
   click_button "Submit Review"
 end

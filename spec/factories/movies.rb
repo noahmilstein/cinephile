@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :movie do
-    sequence(:title) { |n| "#{n}title" }
+    sequence(:title) { |n| "#{n}movietitle" }
     sequence(:studio) { |n| "#{n}studio" }
     sequence(:year) { |n| n * 1000 }
     sequence(:rating) { |n| "#{n}" }

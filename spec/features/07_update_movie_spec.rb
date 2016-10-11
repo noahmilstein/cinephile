@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Edit Movie" do
-  context "As an authenticated user" do
+  context "As an authenticated user admin" do
     before do
       user1 = User.create(
         first_name: "John",
@@ -9,7 +9,8 @@ feature "Edit Movie" do
         username: "johndoe",
         email: "john@doe.com",
         password: "abcdef1",
-        newsletter: true
+        newsletter: true,
+        admin: true
       )
 
       @movie1 = Movie.create(
