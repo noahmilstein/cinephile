@@ -156,7 +156,7 @@ NilComparison:
 Not:
   Enabled: false
 
-NumericLiterals:
+Style/NumericLiterals:
   Enabled: false
 
 OneLineConditional:

@@ -10,7 +10,7 @@ RSpec.describe UserMailer, type: :mailer do
 
     it "renders the headers" do
       expect(mail.subject).to eq("New review posted for #{review.movie.title}")
-      expect(mail.to).to eq(["#{review.movie.user.email}"])
+      expect(mail.to).to eq([review.movie.user.email])
       expect(mail.from).to eq(["cinephile.launch@gmail.com"])
     end
   end

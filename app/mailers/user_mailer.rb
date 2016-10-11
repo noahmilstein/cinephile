@@ -7,6 +7,7 @@ class UserMailer < ApplicationMailer
   #
   def notice(review)
     @review = review
+    @user = "#{review.movie.user.first_name}, "
     @greeting = "Your movie has been reviewed."
 
     mail(
