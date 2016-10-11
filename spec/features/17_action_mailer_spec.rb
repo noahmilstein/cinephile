@@ -1,20 +1,18 @@
 require "rails_helper"
 
 feature "Action Mailer" do
-  # let!(:user1) { FactoryGirl.create(:user) }
-  # let!(:user2) { FactoryGirl.create(:user) }
-  # let!(:movie1) { FactoryGirl.create(:movie) }
-  # let!(:review1) { FactoryGirl.create(:review, movie_id: movie1.id, user_id: user1.id) }
+  scenario "review a product, recieve email" do
 
-  # before do
-  #   user_sign_in(user1)
-  #   visit movie_path(movie1)
-  # end
+    user = FactoryGirl.create(:user)
+    movie = FactoryGirl.create(:movie)
+    review = FactoryGirl.create(:review)
 
-  describe "" do
-    it "" do
+    user_sign_in(user)
+    click_link(movie.title)
+    user_review(review)
 
-      # expect(page).to 
-    end
+    expect(page).to have_content(movie.reviews.last.title)
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
   end
+
 end
