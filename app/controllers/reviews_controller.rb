@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "User can only submit one review per movie"
       redirect_to movie_path(@movie)
     elsif @review.save
+      UserMailer.notice(@movie.user).deliver_now
       flash[:notice] = "Review Submitted!"
       redirect_to movie_path(@movie)
     else
