@@ -50,7 +50,7 @@ feature "admin" do
     end
 
     scenario "user searches for movie1's cast" do
-      fill_in "Search", with: movie1.cast
+      fill_in "Search", with: movie1.cast_member
       click_button("Search")
 
       expect(page).to have_content("Serach Results: 1")
