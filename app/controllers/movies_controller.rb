@@ -4,6 +4,11 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    if params[:search]
+      @movies = Movie.search(params[:search]).order(:title)
+    else
+      @movies = Movie.all.order(:title)
+    end
   end
 
   def show
@@ -75,7 +80,7 @@ class MoviesController < ApplicationController
       :year,
       :rating,
       :genre,
-      :cast,
+      :cast_member,
       :director,
       :screen_writer
     )
