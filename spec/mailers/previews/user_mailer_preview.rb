@@ -5,5 +5,4 @@ class UserMailerPreview < ActionMailer::Preview
   def notice
     UserMailerMailer.notice
   end
-
 end

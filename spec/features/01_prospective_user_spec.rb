@@ -228,7 +228,7 @@ feature "Prospective user" do
         movie1 = FactoryGirl.create(:movie)
         visit "/movies"
 
-        click_link (movie1.title)
+        click_link movie1.title
         expect(page).to have_current_path("/")
         expect(page).to have_content(movie1.title)
         expect(page).to have_content("Please sign in or sign up in order to"\
