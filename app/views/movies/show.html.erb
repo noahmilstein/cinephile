@@ -32,8 +32,10 @@
         <%  upvotes += vote.upvote %>
         <%  downvotes += vote.downvote %>
       <% end %>
-      <%= button_to "Upvote",  upvote_review_votes_path(review), method: :post, id: "Upvote_#{index + 1}" %> <%= upvotes %>
-      <%= button_to "Downvote", downvote_review_votes_path(review), method: :post, id: "Downvote_#{index + 1}" %> <%=  downvotes %>
+      <%= button_to "Upvote",  upvote_review_votes_path(review), method: :post, class: 'Upvote', id: "Upvote_#{review.id}" %>
+        <div id = <%="Upvote-sum_#{review.id}" %>> <%= upvotes %> </div>
+      <%= button_to "Downvote", downvote_review_votes_path(review), method: :post, class: 'Downvote', id: "Downvote_#{review.id}" %>
+        <div id = <%="Downvote-sum_#{review.id}" %>> <%= downvotes %> </div>
     </p>
   <% end %>
 <% end %>

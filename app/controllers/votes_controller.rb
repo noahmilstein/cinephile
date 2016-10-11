@@ -12,7 +12,15 @@ class VotesController < ApplicationController
     else
       @user_vote.update_attributes(upvote: 1)
     end
-    redirect_to movie_path(@review.movie)
+    # upvotes = @review.votes.select{|vote| vote.upvote == 1}.count
+    upvotes = @review.votes.inject(0) { |upvotes, vote| upvotes += 1 if vote.upvote == 1 }.to_i
+    downvotes = @review.votes.inject(0) { |downvotes, vote| downvotes += 1 if vote.downvote == 1 }.to_i
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render :json => { upvotes: upvotes ,downvotes: downvotes, id: @review.id} }
+      format.js
+    end
+    # redirect_to movie_path(@review.movie)
   end
 
   def downvote
@@ -28,6 +36,13 @@ class VotesController < ApplicationController
     else
       @user_vote.update_attributes(downvote: 1)
     end
-    redirect_to movie_path(@review.movie)
+    # redirect_to movie_path(@review.movie)
+    upvotes = @review.votes.inject(0) { |upvotes, vote| upvotes += 1 if vote.upvote == 1 }.to_i
+    downvotes = @review.votes.inject(0) { |downvotes, vote| downvotes += 1 if vote.downvote == 1 }.to_i
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render :json => { upvotes: upvotes, downvotes: downvotes , id: @review.id} }
+      format.js
+    end
   end
 end
