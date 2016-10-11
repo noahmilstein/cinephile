@@ -10,8 +10,8 @@ class UserMailer < ApplicationMailer
     @greeting = "Your movie has been reviewed."
 
     mail(
-    to: review.movie.user.email,
-    subject: "New review posted for #{review.movie.title}"
+      to: review.movie.user.email,
+      subject: "New review posted for #{review.movie.title}"
     )
   end
 end

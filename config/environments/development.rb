@@ -33,6 +33,4 @@ Rails.application.configure do
     host: "locahost",
     port: 3000
   }
-
-
 end
