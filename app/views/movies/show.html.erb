@@ -6,8 +6,10 @@
 <p><%= @movie.cast %></p>
 <p><%= @movie.screen_writer %></p>
 <p><%= @movie.director %></p>
+<% if current_user.admin %>
 <p><%= link_to "Edit", edit_movie_path(@movie) %></p>
-<p><%= link_to "Delete", movie_path(@movie), method: :delete %></p>
+<p><%= link_to "Delete Movie", movie_path(@movie), method: :delete, id: "delete movie" %></p>
+<% end %>
 <p><%= link_to "Back to Index", movies_path %></p>
 
 <h3>Write Review</h3>
@@ -22,9 +24,9 @@
       <%= review.title %>
       <%= review.rating %>
       <%= review.body %>
-      <% if @user.id == review.user_id %>
-        <%= link_to "Edit Review", edit_movie_review_path(@movie, review) %>
-        <%= link_to "Delete Review", movie_review_path(@movie, review), method: :delete %>
+      <% if @user.id == review.user_id || current_user.admin %>
+        <%= link_to "Edit Review", edit_movie_review_path(@movie, review), id: "edit review #{index + 1}" %>
+        <%= link_to "Delete Review", movie_review_path(@movie, review), method: :delete, id: "delete review #{index + 1}" %>
       <% end %>
       <% review.votes.each do |vote|  %>
         <%  upvotes += vote.upvote %>
