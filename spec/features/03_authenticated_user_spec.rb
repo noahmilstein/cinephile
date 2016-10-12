@@ -36,7 +36,8 @@ feature "Authenticated user" do
       fill_in "Email", with: user1.email
       fill_in "Password", with: user1.password
       click_button "Sign In"
-      click_link "Edit registration"
+      click_link "My Profile"
+      click_link "Edit Registration"
       expect(page).to have_current_path(edit_user_registration_path)
     end
 
@@ -56,7 +57,8 @@ feature "Authenticated user" do
       fill_in "Email", with: user1.email
       fill_in "Password", with: user1.password
       click_button "Sign In"
-      click_link "Edit registration"
+      click_link "My Profile"
+      click_link "Edit Registration"
       fill_in "First Name", with: user1.first_name
       fill_in "Last Name", with: user1.last_name
       fill_in "Email", with: "username123"
@@ -87,7 +89,8 @@ feature "Authenticated user" do
       fill_in "Email", with: user1.email
       fill_in "Password", with: user1.password
       click_button "Sign In"
-      click_link "Edit registration"
+      click_link "My Profile"
+      click_link "Edit Registration"
       fill_in "First Name", with: user1.first_name
       fill_in "Last Name", with: user1.last_name
       fill_in "Username", with: ""
@@ -116,7 +119,8 @@ feature "Authenticated user" do
       fill_in "Email", with: user1.email
       fill_in "Password", with: user1.password
       click_button "Sign In"
-      click_link "Edit registration"
+      click_link "My Profile"
+      click_link "Edit Registration"
       fill_in "First Name", with: user1.first_name
       fill_in "Last Name", with: user1.last_name
       fill_in "Username", with: ""
@@ -145,7 +149,8 @@ feature "Authenticated user" do
       fill_in "Email", with: user1.email
       fill_in "Password", with: user1.password
       click_button "Sign In"
-      click_link "Edit registration"
+      click_link "My Profile"
+      click_link "Edit Registration"
       fill_in "First Name", with: user1.first_name
       fill_in "Last Name", with: user1.last_name
       fill_in "Email", with: user1.email
@@ -173,7 +178,8 @@ feature "Authenticated user" do
       fill_in "Email", with: user1.email
       fill_in "Password", with: user1.password
       click_button "Sign In"
-      click_link "Edit registration"
+      click_link "My Profile"
+      click_link "Edit Registration"
       fill_in "First Name", with: user1.first_name
       fill_in "Last Name", with: user1.last_name
       fill_in "Email", with: ""
@@ -201,7 +207,8 @@ feature "Authenticated user" do
       fill_in "Email", with: user1.email
       fill_in "Password", with: user1.password
       click_button "Sign In"
-      click_link "Edit registration"
+      click_link "My Profile"
+      click_link "Edit Registration"
       click_button "Cancel my account"
       expect(page).to have_content(
         "Bye! Your account has been successfully cancelled."\

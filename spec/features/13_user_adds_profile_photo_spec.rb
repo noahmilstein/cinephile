@@ -30,7 +30,8 @@ feature "profile photo" do
 
   scenario "user edits a profile photo" do
     user_sign_in(user)
-    click_link "Edit registration"
+    click_link "My Profile"
+    click_link "Edit Registration"
 
     attach_file "Edit Avatar", "#{Rails.root}/spec/support/images/homer.jpg"
     fill_in "Enter Password", with: user.password

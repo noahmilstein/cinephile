@@ -11,3 +11,5 @@
 <% @user_reviews.each do |review| %>
   <%= link_to review.title, movie_path(review.movie) %>
 <% end %>
+
+<p><%= link_to('Edit Registration', edit_user_registration_path) %></p> 

@@ -26,12 +26,23 @@ feature "User profile" do
   end
 
   scenario "Nav bar is up to date has user profile" do
-    user profile
-    Nav bar ‘logged in as <username> <user image thumbnail>
+    user_sign_in(user1)
+
+    expect(page).to have_content("My Profile")
+    expect(page).to have_content("Logged in as #{user1.username} #{user1.image}")
   end
 
   scenario "user profile has edit profile" do
-  end
-  Review displays OP username
+    user_sign_in(user1)
+    click_link "My Profile"
 
+    expect(page).to have_link("Edit Registration")
+  end
+
+  scenario "Review displays OP username" do
+    user_sign_in(user1)
+    click_link movie1.title
+
+    expect(page).to have_content(user2.username)
+  end
 end
