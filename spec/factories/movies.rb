@@ -8,5 +8,6 @@ FactoryGirl.define do
     sequence(:cast_member) { |n| "#{n}cast" }
     sequence(:director) { |n| "#{n}director" }
     sequence(:screen_writer) { |n| "#{n}screen_writer" }
+    user
   end
 end

@@ -3,7 +3,8 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    @movies = Movie.all
+    # @movies = Movie.all
+
     if params[:search] == ""
       @movies = []
     elsif params[:search]
@@ -44,6 +45,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+    @movie.user = current_user
     if @movie.save
       redirect_to movie_path(@movie)
       flash[:notice] = "You successfully added a movie"
@@ -84,7 +86,8 @@ class MoviesController < ApplicationController
       :genre,
       :cast_member,
       :director,
-      :screen_writer
+      :screen_writer,
+      :user
     )
   end
 end

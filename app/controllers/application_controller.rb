@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
       :last_name,
       :username,
       :email,
+      :image,
       :password,
       :password_confirmation,
       :newsletter,

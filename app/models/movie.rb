@@ -11,6 +11,7 @@ class Movie < ActiveRecord::Base
     where("title LIKE ? OR studio LIKE ? OR year LIKE ? OR rating LIKE ? OR genre LIKE ? OR cast_member LIKE ? OR director LIKE ? OR screen_writer LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 
+  validates :user, presence: true
   validates :title, presence: true
   validates :studio, presence: true
   validates :year, presence: true
@@ -20,6 +21,7 @@ class Movie < ActiveRecord::Base
   validates :director, presence: true
   validates :screen_writer, presence: true
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :users, through: :reviews
+  belongs_to :user
 end
