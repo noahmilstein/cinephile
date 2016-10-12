@@ -22,7 +22,7 @@ class App extends Component {
     let movies = "";
     if (this.state.movies.length !== 0) {
       movies = this.state.movies.map(movie => {
-        let movie_url = `/movies/${movie.id}`
+        let movie_url = `/movies/${movie.id}`;
         return(
           <li key={movie.id}>
             <a href={movie_url}>{movie.title}</a>
