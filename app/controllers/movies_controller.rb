@@ -4,7 +4,9 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    if params[:search]
+    if params[:search] == ""
+      @movies = [ ]
+    elsif params[:search]
       @movies = Movie.search(params[:search]).order(:title)
     else
       @movies = Movie.all.order(:title)
