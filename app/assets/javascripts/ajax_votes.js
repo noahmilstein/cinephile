@@ -9,7 +9,7 @@ $('.Upvote').on('click', function(event) {
     });
 
     request.done(function(data) {
-      if (data.error == null) {
+      if (data.error === null) {
         let upcount = `Upvote-sum_${data.id}`;
         let upnewcount = `${data.upvotes}`;
         let downcount = `Downvote-sum_${data.id}`;
@@ -33,7 +33,7 @@ $('.Upvote').on('click', function(event) {
       });
 
       request.done(function(data) {
-        if (data.error == null) {
+        if (data.error === null) {
           let upcount = `Upvote-sum_${data.id}`;
           let upnewcount = `${data.upvotes}`;
           let downcount = `Downvote-sum_${data.id}`;
