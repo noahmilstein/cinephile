@@ -1,9 +1,3 @@
-# user profile displays their movies
-# user profile displays their reviews
-# user profile displays their reviews
-# sign up and sign in link redundancies from devise removed
-# add home page link to nav bar (movie index)
-
 require "rails_helper"
 
 feature "User profile" do
