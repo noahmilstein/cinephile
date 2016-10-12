@@ -15,6 +15,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
+  gem 'foundation-rails'
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'httparty'
