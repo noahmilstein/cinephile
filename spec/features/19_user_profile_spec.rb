@@ -37,7 +37,7 @@ feature "User profile" do
     user_sign_in(user1)
     click_link "My Profile"
 
-    expect(page).to have_link("Edit Registration")
+    expect(page).to have_link("Edit Profile")
   end
 
   scenario "Review displays OP username" do
