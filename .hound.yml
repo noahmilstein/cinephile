@@ -125,9 +125,6 @@ Lambda:
 
 LambdaCall:
   Enabled: false
-  
-Lint/AssignmentInCondition:
-  Enabled: false
 
 LineEndConcatenation:
   Enabled: false
