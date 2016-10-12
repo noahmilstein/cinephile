@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import MovieReview from './MovieReview'
 import UpVoteButton from './UpVoteButton'
 import DownVoteButton from './DownVoteButton'
 import VotingPanel from './VotingPanel'
@@ -9,8 +10,62 @@ class MovieDetails extends Component {
     super(props);
     this.state = {
       movie: null,
-      reviews: []
+      reviews: [],
+      newReviewTitle: "",
+      newReviewBody: "",
+      newReviewRating: null
     }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleTitleChange = this.handleTitleChange.bind(this)
+    this.handleBodyChange = this.handleBodyChange.bind(this)
+    this.handleRatingChange = this.handleRatingChange.bind(this)
+  }
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+    let reviewPost;
+    let response;
+    let lastReviewId;
+
+    if (this.state.newReviewBody.length > 50) {  //Prevent blank submission
+      reviewPost = JSON.stringify({ movie_id: this.state.movie.id, title: this.state.newReviewTitle, body: this.state.newReviewBody, rating: this.state.newReviewRating });
+      $.ajax({
+        url: '/api/reviews',
+        contentType: 'application/json',
+        method: 'POST',
+        data: reviewPost,
+        success: function(data) {
+          let newReview = {
+            id: data.review.id,
+            title: this.state.newReviewTitle,
+            body: this.state.newReviewBody,
+            rating: this.state.newReviewRating
+          };
+          let newReviews = [...this.state.reviews, newReview];
+          this.setState({
+            reviews: newReviews,
+            newReviewTitle: '',
+            newReviewBody: '',
+            newReviewRating: null
+          });
+        }.bind(this)
+      });
+    }
+  }
+
+  handleTitleChange(event) {
+    let newTitle = event.target.value;
+    this.setState({ newReviewTitle: newTitle });
+  }
+
+  handleBodyChange(event) {
+    let newBody = event.target.value;
+    this.setState({ newReviewBody: newBody });
+  }
+
+  handleRatingChange(event) {
+    let newRating = event.target.value;
+    this.setState({ newReviewRating: newRating });
   }
 
   getMovie(id) {
@@ -41,10 +96,13 @@ class MovieDetails extends Component {
       return(
         <div key={review.id}>
           <p>
-            {review.title}
+            Title: {review.title}
           </p>
           <p>
-            {review.body}
+            Body: {review.body}
+          </p>
+          <p>
+            Rating: {review.rating}
           </p>
             <VotingPanel
               key={votingPanelKey}
@@ -67,7 +125,17 @@ class MovieDetails extends Component {
         <p>Cast: {this.state.movie.cast}</p>
         <p>Screen Writer: {this.state.movie.screen_writer}</p>
         <p>Director: {this.state.movie.director}</p>
-        <br></br>
+        <h2>Write Review:</h2>
+        <MovieReview
+          newReviewTitle={this.state.newReviewTitle}
+          newReviewBody={this.state.newReviewBody}
+          newReviewRating={this.state.newReviewRating}
+          handleTitleChange={this.handleTitleChange}
+          handleBodyChange={this.handleBodyChange}
+          handleRatingChange={this.handleRatingChange}
+          />
+        <button onClick={this.handleFormSubmit}>Submit</button>
+
         <h2>Reviews:</h2>
         {reviews}
         <p><Link to="/">Back to Index</Link></p>

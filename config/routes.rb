@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       post "/downvote", to: "votes#downvote", defaults: { format: 'json'}
     end
 
+    resources :reviews
+
     resources :movies, only: [:index, :show]
   end
 
