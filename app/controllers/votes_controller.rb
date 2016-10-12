@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   def upvote
+    # binding.pry
     @review = Review.find(params[:review_id])
     @user_vote = Vote.find_by(user: current_user)
     if !@user_vote
@@ -12,9 +13,18 @@ class VotesController < ApplicationController
     else
       @user_vote.update_attributes(upvote: 1)
     end
+    upvotes = 0
+    downvotes = 0
+    @review.votes.each do |vote|
+      upvotes += vote.upvote
+      downvotes += vote.downvote
+    end
+    # binding.pry
+    # redirect_to movie_path(@review.movie)
+
     # upvotes = @review.votes.select{|vote| vote.upvote == 1}.count
-    upvotes = @review.votes.inject(0) { |upvotes, vote| upvotes += 1 if vote.upvote == 1 }.to_i
-    downvotes = @review.votes.inject(0) { |downvotes, vote| downvotes += 1 if vote.downvote == 1 }.to_i
+    # upvotes = @review.votes.inject(0) { |upvotes, vote| upvotes += 1 if vote.upvote == 1 }.to_i
+    # downvotes = @review.votes.inject(0) { |downvotes, vote| downvotes += 1 if vote.downvote == 1 }.to_i
     respond_to do |format|
       format.html { redirect_to :back }
       format.json { render :json => { upvotes: upvotes ,downvotes: downvotes, id: @review.id} }
@@ -35,9 +45,15 @@ class VotesController < ApplicationController
     else
       @user_vote.update_attributes(downvote: 1)
     end
+    upvotes = 0
+    downvotes = 0
+    @review.votes.each do |vote|
+      upvotes += vote.upvote
+      downvotes += vote.downvote
+    end
     # redirect_to movie_path(@review.movie)
-    upvotes = @review.votes.inject(0) { |upvotes, vote| upvotes += 1 if vote.upvote == 1 }.to_i
-    downvotes = @review.votes.inject(0) { |downvotes, vote| downvotes += 1 if vote.downvote == 1 }.to_i
+    # upvotes = @review.votes.inject(0) { |upvotes, vote| upvotes += 1 if vote.upvote == 1 }.to_i
+    # downvotes = @review.votes.inject(0) { |downvotes, vote| downvotes += 1 if vote.downvote == 1 }.to_i
     respond_to do |format|
       format.html { redirect_to :back }
       format.json { render :json => { upvotes: upvotes, downvotes: downvotes , id: @review.id} }

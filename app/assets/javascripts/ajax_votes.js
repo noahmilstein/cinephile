@@ -1,9 +1,7 @@
-
-
-
 $(document).ready(function(){
 $('.Upvote').on('click', function(event) {
     event.preventDefault();
+    debugger;
     let upvote = this.parentElement.action
     var request = $.ajax({
       method: "POST",
