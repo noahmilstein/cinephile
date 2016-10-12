@@ -19,7 +19,7 @@ feature "Edit Movie" do
         year: 1940,
         rating: "R",
         genre: "drama",
-        cast: "Cast Member 1, Cast Member 2",
+        cast_member: "Cast Member 1, Cast Member 2",
         director: "Director 1",
         screen_writer: "Screen Writer 1"
       )

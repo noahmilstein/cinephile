@@ -75,7 +75,7 @@ class MoviesController < ApplicationController
       :year,
       :rating,
       :genre,
-      :cast,
+      :cast_member,
       :director,
       :screen_writer
     )
