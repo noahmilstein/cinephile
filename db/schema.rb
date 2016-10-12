@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007183252) do
+ActiveRecord::Schema.define(version: 20161011161312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20161007183252) do
     t.string  "cast",          null: false
     t.string  "director",      null: false
     t.string  "screen_writer", null: false
+    t.integer "user_id",       null: false
+    t.index ["user_id"], name: "index_movies_on_user_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -72,4 +74,5 @@ ActiveRecord::Schema.define(version: 20161007183252) do
     t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
+  add_foreign_key "movies", "users"
 end
