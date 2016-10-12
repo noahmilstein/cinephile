@@ -22,7 +22,7 @@ class VotesController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to :back }
-      format.json { render :json => { upvotes: upvotes ,downvotes: downvotes, id: @review.id, error: @error} }
+      format.json { render json: {upvotes: upvotes, downvotes: downvotes, id: @review.id, error: @error} }
       format.js
     end
   end
@@ -50,7 +50,7 @@ class VotesController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to :back }
-      format.json { render :json => { upvotes: upvotes, downvotes: downvotes , id: @review.id, error: @error} }
+      format.json { render json: {upvotes: upvotes, downvotes: downvotes, id: @review.id, error: @error} }
       format.js
     end
   end

@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 $('.Upvote').on('click', function(event) {
     event.preventDefault();
-    let upvote = this.parentElement.action
+    let upvote = this.parentElement.action;
     var request = $.ajax({
       method: "POST",
       url: `${upvote}.json`
@@ -26,7 +26,7 @@ $('.Upvote').on('click', function(event) {
 
   $('.Downvote').on('click', function(event) {
       event.preventDefault();
-      let downvote = this.parentElement.action
+      let downvote = this.parentElement.action;
       var request = $.ajax({
         method: "POST",
         url: `${downvote}.json`
