@@ -3,7 +3,13 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    @movies = Movie.all
+    if params[:search].nil?
+      @movies = Movie.all.order(:title)
+    elsif params[:search].strip.length.zero?
+      @movies = []
+    elsif params[:search]
+      @movies = Movie.search(params[:search]).order(:title)
+    end
   end
 
   def show
@@ -76,7 +82,7 @@ class MoviesController < ApplicationController
       :year,
       :rating,
       :genre,
-      :cast,
+      :cast_member,
       :director,
       :screen_writer,
       :user
