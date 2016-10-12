@@ -16,6 +16,8 @@
 
 <%= render "reviews/review_form" %>
 
+<div id = "error" ></div>
+
 <% unless @reviews.nil? %>
   <% @reviews.each_with_index do |review, index| %>
     <p>
