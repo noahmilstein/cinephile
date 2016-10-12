@@ -8,7 +8,7 @@
 <% end %>
 
 <p>My Movies</p>
-<ul>  
+<ul>
   <% @user_movies.each do |movie| %>
     <li><%= link_to movie.title, movie_path(movie) %></li>
   <% end %>
