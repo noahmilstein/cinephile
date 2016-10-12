@@ -12,9 +12,7 @@ feature "Edit Movie" do
         newsletter: true,
         admin: true
       )
-
       @movie1 = FactoryGirl.create(:movie)
-
       user_sign_in(user1)
     end
 
