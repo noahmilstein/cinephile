@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_movies = @user.movies
+    @user_reviews = @user.reviews
   end
 
   def destroy
