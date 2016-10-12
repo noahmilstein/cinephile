@@ -1,18 +1,26 @@
-# sign up and sign in link redundancies from devise removed
-# add home page link to nav bar (movie index)
-
 require "rails_helper"
 
 feature "admin" do
-  let!(:admin) { FactoryGirl.create(:user, admin: true) }
-  let!(:user1) { FactoryGirl.create(:user) }
-  let!(:user2) { FactoryGirl.create(:user) }
-  let!(:user3) { FactoryGirl.create(:user) }
-  let!(:movie1) { FactoryGirl.create(:movie) }
-  let!(:movie2) { FactoryGirl.create(:movie) }
-  let!(:review1) { FactoryGirl.create(:review, movie_id: movie1.id, user_id: user1.id) }
-  let!(:review2) { FactoryGirl.create(:review, movie_id: movie1.id, user_id: user2.id) }
+  let!(:user) { FactoryGirl.create(:user) }
 
-  scenario "" do
+  scenario "sign up & sign in options only in nav bar on registration page" do
+    visit new_user_registration_path
+
+    expect(page).to_not have_content("Sign me up")
+    expect(page).to_not have_content("Log in")
+  end
+
+  scenario "sign up & sign in options only in nav bar on sign in page" do
+    visit new_user_session_path
+
+    expect(page).to_not have_content("Sign me up")
+    expect(page).to_not have_content("Log in")
+  end
+
+
+  scenario "nav bar has home page linked to movie index path" do
+    user_sign_in(user)
+
+    expect(page).to have_content("Home")
   end
 end
