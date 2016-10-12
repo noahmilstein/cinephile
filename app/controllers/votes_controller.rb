@@ -20,7 +20,6 @@ class VotesController < ApplicationController
       format.json { render :json => { upvotes: upvotes ,downvotes: downvotes, id: @review.id} }
       format.js
     end
-    # redirect_to movie_path(@review.movie)
   end
 
   def downvote
