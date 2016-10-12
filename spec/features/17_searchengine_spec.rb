@@ -3,7 +3,7 @@ require "rails_helper"
 feature "admin" do
   let!(:user1) { FactoryGirl.create(:user) }
   let!(:movie1) { FactoryGirl.create(:movie, title: "Harry Potter 1") }
-  let!(:movie2) { FactoryGirl.create(:movie, title: "Harry Potter 2", studio: "studio", year: "2002", rating: "R", genre: "xgenre", cast_member: "xcast", director: "xdirector", screen_writer: "xscreen writer" ) }
+  let!(:movie2) { FactoryGirl.create(:movie, title: "Harry Potter 2", studio: "studio", year: "2002", rating: "R", genre: "xgenre", cast_member: "xcast", director: "xdirector", screen_writer: "xscreen writer") }
 
   describe "User searches for a movie" do
     before do
@@ -101,5 +101,4 @@ feature "admin" do
       expect(page).to_not have_content(movie2.title)
     end
   end
-
 end
