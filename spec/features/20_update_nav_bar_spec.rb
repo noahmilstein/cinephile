@@ -17,7 +17,6 @@ feature "admin" do
     expect(page).to_not have_content("Log in")
   end
 
-
   scenario "nav bar has home page linked to movie index path" do
     user_sign_in(user)
 
