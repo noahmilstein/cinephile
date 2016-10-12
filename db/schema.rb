@@ -16,14 +16,16 @@ ActiveRecord::Schema.define(version: 20161011172141) do
   enable_extension "plpgsql"
 
   create_table "movies", force: :cascade do |t|
-    t.string "title",         null: false
-    t.string "studio",        null: false
-    t.string "year",          null: false
-    t.string "rating",        null: false
-    t.string "genre",         null: false
-    t.string "cast_member",   null: false
-    t.string "director",      null: false
-    t.string "screen_writer", null: false
+    t.string  "title",         null: false
+    t.string  "studio",        null: false
+    t.string  "year",          null: false
+    t.string  "rating",        null: false
+    t.string  "genre",         null: false
+    t.string  "cast_member",   null: false
+    t.string  "director",      null: false
+    t.string  "screen_writer", null: false
+    t.integer "user_id",       null: false
+    t.index ["user_id"], name: "index_movies_on_user_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|

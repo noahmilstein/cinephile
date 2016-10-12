@@ -100,5 +100,17 @@ feature "admin" do
       expect(page).to_not have_content(movie1.title)
       expect(page).to_not have_content(movie2.title)
     end
+
+    scenario "user searches three blanks " do
+      fill_in "search", with: "   "
+      click_button("Search")
+
+      expect(page).to have_content("Search Results: 0")
+      expect(page).to have_content("There are no movies containing the term    .")
+      expect(page).to_not have_content(movie1.title)
+      expect(page).to_not have_content(movie2.title)
+    end
+
+
   end
 end

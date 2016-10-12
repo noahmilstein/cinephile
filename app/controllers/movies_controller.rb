@@ -3,14 +3,12 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @movies = Movie.all
-
-    if params[:search] == ""
+    if params[:search].nil?
+      @movies = Movie.all.order(:title)
+    elsif params[:search].strip.length == 0
       @movies = []
     elsif params[:search]
       @movies = Movie.search(params[:search]).order(:title)
-    else
-      @movies = Movie.all.order(:title)
     end
   end
 
