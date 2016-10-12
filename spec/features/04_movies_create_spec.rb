@@ -20,7 +20,7 @@ feature "Create Movies" do
       year: 1940,
       rating: "R",
       genre: "drama",
-      cast: "Cast Member 1, Cast Member 2",
+      cast_member: "Cast Member 1, Cast Member 2",
       director: "Director 1",
       screen_writer: "Screen Writer 1"
     )
@@ -41,7 +41,7 @@ feature "Create Movies" do
       expect(page).to have_content("Year")
       expect(page).to have_content("Rating")
       expect(page).to have_content("Genre")
-      expect(page).to have_content("Cast")
+      expect(page).to have_content("Cast Member")
       expect(page).to have_content("Director")
       expect(page).to have_content("Screen Writer")
     end
@@ -55,7 +55,7 @@ feature "Create Movies" do
       fill_in "Year", with: movie1.year
       fill_in "Rating", with: movie1.rating
       fill_in "Genre", with: movie1.genre
-      fill_in "Cast", with: movie1.cast
+      fill_in "Cast Member", with: movie1.cast_member
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
@@ -79,7 +79,7 @@ feature "Create Movies" do
       fill_in "Year", with: movie1.year
       fill_in "Rating", with: movie1.rating
       fill_in "Genre", with: movie1.genre
-      fill_in "Cast", with: movie1.cast
+      fill_in "Cast Member", with: movie1.cast_member
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
@@ -96,7 +96,7 @@ feature "Create Movies" do
       fill_in "Year", with: movie1.year
       fill_in "Rating", with: movie1.rating
       fill_in "Genre", with: movie1.genre
-      fill_in "Cast", with: movie1.cast
+      fill_in "Cast Member", with: movie1.cast_member
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
@@ -113,7 +113,7 @@ feature "Create Movies" do
       fill_in "Studio", with: movie1.studio
       fill_in "Rating", with: movie1.rating
       fill_in "Genre", with: movie1.genre
-      fill_in "Cast", with: movie1.cast
+      fill_in "Cast Member", with: movie1.cast_member
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
@@ -130,7 +130,7 @@ feature "Create Movies" do
       fill_in "Studio", with: movie1.studio
       fill_in "Year", with: movie1.year
       fill_in "Genre", with: movie1.genre
-      fill_in "Cast", with: movie1.cast
+      fill_in "Cast Member", with: movie1.cast_member
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
@@ -147,7 +147,7 @@ feature "Create Movies" do
       fill_in "Studio", with: movie1.studio
       fill_in "Year", with: movie1.year
       fill_in "Rating", with: movie1.rating
-      fill_in "Cast", with: movie1.cast
+      fill_in "Cast Member", with: movie1.cast_member
       fill_in "Director", with: movie1.director
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
@@ -169,7 +169,7 @@ feature "Create Movies" do
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
 
-      expect(page).to have_content("Cast can't be blank")
+      expect(page).to have_content("Cast member can't be blank")
       expect(page).to have_current_path(movies_path)
     end
 
@@ -182,7 +182,7 @@ feature "Create Movies" do
       fill_in "Year", with: movie1.year
       fill_in "Rating", with: movie1.rating
       fill_in "Genre", with: movie1.genre
-      fill_in "Cast", with: movie1.cast
+      fill_in "Cast Member", with: movie1.cast_member
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
 
@@ -199,7 +199,7 @@ feature "Create Movies" do
       fill_in "Year", with: movie1.year
       fill_in "Rating", with: movie1.rating
       fill_in "Genre", with: movie1.genre
-      fill_in "Cast", with: movie1.cast
+      fill_in "Cast Member", with: movie1.cast_member
       fill_in "Director", with: movie1.director
       click_button "Submit"
 

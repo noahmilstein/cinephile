@@ -6,3 +6,11 @@
 <% if @user.id == current_user.id %>
   <%= link_to('Edit profile', edit_user_registration_path) %>
 <% end %>
+
+<% @user_movies.each do |movie| %>
+  <%= link_to movie.title, movie_path(movie) %>
+<% end %>
+
+<% @user_reviews.each do |review| %>
+  <%= link_to review.title, movie_path(review.movie) %>
+<% end %>
