@@ -60,13 +60,10 @@ feature "Authenticated user" do
       click_button "Sign In"
       click_link "My Profile"
       click_link "Edit Profile"
-      fill_in "First Name", with: user1.first_name
-      fill_in "Last Name", with: user1.last_name
-      fill_in "Email", with: "username123"
-      fill_in "Email", with: user1.email
+      fill_in "Username", with: "username123"
+      fill_in "Current Password", with: user1.password
       fill_in "Enter Password", with: user1.password
       fill_in "Confirm Password", with: user1.password
-      fill_in "Current Password", with: user1.password
       click_button "Update"
 
       expect(page).to have_content(
