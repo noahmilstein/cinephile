@@ -29,7 +29,17 @@ feature "profile photo" do
   end
 
   scenario "user edits a profile photo" do
-    user_sign_in(user)
+    visit root_path
+    click_link "Sign Up"
+
+    fill_in "Email", with: user.email
+    fill_in "Username", with: user.username
+    fill_in "First Name", with: user.first_name
+    fill_in "Last Name", with: user.last_name
+    fill_in "Enter Password", with: user.password
+    fill_in "Confirm Password", with: user.password
+    attach_file "Add Avatar", "#{Rails.root}/spec/support/images/twitter-egg-icon.jpg"
+    click_button "Submit"
     click_link "My Profile"
     click_link "Edit profile"
 
