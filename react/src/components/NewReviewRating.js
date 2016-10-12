@@ -21,7 +21,3 @@ const NewReviewRating = props => {
 }
 
 export default NewReviewRating;
-// <input
-//   value={props.newReviewRating}
-//   onChange={props.handleRatingChange}
-// />

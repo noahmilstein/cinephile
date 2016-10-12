@@ -86,12 +86,12 @@ class MovieDetails extends Component {
   render() {
 
     let page = "";
-    let upVoteKey = "";
-    let downVoteKey = "";
+    // let upVoteKey = "";
+    // let downVoteKey = "";
     let votingPanelKey = "";
     let reviews = this.state.reviews.map(review => {
-      upVoteKey = `upvote_${review.id}`
-      downVoteKey = `downvote_${review.id}`
+      // upVoteKey = `upvote_${review.id}`
+      // downVoteKey = `downvote_${review.id}`
       votingPanelKey = `votingPanel_${review.id}`
       return(
         <div key={review.id}>
