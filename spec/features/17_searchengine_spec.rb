@@ -110,7 +110,5 @@ feature "admin" do
       expect(page).to_not have_content(movie1.title)
       expect(page).to_not have_content(movie2.title)
     end
-
-
   end
 end
