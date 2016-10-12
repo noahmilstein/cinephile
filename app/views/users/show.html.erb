@@ -5,11 +5,15 @@
 <p><%= @user.email %></p>
 
 <p>My Movies</p>
-<% @user_movies.each do |movie| %>
-  <li><%= link_to movie.title, movie_path(movie) %></li> 
-<% end %>
+<ul>  
+  <% @user_movies.each do |movie| %>
+    <li><%= link_to movie.title, movie_path(movie) %></li>
+  <% end %>
+</ul>
 
 <p>My Reviews</p>
-<% @user_reviews.each do |review| %>
-  <li><%= link_to review.title, movie_path(review.movie) %></li>
-<% end %>
+<ul>
+  <% @user_reviews.each do |review| %>
+    <li><%= link_to review.title, movie_path(review.movie) %></li>
+  <% end %>
+</ul>
