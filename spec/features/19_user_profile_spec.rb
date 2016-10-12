@@ -1,6 +1,5 @@
 require "rails_helper"
 
-
 feature "User profile" do
   let!(:user1) { FactoryGirl.create(:user) }
   let!(:user2) { FactoryGirl.create(:user) }
