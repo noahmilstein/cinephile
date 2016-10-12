@@ -3,3 +3,6 @@
 <%= @user.last_name %></p>
 <p><%= @user.username %></p>
 <p><%= @user.email %></p>
+<% if @user.id == current_user.id %>
+  <%= link_to('Edit profile', edit_user_registration_path) %>
+<% end %>
