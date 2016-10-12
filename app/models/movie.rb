@@ -8,6 +8,7 @@ class Movie < ActiveRecord::Base
     [5, "5"]
   ]
 
+  validates :user, presence: true
   validates :title, presence: true
   validates :studio, presence: true
   validates :year, numericality: { integer_only: true }, presence: true
@@ -17,6 +18,7 @@ class Movie < ActiveRecord::Base
   validates :director, presence: true
   validates :screen_writer, presence: true
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :users, through: :reviews
+  belongs_to :user
 end

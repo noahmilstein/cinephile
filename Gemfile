@@ -20,6 +20,7 @@ group :development, :test do
   gem 'httparty'
   gem 'rb-readline'
   gem 'capybara-webkit', '~> 1.11.1'
+  gem 'faker'
 end
 
 group :test do
