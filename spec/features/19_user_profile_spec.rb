@@ -9,6 +9,7 @@ feature "User profile" do
   let!(:review2) { FactoryGirl.create(:review, movie: movie1, user: user2) }
 
   scenario "displays their movie submissions" do
+    user_sign_in(user1)
     visit user_path(user1)
 
     expect(page).to have_content(movie1.title)
@@ -17,6 +18,7 @@ feature "User profile" do
   end
 
   scenario "displays their review submissions" do
+    user_sign_in(user1)
     visit user_path(user1)
 
     expect(page).to have_content(review1.title)
