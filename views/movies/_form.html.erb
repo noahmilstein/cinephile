@@ -1,0 +1,37 @@
+<%= form_for(@movie) do |q| %>
+  <div class="field">
+    <%= q.label :title %><br>
+    <%= q.text_field :title %>
+  </div>
+  <div class="field">
+    <%= q.label :studio %><br>
+    <%= q.text_field :studio %>
+  </div>
+  <div class="field">
+    <%= q.label :year %><br>
+    <%= q.text_field :year %>
+  </div>
+  <div class="field">
+    <%= q.label :rating %><br>
+    <%= q.text_field :rating %>
+  </div>
+  <div class="field">
+    <%= q.label :genre %><br>
+    <%= q.text_field :genre %>
+  </div>
+  <div class="field">
+    <%= q.label :cast_member %><br>
+    <%= q.text_field :cast_member %>
+  </div>
+  <div class="field">
+    <%= q.label :director %><br>
+    <%= q.text_field :director %>
+  </div>
+  <div class="field">
+    <%= q.label :screen_writer, "Screen Writer" %><br>
+    <%= q.text_field :screen_writer %>
+  </div>
+  <div class="actions">
+    <%= q.submit "Submit" %>
+  </div>
+<% end %>

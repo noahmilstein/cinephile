@@ -169,7 +169,7 @@ feature "Create Movies" do
       fill_in "Screen Writer", with: movie1.screen_writer
       click_button "Submit"
 
-      expect(page).to have_content("Cast Member can't be blank")
+      expect(page).to have_content("Cast member can't be blank")
       expect(page).to have_current_path(movies_path)
     end
 

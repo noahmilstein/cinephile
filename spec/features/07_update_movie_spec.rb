@@ -12,18 +12,7 @@ feature "Edit Movie" do
         newsletter: true,
         admin: true
       )
-
-      @movie1 = Movie.create(
-        title: "Citizen Kane",
-        studio: "Studio",
-        year: 1940,
-        rating: "R",
-        genre: "drama",
-        cast_member: "Cast Member 1, Cast Member 2",
-        director: "Director 1",
-        screen_writer: "Screen Writer 1"
-      )
-
+      @movie1 = FactoryGirl.create(:movie)
       user_sign_in(user1)
     end
 

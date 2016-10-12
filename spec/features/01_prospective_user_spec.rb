@@ -223,23 +223,16 @@ feature "Prospective user" do
     end
 
     scenario "user attempts to navigate to movie show page/make a review"\
-      " and is redirected to homepage with message to sign in" do
-      movie1 = Movie.create(
-        title: "Citizen Kane",
-        studio: "Studio",
-        year: 1940,
-        rating: "R",
-        genre: "drama",
-        cast_member: "Cast Member 1, Cast Member 2",
-        director: "Director 1",
-        screen_writer: "Screen Writer 1"
-      )
+    " and is redirected to homepage with message to sign in" do
+      user1 = FactoryGirl.create(:user)
+      movie1 = FactoryGirl.create(:movie)
       visit "/movies"
-      click_link (movie1.title)
+
+      click_link movie1.title
       expect(page).to have_current_path("/")
-      expect(page).to have_content(
-        "Please sign in or sign up in order to view this movie and its reviews"
-      )
+      expect(page).to have_content(movie1.title)
+      expect(page).to have_content("Please sign in or sign up in order to"\
+      " view this movie and its reviews")
     end
   end
 end
