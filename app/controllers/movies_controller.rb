@@ -10,6 +10,12 @@ class MoviesController < ApplicationController
     elsif params[:search]
       @movies = Movie.search(params[:search]).order(:title)
     end
+
+    movies_json = { "movies": @movies }
+    respond_to do |format|
+      format.html
+      format.json { render json: movies_json }
+    end
   end
 
   def show
