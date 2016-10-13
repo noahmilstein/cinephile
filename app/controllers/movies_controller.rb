@@ -31,7 +31,12 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+    if current_user.admin
+      @movie = Movie.find(params[:id])
+    else
+      flash[:notice] = "Access Denied."
+      redirect_to movie_path(@movie)
+    end
   end
 
   def update

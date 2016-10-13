@@ -38,5 +38,15 @@ feature "Edit Movie" do
       expect(page).to have_content("Movie Not Updated!")
       expect(page).to have_content("Studio can't be blank")
     end
+
+    scenario "Unauthorized user attemps to edit movie" do
+      normal_user = FactoryGirl.create(:user)
+      click_link "Sign Out"
+      user_sign_in(normal_user)
+      visit edit_movie_path(@movie1)
+
+      expect(page).to have_content("Access Denied.")
+      expect(page).to_not have_content("Edit Movie")
+    end
   end
 end

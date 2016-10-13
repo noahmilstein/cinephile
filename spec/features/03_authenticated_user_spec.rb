@@ -37,7 +37,8 @@ feature "Authenticated user" do
       fill_in "Password", with: user1.password
       click_button "Sign In"
       click_link "My Profile"
-      click_link "Edit profile"
+      click_link "Edit Profile"
+
       expect(page).to have_current_path(edit_user_registration_path)
     end
 
@@ -58,15 +59,13 @@ feature "Authenticated user" do
       fill_in "Password", with: user1.password
       click_button "Sign In"
       click_link "My Profile"
-      click_link "Edit profile"
-      fill_in "First Name", with: user1.first_name
-      fill_in "Last Name", with: user1.last_name
-      fill_in "Email", with: "username123"
-      fill_in "Email", with: user1.email
+      click_link "Edit Profile"
+      fill_in "Username", with: "username123"
+      fill_in "Current Password", with: user1.password
       fill_in "Enter Password", with: user1.password
       fill_in "Confirm Password", with: user1.password
-      fill_in "Current Password", with: user1.password
       click_button "Update"
+
       expect(page).to have_content(
         "Your account has been updated successfully."
       )
@@ -90,7 +89,7 @@ feature "Authenticated user" do
       fill_in "Password", with: user1.password
       click_button "Sign In"
       click_link "My Profile"
-      click_link "Edit profile"
+      click_link "Edit Profile"
       fill_in "First Name", with: user1.first_name
       fill_in "Last Name", with: user1.last_name
       fill_in "Username", with: ""
@@ -99,6 +98,7 @@ feature "Authenticated user" do
       fill_in "Confirm Password", with: ""
       fill_in "Current Password", with: user1.password
       click_button "Update"
+
       expect(page).to have_content("Password can't be blank")
       expect(page).to have_content("Username can't be blank")
       expect(page).to have_current_path(users_path)
@@ -120,7 +120,7 @@ feature "Authenticated user" do
       fill_in "Password", with: user1.password
       click_button "Sign In"
       click_link "My Profile"
-      click_link "Edit profile"
+      click_link "Edit Profile"
       fill_in "First Name", with: user1.first_name
       fill_in "Last Name", with: user1.last_name
       fill_in "Username", with: ""
@@ -129,6 +129,7 @@ feature "Authenticated user" do
       fill_in "Confirm Password", with: user1.password
       fill_in "Current Password", with: user1.password
       click_button "Update"
+
       expect(page).to have_content("Username can't be blank")
       expect(page).to have_current_path(users_path)
     end
@@ -150,7 +151,7 @@ feature "Authenticated user" do
       fill_in "Password", with: user1.password
       click_button "Sign In"
       click_link "My Profile"
-      click_link "Edit profile"
+      click_link "Edit Profile"
       fill_in "First Name", with: user1.first_name
       fill_in "Last Name", with: user1.last_name
       fill_in "Email", with: user1.email
@@ -158,6 +159,7 @@ feature "Authenticated user" do
       fill_in "Confirm Password", with: ""
       fill_in "Current Password", with: user1.password
       click_button "Update"
+
       expect(page).to have_content("Password can't be blank")
       expect(page).to have_current_path(users_path)
     end
@@ -179,7 +181,7 @@ feature "Authenticated user" do
       fill_in "Password", with: user1.password
       click_button "Sign In"
       click_link "My Profile"
-      click_link "Edit profile"
+      click_link "Edit Profile"
       fill_in "First Name", with: user1.first_name
       fill_in "Last Name", with: user1.last_name
       fill_in "Email", with: ""
@@ -187,6 +189,7 @@ feature "Authenticated user" do
       fill_in "Confirm Password", with: user1.password
       fill_in "Current Password", with: user1.password
       click_button "Update"
+
       expect(page).to have_content("Email can't be blank")
       expect(page).to have_current_path(users_path)
     end
@@ -208,8 +211,9 @@ feature "Authenticated user" do
       fill_in "Password", with: user1.password
       click_button "Sign In"
       click_link "My Profile"
-      click_link "Edit profile"
+      click_link "Edit Profile"
       click_button "Cancel my account"
+
       expect(page).to have_content(
         "Bye! Your account has been successfully cancelled."\
         " We hope to see you again soon."
