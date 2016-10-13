@@ -1,14 +1,25 @@
-@import "foundation_and_overrides";
+// @import 'react-select/scss/default';
 
 $header-bg: #1f6984;
 $subnav-link-padding: 0.9rem;
 $subnav-font-size: 0.75rem;
 $subnav-link-opacity: 0.15;
-$header-height: 2.5rem;
+$header-height: 0.5rem;
 $transition: all .35s ease-in-out;
 
+.orbit {
+  width: 30em;
+  height: auto;
+  margin: auto;
+}
+
+.banner {
+  background-color: #1F6984;
+}
+
 .header {
-  color: #aaa750;
+  // color: #aaa750;
+  color: white;
   text-align: center;
   background: $header-bg;
   background-size: cover;
@@ -25,6 +36,7 @@ $transition: all .35s ease-in-out;
   margin: 0 auto;
   bottom: 0;
   width: 100%;
+  background-color: #000080;
 
   li {
     float: none;
@@ -33,7 +45,8 @@ $transition: all .35s ease-in-out;
     a {
       padding: $subnav-link-padding 1rem;
       font-size: $subnav-font-size;
-      color: #aaa750;
+      // color: #aaa750;
+      color: white;
       text-transform: uppercase;
       display: block;
       font-weight: bold;
