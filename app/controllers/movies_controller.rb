@@ -8,7 +8,8 @@ class MoviesController < ApplicationController
     elsif params[:search].strip.length.zero?
       @movies = []
     elsif params[:search]
-      @movies = Movie.search(params[:search]).order(:title)
+      final_search = params[:search].split.map(&:capitalize).join(' ')
+      @movies = Movie.search(final_search).order(:title)
     end
 
     movies_json = { "movies": @movies }
@@ -56,6 +57,14 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     @movie.user = current_user
     if @movie.save
+      @movie.title = @movie.title.split.map(&:capitalize).join(' ')
+      @movie.studio = @movie.studio.split.map(&:capitalize).join(' ')
+      @movie.rating = @movie.rating.split.map(&:capitalize).join(' ')
+      @movie.genre = @movie.genre.split.map(&:capitalize).join(' ')
+      @movie.cast_member = @movie.cast_member.split.map(&:capitalize).join(' ')
+      @movie.screen_writer = @movie.screen_writer.split.map(&:capitalize).join(' ')
+      @movie.director = @movie.director.split.map(&:capitalize).join(' ')
+      @movie.save
       redirect_to movie_path(@movie)
       flash[:notice] = "You successfully added a movie"
     else

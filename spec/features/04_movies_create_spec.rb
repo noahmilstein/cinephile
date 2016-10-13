@@ -19,7 +19,7 @@ feature "Create Movies" do
       studio: "Studio",
       year: 1940,
       rating: "R",
-      genre: "drama",
+      genre: "Drama",
       cast_member: "Cast Member 1, Cast Member 2",
       director: "Director 1",
       screen_writer: "Screen Writer 1"
@@ -66,7 +66,7 @@ feature "Create Movies" do
       expect(page).to have_content("Studio")
       expect(page).to have_content(1940)
       expect(page).to have_content("R")
-      expect(page).to have_content("drama")
+      expect(page).to have_content("Drama")
       expect(page).to have_content("Cast Member 1, Cast Member 2")
       expect(page).to have_content("Director 1")
       expect(page).to have_content("Screen Writer 1")
