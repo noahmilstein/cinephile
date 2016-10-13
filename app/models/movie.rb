@@ -7,6 +7,7 @@ class Movie < ActiveRecord::Base
     [4, "4"],
     [5, "5"]
   ]
+
   def self.search(search)
     where("title LIKE ? OR studio LIKE ? OR year LIKE ? OR rating LIKE ? OR genre LIKE ? OR cast_member LIKE ? OR director LIKE ? OR screen_writer LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
   end

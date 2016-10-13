@@ -5,6 +5,113 @@ $subnav-link-opacity: 0.15;
 $header-height: 0.5rem;
 $transition: all .35s ease-in-out;
 
+body {
+  color: black;
+  width: 100%;
+}
+
+#main {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  box-shadow: 2px 2px 2px 2px #888888;
+}
+
+#votes span {
+  display: inline-block;
+}
+
+.movie-show .poster {
+  float: left;
+}
+
+.movie-show .movie-text {
+  text-align: right;
+}
+
+.movie-show-page {
+    margin: 2em;
+    padding-bottom: 5em;
+    display: block;
+}
+
+.user-show-page {
+    margin: 2em;
+    padding-bottom: 5em;
+    display: block;
+}
+
+.user-show img {
+  width: 12em;
+  height: auto;
+}
+
+.movie-show img {
+  width: 15em;
+  height: auto;
+}
+
+.review-form {
+  padding-bottom: 2em;
+  padding-top: 1em;
+}
+
+.review {
+  padding-bottom: 3em;
+}
+
+#upvote {
+  padding-right: 1em;
+}
+
+.vote-number {
+  border: inset;
+}
+
+.vote-component {
+  display: inline-block;
+  border: outset;
+}
+
+.movie-form {
+  margin: auto;
+  padding: 2em;
+}
+
+#posted-by {
+    float: left;
+}
+
+#edit-delete-review {
+  float: right;
+}
+
+.erb-display div {
+    margin: auto;
+}
+
+.flash {
+  padding-left: 1em;
+}
+
+#index {
+  padding: 0em 2em 2em 2em;
+}
+
+#search {
+  padding-bottom: 2em;
+}
+
+img {
+  width: 2em;
+  height: auto;
+}
+
+.erb-display img {
+  width: 5em;
+  height: auto;
+}
+
 .orbit {
   width: 30em;
   height: auto;
@@ -20,27 +127,36 @@ $transition: all .35s ease-in-out;
   text-align: center;
   background: $header-bg;
   background-size: cover;
-  position: relative;
-  overflow: visible;
-  padding-top: $header-height;
-  padding-bottom: $header-height + ($subnav-link-padding * 2 + $subnav-font-size - 0.15rem);
+  // position: relative;
+  // overflow: visible;
+  // padding-top: $header-height;
+  // padding-bottom: $header-height + ($subnav-link-padding * 2 + $subnav-font-size - 0.15rem);
+  // height: 2em;
 }
 
 .header-subnav {
   float: none;
-  position: absolute;
+  // position: absolute;
   text-align: center;
   margin: 0 auto;
   bottom: 0;
   width: 100%;
   background-color: #000080;
 
-  li {
+  .leftnav {
+    float: left;
+  }
+
+  .rightnav {
+    float: right;
+  }
+
+  div {
     float: none;
     display: inline-block;
 
     a {
-      padding: $subnav-link-padding 1rem;
+      padding: $subnav-link-padding .5em;
       font-size: $subnav-font-size;
       color: white;
       text-transform: uppercase;
@@ -59,4 +175,19 @@ $transition: all .35s ease-in-out;
       }
     }
   }
+}
+
+.navbaritems {
+  display: inline-block;
+  padding: $subnav-link-padding .5em;
+  font-size: $subnav-font-size;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  // transition: $transition;
+}
+
+div.header-subnav.row {
+  max-width: 100%;
 }

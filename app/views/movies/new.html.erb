@@ -1,15 +1,17 @@
-<h2>New Movie</h2>
+<div class="movie-form">
+  <h2>New Movie</h2>
 
-<%= form_for @movie do |f| %>
-  <% if @movie.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @movie.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <%= form_for @movie do |f| %>
+    <% if @movie.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= render "form" %>
+  <%= render "form" %>
+</div>
