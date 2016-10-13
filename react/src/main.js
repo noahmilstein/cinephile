@@ -11,3 +11,8 @@ if ($('#div').selector.length > 0) {
     );
   });
 }
+
+
+$(document).ready(function() {
+  $('.erb-display').hide()
+})
