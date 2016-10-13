@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if current_user.admin
       @user = User.find(params[:format])
     else
-      @user = User.find(current_user)
+      @user = User.find(current_user.id)
     end
 
     if @user.movies.empty?

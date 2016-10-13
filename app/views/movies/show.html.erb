@@ -17,27 +17,41 @@
 
 <div id = "error" ></div>
 
-<% unless @reviews.nil? %>
-  <% @reviews.each_with_index do |review, index| %>
-    <p>
+<div class="review-contents">
+  <% unless @reviews.nil? %>
+    <% @reviews.each_with_index do |review, index| %>
       <% upvotes = 0 %>
       <% downvotes = 0 %>
-      <%= review.title %>
-      <%= review.rating %>
-      <%= review.body %>
-      <span>posted by <%= review.user.username %></span>
-      <% if @user.id == review.user_id || current_user.admin %>
-        <%= link_to "Edit Review", edit_movie_review_path(@movie, review), id: "edit review #{index + 1}" %>
-        <%= link_to "Delete Review", movie_review_path(@movie, review), method: :delete, id: "delete review #{index + 1}" %>
+      <div class="review">
+        <p id='review-title'><b><%= review.title %></b></p>
+        <p id='review-rating'><b>Rating: <%= review.rating %></b></p>
+        <p id='review-body'><%= review.body %></p>
+        <span id="posted-by">posted by <b><%= link_to review.user.username, user_path(review.user) %></b></span>
+        <% if @user.id == review.user_id || current_user.admin %>
+          <span id="edit-delete-review">
+          <%= link_to "Edit Review", edit_movie_review_path(@movie, review), id: "edit review #{index + 1}" %> |
+          <%= link_to "Delete Review", movie_review_path(@movie, review), method: :delete, id: "delete review #{index + 1}" %>
+        </span>
+        <% end %>
+      </div>
+        <% review.votes.each do |vote|  %>
+          <%  upvotes += vote.upvote %>
+          <%  downvotes += vote.downvote %>
+        <% end %>
+
+      <div class="votes">
+        <span id="upvote_span">
+          <span class="vote-component"><%= button_to "Upvote",  upvote_review_votes_path(review), method: :post, class: 'Upvote', id: "Upvote_#{review.id}" %></span>
+          <span class="vote-component vote-number" id = <%="Upvote-sum_#{review.id}" %>> <%= upvotes %> </span>
+        </span>
+
+        <span id="downvote_span">
+          <span class="vote-component"><%= button_to "Downvote", downvote_review_votes_path(review), method: :post, class: 'Downvote', id: "Downvote_#{review.id}" %></span>
+          <span class="vote-component vote-number" id = <%="Downvote-sum_#{review.id}" %>> <%= downvotes %> </span>
+        </span>
+
+      </div>
       <% end %>
-      <% review.votes.each do |vote|  %>
-        <%  upvotes += vote.upvote %>
-        <%  downvotes += vote.downvote %>
-      <% end %>
-      <%= button_to "Upvote",  upvote_review_votes_path(review), method: :post, class: 'Upvote', id: "Upvote_#{review.id}" %>
-        <div id = <%="Upvote-sum_#{review.id}" %>> <%= upvotes %> </div>
-      <%= button_to "Downvote", downvote_review_votes_path(review), method: :post, class: 'Downvote', id: "Downvote_#{review.id}" %>
-        <div id = <%="Downvote-sum_#{review.id}" %>> <%= downvotes %> </div>
-    </p>
-  <% end %>
-<% end %>
+    <% end %>
+  </div>
+</div>
