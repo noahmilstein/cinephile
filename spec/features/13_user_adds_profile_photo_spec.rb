@@ -31,7 +31,7 @@ feature "profile photo" do
     user = User.create(email: "email@website.com", username: "username", first_name: "firstname", last_name: "lastname", password: "password")
     user_sign_in(user)
     click_link "My Profile"
-    click_link "Edit profile"
+    click_link "Edit Profile"
 
     attach_file "Edit Avatar", "#{Rails.root}/spec/support/images/homer.jpg"
     fill_in "Enter Password", with: user.password

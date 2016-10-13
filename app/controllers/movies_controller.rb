@@ -10,6 +10,12 @@ class MoviesController < ApplicationController
     elsif params[:search]
       @movies = Movie.search(params[:search]).order(:title)
     end
+
+    movies_json = { "movies": @movies }
+    respond_to do |format|
+      format.html
+      format.json { render json: movies_json }
+    end
   end
 
   def show
@@ -25,7 +31,12 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+    if current_user.admin
+      @movie = Movie.find(params[:id])
+    else
+      flash[:notice] = "Access Denied."
+      redirect_to movie_path(@movie)
+    end
   end
 
   def update
@@ -85,7 +96,9 @@ class MoviesController < ApplicationController
       :cast_member,
       :director,
       :screen_writer,
-      :user
+      :user,
+      :poster,
+      :remote_poster_url
     )
   end
 end
