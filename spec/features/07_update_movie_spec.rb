@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Edit Movie" do
-  context "As an authenticated user" do
+  context "As an authenticated user admin" do
     before do
       user1 = User.create(
         first_name: "John",
@@ -9,20 +9,10 @@ feature "Edit Movie" do
         username: "johndoe",
         email: "john@doe.com",
         password: "abcdef1",
-        newsletter: true
+        newsletter: true,
+        admin: true
       )
-
-      @movie1 = Movie.create(
-        title: "Citizen Kane",
-        studio: "Studio",
-        year: 1940,
-        rating: "R",
-        genre: "drama",
-        cast: "Cast Member 1, Cast Member 2",
-        director: "Director 1",
-        screen_writer: "Screen Writer 1"
-      )
-
+      @movie1 = FactoryGirl.create(:movie)
       user_sign_in(user1)
     end
 

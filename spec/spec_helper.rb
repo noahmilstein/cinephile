@@ -7,6 +7,10 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
+  config.before :each do
+    ActionMailer::Base.deliveries.clear
+  end
+
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
@@ -20,6 +24,11 @@ def user_sign_in(user)
   fill_in "Email", with: user.email
   fill_in "Password", with: user.password
   click_button "Sign In"
+end
+
+def user_sign_out(user)
+  visit root_path
+  click_link("Sign Out")
 end
 
 def user_review(review)
