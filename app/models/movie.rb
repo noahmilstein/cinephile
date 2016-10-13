@@ -24,4 +24,5 @@ class Movie < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :users, through: :reviews
   belongs_to :user
+  mount_uploader :poster, PosterUploader
 end
