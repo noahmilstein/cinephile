@@ -5,9 +5,9 @@
   <% @movies.each_with_index do |movie, index| %>
   <p><%= link_to movie.title, movie_path(movie) %></p>
   <% unless current_user.nil? %>
-  <% if current_user.admin %>
-    <p><%= link_to "Delete Movie", movie_path(movie), method: :delete, id: "delete #{index + 1}" %></p>
-  <% end %>
+    <% if current_user.admin %>
+      <p><%= link_to "Delete Movie", movie_path(movie), method: :delete, id: "delete #{index + 1}" %></p>
+    <% end %>
   <% end %>
   <% end %>
 </div>
