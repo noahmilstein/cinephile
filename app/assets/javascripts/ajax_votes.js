@@ -2,20 +2,20 @@ $(document).ready(function(){
 
 $('.Upvote').on('click', function(event) {
     event.preventDefault();
-    let upvote = this.parentElement.action;
+    let upVote = this.parentElement.action;
     var request = $.ajax({
       method: "POST",
-      url: `${upvote}.json`
+      url: `${upVote}.json`
     });
 
     request.done(function(data) {
       if (data.error === null) {
-        let upcount = `Upvote-sum_${data.id}`;
-        let upnewcount = `${data.upvotes}`;
-        let downcount = `Downvote-sum_${data.id}`;
-        let downnewcount = `${data.downvotes}`;
-        document.getElementById(upcount).innerHTML = upnewcount;
-        document.getElementById(downcount).innerHTML = downnewcount;
+        let upCount = `Upvote-sum_${data.id}`;
+        let upNewCount = `${data.upvotes}`;
+        let downCount = `Downvote-sum_${data.id}`;
+        let downNewCount = `${data.downvotes}`;
+        document.getElementById(upCount).innerHTML = upNewCount;
+        document.getElementById(downCount).innerHTML = downNewCount;
         document.getElementById('error').innerHTML = "";
       }
       else {
@@ -26,20 +26,20 @@ $('.Upvote').on('click', function(event) {
 
   $('.Downvote').on('click', function(event) {
       event.preventDefault();
-      let downvote = this.parentElement.action;
+      let downVote = this.parentElement.action;
       var request = $.ajax({
         method: "POST",
-        url: `${downvote}.json`
+        url: `${downVote}.json`
       });
 
       request.done(function(data) {
         if (data.error === null) {
-          let upcount = `Upvote-sum_${data.id}`;
-          let upnewcount = `${data.upvotes}`;
-          let downcount = `Downvote-sum_${data.id}`;
-          let downnewcount = `${data.downvotes}`;
-          document.getElementById(upcount).innerHTML = upnewcount;
-          document.getElementById(downcount).innerHTML = downnewcount;
+          let upCount = `Upvote-sum_${data.id}`;
+          let upNewCount = `${data.upvotes}`;
+          let downCount = `Downvote-sum_${data.id}`;
+          let downNewCount = `${data.downvotes}`;
+          document.getElementById(upCount).innerHTML = upNewCount;
+          document.getElementById(downCount).innerHTML = downNewCount;
           document.getElementById('error').innerHTML = "";
         }
         else {
