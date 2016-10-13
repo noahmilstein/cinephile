@@ -13,7 +13,8 @@ gem 'carrierwave'
 gem 'fog-aws'
 
 group :development, :test do
-  gem 'capybara'
+  gem 'capybara', '~> 2.7.1'
+  gem 'capybara-webkit', '~> 1.11.1'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'

@@ -86,7 +86,8 @@ class MoviesController < ApplicationController
       :director,
       :screen_writer,
       :user,
-      :poster
+      :poster,
+      :remote_poster_url
     )
   end
 end

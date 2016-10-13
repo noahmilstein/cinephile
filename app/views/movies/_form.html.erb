@@ -32,8 +32,12 @@
     <%= q.text_field :genre %>
   </div>
   <div class="field">
-    <%= q.label :poster, "Add Poster" %><br />
+    <%= q.label :poster, "Add Poster" %><br>
     <%= q.file_field :poster %>
+  </div>
+  <div class="field">
+    <%= q.label :remote_poster_url, "Or Poster URL" %><br>
+    <%= q.text_field :remote_poster_url %>
   </div>
   <div class="actions">
     <%= q.submit "Submit" %>
