@@ -1,4 +1,4 @@
-<%= form_for(@movie) do |q| %>
+<%= form_for(@movie, multipart: true) do |q| %>
   <div class="field">
     <%= q.label :title %><br>
     <%= q.text_field :title %>
@@ -32,8 +32,8 @@
     <%= q.text_field :genre %>
   </div>
   <div class="field">
-    <%= f.label :poster, "Add Poster" %><br />
-    <%= f.file_field :poster %>
+    <%= q.label :poster, "Add Poster" %><br />
+    <%= q.file_field :poster %>
   </div>
   <div class="actions">
     <%= q.submit "Submit" %>

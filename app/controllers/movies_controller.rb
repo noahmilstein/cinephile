@@ -85,7 +85,8 @@ class MoviesController < ApplicationController
       :cast_member,
       :director,
       :screen_writer,
-      :user
+      :user,
+      :poster
     )
   end
 end

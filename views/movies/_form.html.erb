@@ -1,7 +1,19 @@
-<%= form_for(@movie) do |q| %>
+<%= form_for(@movie, multipart: true) do |q| %>
   <div class="field">
     <%= q.label :title %><br>
     <%= q.text_field :title %>
+  </div>
+  <div class="field">
+    <%= q.label :director %><br>
+    <%= q.text_field :director %>
+  </div>
+  <div class="field">
+    <%= q.label :screen_writer, "Screen Writer" %><br>
+    <%= q.text_field :screen_writer %>
+  </div>
+  <div class="field">
+    <%= q.label :cast_member, "Cast Member" %><br>
+    <%= q.text_field :cast_member %>
   </div>
   <div class="field">
     <%= q.label :studio %><br>
@@ -20,16 +32,8 @@
     <%= q.text_field :genre %>
   </div>
   <div class="field">
-    <%= q.label :cast_member %><br>
-    <%= q.text_field :cast_member %>
-  </div>
-  <div class="field">
-    <%= q.label :director %><br>
-    <%= q.text_field :director %>
-  </div>
-  <div class="field">
-    <%= q.label :screen_writer, "Screen Writer" %><br>
-    <%= q.text_field :screen_writer %>
+    <%= q.label :poster, "Add Poster" %><br />
+    <%= q.file_field :poster %>
   </div>
   <div class="actions">
     <%= q.submit "Submit" %>
