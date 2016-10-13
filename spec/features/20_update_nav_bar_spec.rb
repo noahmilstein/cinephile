@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "admin" do
+feature "user" do
   let!(:user) { FactoryGirl.create(:user) }
 
   scenario "sign up & sign in options only in nav bar on registration page" do
