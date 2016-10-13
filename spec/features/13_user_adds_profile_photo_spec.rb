@@ -1,8 +1,6 @@
 require "rails_helper"
 
 feature "profile photo" do
-  let!(:user) { FactoryGirl.create(:user) }
-
   scenario "new user sees avatar upload option on sign up page" do
     visit root_path
     click_link "Sign Up"
@@ -11,6 +9,7 @@ feature "profile photo" do
   end
 
   scenario "user uploads a profile photo" do
+    user = User.new(email: "email@website.com", username: "username", first_name: "firstname", last_name: "lastname", password: "password")
     visit root_path
     click_link "Sign Up"
 
@@ -22,22 +21,24 @@ feature "profile photo" do
     fill_in "Confirm Password", with: user.password
     attach_file "Add Avatar", "#{Rails.root}/spec/support/images/twitter-egg-icon.jpg"
     click_button "Submit"
-    visit user_path(user.id)
+    click_link "My Profile"
 
     expect(page).to have_content(user.username)
     expect(page).to have_xpath("//img")
   end
 
   scenario "user edits a profile photo" do
+    user = User.create(email: "email@website.com", username: "username", first_name: "firstname", last_name: "lastname", password: "password")
     user_sign_in(user)
-    click_link "Edit registration"
+    click_link "My Profile"
+    click_link "Edit profile"
 
     attach_file "Edit Avatar", "#{Rails.root}/spec/support/images/homer.jpg"
     fill_in "Enter Password", with: user.password
     fill_in "Confirm Password", with: user.password
     fill_in "Current Password", with: user.password
     click_button "Update"
-    visit user_path(user.id)
+    click_link "My Profile"
 
     expect(page).to have_content(user.username)
     expect(page).to have_xpath("//img")

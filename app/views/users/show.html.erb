@@ -3,3 +3,20 @@
 <%= @user.last_name %></p>
 <p><%= @user.username %></p>
 <p><%= @user.email %></p>
+<% if @user.id == current_user.id %>
+  <%= link_to('Edit profile', edit_user_registration_path) %>
+<% end %>
+
+<p>My Movies</p>
+<ul>
+  <% @user_movies.each do |movie| %>
+    <li><%= link_to movie.title, movie_path(movie) %></li>
+  <% end %>
+</ul>
+
+<p>My Reviews</p>
+<ul>
+  <% @user_reviews.each do |review| %>
+    <li><%= link_to review.title, movie_path(review.movie) %></li>
+  <% end %>
+</ul>
