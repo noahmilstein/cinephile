@@ -21,7 +21,7 @@ class VotesController < ApplicationController
       downvotes += vote.downvote
     end
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_to movie_path(@review.movie) }
       format.json { render json: { upvotes: upvotes, downvotes: downvotes, id: @review.id, error: @error } }
       format.js
     end
@@ -49,7 +49,7 @@ class VotesController < ApplicationController
       downvotes += vote.downvote
     end
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_to movie_path(@review.movie) }
       format.json { render json: { upvotes: upvotes, downvotes: downvotes, id: @review.id, error: @error } }
       format.js
     end
