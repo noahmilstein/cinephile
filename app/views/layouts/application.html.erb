@@ -7,33 +7,26 @@
     <%= csrf_meta_tags %>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= stylesheet_link_tag params[:controller] %>
 
     <header class="header">
   <h1 class="headline"><h1>Welcome to Cinephile</h1>
   <h3>Your source for movie reviews</h3>
   <ul class="header-subnav">
     <% if user_signed_in? %>
-      <li>
-      <%= link_to('Add New Movie', new_movie_path) %>
-      </li>
-      <li>
-      <%= link_to('Edit registration', edit_user_registration_path) %>
-      </li>
-    <% else %>
-      <li>
-      <%= link_to('Sign Up', new_user_registration_path)  %>
-      </li>
-    <% end %>
-    <% if user_signed_in? %>
-      <li>
-      <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %>
-      </li>
-    <% else %>
-      <li>
-      <%= link_to('Sign In', new_user_session_path)  %>
-      </li>
-    <% end %>
+  <li> <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %></li>
+<% else %>
+   <li><%= link_to('Sign In', new_user_session_path)  %></li>
+<% end %>
+<% if user_signed_in? %>
+  <li><%= link_to('Home', root_path) %> </li>
+  <li><%= link_to('Add New Movie', new_movie_path) %> </li>
+  <li><%= link_to('My Profile', user_path(current_user.id)) %></li>
+  <% if current_user.admin %>
+  <li> <%= link_to("All Users", users_path) %></li>
+  <% end %>
+<% else %>
+  <li><%= link_to('Sign Up', new_user_registration_path)  %></li>
+<% end %>
 
 
   </ul>
@@ -41,7 +34,6 @@
   </head>
 
   <body>
-    <ul class="hmenu">
       <div class="row collapse expanded">
       	<div class="small-12 medium-12 large-12 columns">
       		<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>

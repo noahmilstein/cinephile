@@ -1,6 +1,6 @@
 @import "foundation_and_overrides";
 
-$header-bg: #074E68;
+$header-bg: #1f6984;
 $subnav-link-padding: 0.9rem;
 $subnav-font-size: 0.75rem;
 $subnav-link-opacity: 0.15;
@@ -8,6 +8,7 @@ $header-height: 2.5rem;
 $transition: all .35s ease-in-out;
 
 .header {
+  color: #aaa750;
   text-align: center;
   background: $header-bg;
   background-size: cover;
@@ -15,10 +16,6 @@ $transition: all .35s ease-in-out;
   overflow: visible;
   padding-top: $header-height;
   padding-bottom: $header-height + ($subnav-link-padding * 2 + $subnav-font-size - 0.15rem);
-
-  .headline {
-    color: #ffe;
-  }
 }
 
 .header-subnav {
@@ -36,7 +33,7 @@ $transition: all .35s ease-in-out;
     a {
       padding: $subnav-link-padding 1rem;
       font-size: $subnav-font-size;
-      color: #ffe;
+      color: #aaa750;
       text-transform: uppercase;
       display: block;
       font-weight: bold;
