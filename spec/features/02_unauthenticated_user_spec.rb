@@ -116,6 +116,7 @@ feature "Unauthenticated user" do
       movie1 = FactoryGirl.create(:movie)
       user_sign_in(user1)
       click_link(movie1.title)
+      
       expect(page).to have_content(movie1.title)
       expect(page).to have_content(movie1.studio)
       expect(page).to have_content(movie1.year)

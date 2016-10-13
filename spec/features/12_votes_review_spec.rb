@@ -14,21 +14,21 @@ feature "User votes on reviews" do
     end
 
     scenario "user upvotes on the first review" do
-      click_button("Upvote_1")
+      click_button("Upvote_2")
 
-      expect(review1.votes[0].upvote).to eq(1)
-      expect(page).to have_content(review1.title)
-      expect(page).to have_content(review1.body)
-      expect(page).to have_content(review1.rating)
+      expect(review2.votes[0].upvote).to eq(1)
+      expect(page).to have_content(review2.title)
+      expect(page).to have_content(review2.body)
+      expect(page).to have_content(review2.rating)
     end
 
     scenario "user downvotes on the second review with 0 votes" do
-      click_button("Downvote_1")
+      click_button("Downvote_2")
 
-      expect(review1.votes[0].downvote).to eq(1)
-      expect(page).to have_content(review1.title)
-      expect(page).to have_content(review1.body)
-      expect(page).to have_content(review1.rating)
+      expect(review2.votes[0].downvote).to eq(1)
+      expect(page).to have_content(review2.title)
+      expect(page).to have_content(review2.body)
+      expect(page).to have_content(review2.rating)
     end
   end
 
@@ -40,18 +40,18 @@ feature "User votes on reviews" do
 
     scenario "toggle upvote back to zero" do
       2.times do
-        click_button("Upvote_1")
+        click_button("Upvote_2")
       end
 
-      expect(review1.votes[0].upvote).to eq(0)
+      expect(review2.votes[0].upvote).to eq(0)
     end
 
     scenario "toggle downvote back to zero" do
       2.times do
-        click_button("Downvote_1")
+        click_button("Downvote_2")
       end
 
-      expect(review1.votes[0].downvote).to eq(0)
+      expect(review2.votes[0].downvote).to eq(0)
     end
   end
 
@@ -69,6 +69,22 @@ feature "User votes on reviews" do
       expect(page).to have_content(review1.title)
       expect(page).to have_content(review1.body)
       expect(page).to have_content(review1.rating)
+    end
+  end
+
+  describe "User votes on user's review" do
+    before do
+      user_sign_in(user2)
+      visit movie_path(movie1)
+    end
+
+    scenario "user2 upvotes on the user2's review" do
+      click_button("Upvote_2")
+
+      expect(review2.votes.count).to eq(0)
+      expect(page).to have_content(review2.title)
+      expect(page).to have_content(review2.body)
+      expect(page).to have_content(review2.rating)
     end
   end
 end
