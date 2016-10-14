@@ -46,6 +46,23 @@ body {
   height: auto;
 }
 
+.user-show .user-image {
+  float: left;
+}
+
+.sign-in {
+  padding: 2em;
+  margin-bottom: 5em;
+}
+
+.user-show .user-text {
+  text-align: right;
+}
+
+.user-reviews {
+  padding-top: 3em;
+}
+
 .movie-show img {
   width: 15em;
   height: auto;
@@ -60,7 +77,7 @@ body {
   padding-bottom: 3em;
 }
 
-#upvote {
+#upvote_span {
   padding-right: 1em;
 }
 
