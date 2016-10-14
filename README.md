@@ -37,9 +37,9 @@ To store image attachments, you will need to sign up for an Amazon Web Services.
 Once you have your AWS secret keys, create a .env file in the root directory,
 and add your AWS secret keys with the following format:
 
-AWS_ACCESS_KEY_ID=<YOUR_ACCESS_KEY>
+```AWS_ACCESS_KEY_ID=<YOUR_ACCESS_KEY>
 AWS_SECRET_ACCESS_KEY=<YOUR_SECRET_ACCESS_KEY>
-S3_BUCKET=<YOUR_S3_BUCKET>
+S3_BUCKET=<YOUR_S3_BUCKET>```
 
 ## Running the application
 To run Cinephile, please run the following commands in your terminal from the
