@@ -7,7 +7,7 @@ Cinephile is a code bootcamp class project to demonstrate full stack web dev ski
 using git version control and work flow. The project uses the following components:
 
 * Ruby on Rails
-* CarrierWave
+* CarrierWave/Fog
 * React
 * AJAX
 * Javascript
@@ -19,7 +19,7 @@ For a demo of the site, please visit our Heroku page here: [Cinephile](http://ci
 
 ## Setup
 The app uses Ruby 2.3.1 and was developed on Ruby on Rails 5.0.  React is served up
-on webpack 1.13.2.
+in Node.js using webpack 1.13.2.
 
 To install, please run the following in your terminal:
 
