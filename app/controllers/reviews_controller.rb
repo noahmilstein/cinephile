@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @movie = Movie.find(params[:movie_id])
-    review = Review.find_by(user: current_user.id)
+    review = Review.find_by(user: current_user, movie: @movie)
     @review.movie = @movie
     @review.user = current_user
     if !review.nil?
