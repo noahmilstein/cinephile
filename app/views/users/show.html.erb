@@ -1,22 +1,28 @@
-<p><%= image_tag @user.image %></p>
-<p><%= @user.first_name %>
-<%= @user.last_name %></p>
-<p><%= @user.username %></p>
-<p><%= @user.email %></p>
-<% if @user.id == current_user.id %>
-  <%= link_to('Edit Profile', edit_user_registration_path) %>
-<% end %>
+<div class="user-show-page">
+  <div class="user-show">
+    <p class="user-image"><%= image_tag @user.image %></p>
+    <p class="user-text"><%= @user.first_name %>
+    <%= @user.last_name %></p>
+    <p class="user-text"><%= @user.username %></p>
+    <p class="user-text"><%= @user.email %></p>
+    <% if @user.id == current_user.id %>
+      <p class="user-text"><%= link_to('Edit Profile', edit_user_registration_path) %></p>
+    <% end %>
+  </div>
 
-<p>My Movies</p>
-<ul>
-  <% @user_movies.each do |movie| %>
-    <li><%= link_to movie.title, movie_path(movie) %></li>
-  <% end %>
-</ul>
+  <div class="user-reviews">
+    <p>My Movies</p>
+    <ul>
+      <% @user_movies.each do |movie| %>
+        <li><%= link_to movie.title, movie_path(movie) %></li>
+      <% end %>
+    </ul>
 
-<p>My Reviews</p>
-<ul>
-  <% @user_reviews.each do |review| %>
-    <li><%= link_to review.title, movie_path(review.movie) %></li>
-  <% end %>
-</ul>
+    <p>My Reviews</p>
+    <ul>
+      <% @user_reviews.each do |review| %>
+        <li><%= link_to review.title, movie_path(review.movie) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -48,7 +48,7 @@ feature "Unauthenticated user" do
       fill_in "Email", with: user1.email
       fill_in "Password", with: user1.password
       click_button "Sign In"
-      expect(page).to have_content("Welcome to Cinephile!")
+      expect(page).to have_content("Cinephile")
       expect(page).to have_current_path("/")
     end
 
@@ -67,7 +67,7 @@ feature "Unauthenticated user" do
       fill_in "Email", with: user1.email
       fill_in "Password", with: user1.password
       click_button "Sign In"
-      expect(page).to have_content("Welcome to Cinephile!")
+      expect(page).to have_content("Cinephile")
       expect(page).to have_current_path("/")
       expect(page).to have_content("Signed in successfully.")
     end
@@ -116,7 +116,7 @@ feature "Unauthenticated user" do
       movie1 = FactoryGirl.create(:movie)
       user_sign_in(user1)
       click_link(movie1.title)
-      
+
       expect(page).to have_content(movie1.title)
       expect(page).to have_content(movie1.studio)
       expect(page).to have_content(movie1.year)

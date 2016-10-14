@@ -1,13 +1,14 @@
-<h1>Welcome to Cinephile!</h1>
-<p>Your source for movie reviews!</p>
-
 <div class="erb-display">
   <% @movies.each_with_index do |movie, index| %>
-  <p><%= link_to movie.title, movie_path(movie) %></p>
-  <% unless current_user.nil? %>
-    <% if current_user.admin %>
-      <p><%= link_to "Delete Movie", movie_path(movie), method: :delete, id: "delete #{index + 1}" %></p>
-    <% end %>
-  <% end %>
+    <div class="row callout">
+      <p class="small-2 columns"><%= image_tag movie.poster %></p>
+      <p class="small-3 columns"><%= link_to movie.title, movie_path(movie) %></p>
+      <p class="small-7 columns"></p>
+      <% unless current_user.nil? %>
+        <% if current_user.admin %>
+          <p><%= link_to "Delete Movie", movie_path(movie), method: :delete, id: "delete #{index + 1}" %></p>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>

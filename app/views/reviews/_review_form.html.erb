@@ -1,3 +1,5 @@
+<div class="review-form">
+
 <h3>Write Review</h3>
 <%= form_for [@movie, @review] do |f| %>
   <%= f.label(:title, "Review Title") %>
@@ -9,3 +11,5 @@
 
   <%= f.submit("Submit Review") %>
 <% end %>
+
+</div>
