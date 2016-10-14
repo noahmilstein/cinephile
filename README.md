@@ -4,7 +4,10 @@
 
 # Cinephile
 Cinephile is a code bootcamp class project to demonstrate full stack web dev skills
-using git version control and work flow. The project uses the following components:
+using git version control and work flow. Users are able to post movies, create reviews
+on movies, and upvote or downvote reviews made by other users. 
+
+The project uses the following components:
 
 * Ruby on Rails
 * CarrierWave/Fog
