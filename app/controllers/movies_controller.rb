@@ -11,8 +11,13 @@ class MoviesController < ApplicationController
       final_search = params[:search].split.map(&:capitalize).join(' ')
       @movies = Movie.search(final_search).order(:title)
     end
-
-    movies_json = { "movies": @movies }
+    # binding.pry
+    if current_user.nil? || !current_user.admin
+      is_admin = false
+    elsif current_user.admin
+      is_admin = true
+    end
+    movies_json = { "movies": @movies, "admin": is_admin }
     respond_to do |format|
       format.html
       format.json { render json: movies_json }
@@ -76,7 +81,14 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @movie.destroy
     flash[:notice] = "Movie Deleted!"
-    redirect_to movies_path
+    respond_to do |format|
+      format.html
+      format.json { render json: movies_json }
+    end
+    respond_to do |format|
+      format.json { head :no_content }
+      format.html { redirect_to movies_path }
+    end
   end
 
   protected

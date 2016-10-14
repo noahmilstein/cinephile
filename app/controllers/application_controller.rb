@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
       :username,
       :email,
       :image,
+      :admin,
       :remote_image_url,
       :password,
       :password_confirmation,
