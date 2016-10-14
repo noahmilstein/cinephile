@@ -5,8 +5,10 @@ class App extends Component {
     super(props);
     this.state = {
       movies: [],
-      admin: false
+      admin: false,
+      intervalId: null
     }
+    this.handleButtonClick = this.handleButtonClick.bind(this)
   }
 
   handleButtonClick(id) {
@@ -15,8 +17,8 @@ class App extends Component {
       method: 'delete'
     })
     .done(data => {
-      this.getMovies()
     });
+    this.getMovies();
   }
 
   getMovies() {
@@ -32,6 +34,14 @@ class App extends Component {
 
   componentDidMount() {
     this.getMovies()
+    let intervalId = setInterval(function() {
+      this.getMovies()
+    }.bind(this), 2000);
+    this.setState({ intervalId: intervalId });
+  }
+
+  componentWillUnMount() {
+    clearInterval(this.state.intervalId);
   }
 
   render() {
@@ -40,13 +50,15 @@ class App extends Component {
     if (this.state.movies.length !== 0) {
       movies = this.state.movies.map(movie => {
         let movie_url = `/movies/${movie.id}`;
+        let onClick = () => this.handleButtonClick(movie.id);
         if (this.state.admin) {
-          adminDelete = <button onClick={this.handleButtonClick} value={movie.id}>Delete</button>
+          adminDelete = <button className="button" onClick={onClick}>Delete</button>
         }
         return(
           <div className="row callout" key={movie.id}>
             <p className="small-2 columns"><img src={movie.poster.url}/></p>
             <p className="small-3 columns"><a href={movie_url}>{movie.title}</a></p>
+            <p className="small-5 columns">{adminDelete}</p>
             <p className="small-7 columns"></p>
           </div>
         )
