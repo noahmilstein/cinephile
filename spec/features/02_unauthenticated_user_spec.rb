@@ -1,30 +1,12 @@
 require "rails_helper"
 
 feature "Unauthenticated user" do
-  context "as as unauthenticated user" do
-    user1 = User.create(
-      first_name: "John",
-      last_name: "Doe",
-      username: "johndoe",
-      email: "john@doe.com",
-      password: "abcdef1",
-      newsletter: true
-    )
-    movie1 = Movie.create(
-      title: "Citizen Kane",
-      studio: "Studio",
-      year: 1940,
-      rating: "R",
-      genre: "drama",
-      cast_member: "Cast Member 1, Cast Member 2",
-      director: "Director 1", screen_writer: "Screen Writer 1"
-    )
+  let!(:user) { FactoryGirl.create(:user, email: "emmawatson@gmail.com", password: "sixchar1") }
+  let!(:incorrect_email) {"six"}
+  let!(:incorrect_password) {"six"}
+  let!(:movie) { FactoryGirl.create(:movie) }
 
-    scenario "sees sign in link" do
-      visit "/"
-      expect(page).to have_link("Sign In")
-    end
-
+  context "as an unauthenticated user" do
     scenario "click sign up link and see fields to complete form"\
     " registration" do
       visit "/"
@@ -32,99 +14,53 @@ feature "Unauthenticated user" do
       expect(page).to have_content("Email")
       expect(page).to have_content("Password")
     end
+  end
+
+  context "as an authenticated user successfully signs in" do
+    before do
+      user_sign_in(user)
+    end
 
     scenario "user fills in sign-in form correctly and is"\
     " redirected to the homepage" do
-      user1 = User.create(
-        first_name: "John",
-        last_name: "Doe",
-        username: "johndoe",
-        email: "john@doe.com",
-        password: "abcdef1",
-        newsletter: true
-      )
-      visit "/"
-      click_link("Sign In")
-      fill_in "Email", with: user1.email
-      fill_in "Password", with: user1.password
-      click_button "Sign In"
       expect(page).to have_content("Cinephile")
       expect(page).to have_current_path("/")
     end
 
     scenario "user fills in sign-in form correctly and sees flash "\
     "message confirming signin" do
-      user1 = User.create(
-        first_name: "John",
-        last_name: "Doe",
-        username: "johndoe",
-        email: "john@doe.com",
-        password: "abcdef1",
-        newsletter: true
-      )
-      visit "/"
-      click_link("Sign In")
-      fill_in "Email", with: user1.email
-      fill_in "Password", with: user1.password
-      click_button "Sign In"
-      expect(page).to have_content("Cinephile")
-      expect(page).to have_current_path("/")
       expect(page).to have_content("Signed in successfully.")
     end
 
+    scenario "user fills in sign-in form correctly, sees flash message"\
+    " confirming signin, and successfully clicks on a movie_link." do
+      click_link(movie.title)
+
+      expect(page).to have_content(movie.title)
+      expect(page).to have_content(movie.studio)
+      expect(page).to have_content(movie.year)
+      expect(page).to have_content(movie.rating)
+      expect(page).to have_content(movie.genre)
+      expect(page).to have_content(movie.cast_member)
+      expect(page).to have_content(movie.director)
+      expect(page).to have_content(movie.screen_writer)
+    end
+  end
+
+  context "as an authenticated user unsuccesfully signs in" do
     scenario "user fills in sign-in form incorrectly and sees flash"\
     " message with error" do
-      user1 = User.create(
-        first_name: "John",
-        last_name: "Doe",
-        username: "johndoe",
-        email: "john@doe.com",
-        password: "abcdef1",
-        newsletter: true
-      )
-      visit "/"
-      click_link("Sign In")
-      fill_in "Email", with: "incorrect"
-      fill_in "Password", with: user1.password
-      click_button "Sign In"
-      expect(page).to have_current_path(new_user_session_path)
+      email = "emmawatson@gmail.com"
+      sign_in(email,incorrect_password)
+
       expect(page).to have_content("Invalid Email or password.")
     end
 
     scenario "user fills in sign-up form incorrectly and sees flash"\
     " message with error" do
-      user1 = User.create(
-        first_name: "John",
-        last_name: "Doe",
-        username: "johndoe",
-        email: "john@doe.com",
-        password: "abcdef1",
-        newsletter: true
-      )
-      visit "/"
-      click_link("Sign In")
-      fill_in "Email", with: user1.email
-      fill_in "Password", with: "incorrect"
-      click_button "Sign In"
-      expect(page).to have_current_path(new_user_session_path)
+      sign_in(incorrect_email,incorrect_password)
+
       expect(page).to have_content("Invalid Email or password.")
-    end
-
-    scenario "user fills in sign-in form correctly, sees flash message"\
-    " confirming signin, and successfully clicks on a movie_link." do
-      user1 = FactoryGirl.create(:user)
-      movie1 = FactoryGirl.create(:movie)
-      user_sign_in(user1)
-      click_link(movie1.title)
-
-      expect(page).to have_content(movie1.title)
-      expect(page).to have_content(movie1.studio)
-      expect(page).to have_content(movie1.year)
-      expect(page).to have_content(movie1.rating)
-      expect(page).to have_content(movie1.genre)
-      expect(page).to have_content(movie1.cast_member)
-      expect(page).to have_content(movie1.director)
-      expect(page).to have_content(movie1.screen_writer)
     end
   end
 end

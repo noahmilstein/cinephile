@@ -1,34 +1,26 @@
 require "rails_helper"
 
 feature "Prospective user" do
-  context "as prospective user" do
-    user1 = User.new(
-      first_name: "John",
-      last_name: "Doe",
-      username: "johndoe",
-      email: "john@doe.com",
-      password: "sixchr1",
-      newsletter: true
-    )
-    user2 = User.new(
-      first_name: "Jane",
-      last_name: "Doe",
-      username: "janedoe",
-      email: "jane@doe.com",
-      password: "sixchr1",
-      newsletter: true
-    )
-    movie1 = Movie.create(
-      title: "Citizen Kane",
-      studio: "Studio",
-      year: 1940,
-      rating: "R",
-      genre: "drama",
-      cast_member: "Cast Member 1, Cast Member 2",
-      director: "Director 1",
-      screen_writer: "Screen Writer 1"
-    )
+  let!(:first_name) {""}
+  let!(:last_name) {""}
+  let!(:username) {""}
+  let!(:email) {""}
+  let!(:enter_password) {""}
+  let!(:confirm_password) {""}
+  let!(:user_first_name) {"emma"}
+  let!(:user_last_name) {"watson"}
+  let!(:user_username) {"emmawatson"}
+  let!(:user_email) {"emmawatson@gmail.com"}
+  let!(:user_enter_password) {"emmawatson"}
+  let!(:user_confirm_password) {"emmawatson"}
+  let!(:user2) { FactoryGirl.create(:user, username: "username12345") }
+  let!(:user3) { FactoryGirl.create(:user, email: "email12345@gmail.com") }
+  let!(:existing_username) {"username12345"}
+  let!(:existing_email) {"email12345@gmail.com"}
+  let!(:bad_password) {"abc"}
+  let!(:movie1) { FactoryGirl.create(:movie) }
 
+  context "as prospective user" do
     scenario "sees sign up link" do
       visit "/"
       expect(page).to have_link("Sign Up")
@@ -37,6 +29,7 @@ feature "Prospective user" do
     scenario "click sign up link and see fields to complete for registration" do
       visit "/"
       click_link("Sign Up")
+
       expect(page).to have_content("First Name")
       expect(page).to have_content("Last Name")
       expect(page).to have_content("Username")
@@ -45,178 +38,66 @@ feature "Prospective user" do
       expect(page).to have_content("Confirm Password")
       expect(page).to have_content("Sign up for newsletter?")
     end
+  end
 
-    scenario "user fills in sign-up form correctly and is redirected to the homepage" do
-      visit new_user_registration_path
-      fill_in "First Name", with: user1.first_name
-      fill_in "Last Name", with: user1.last_name
-      fill_in "Username", with: user1.username
-      fill_in "Email", with: user1.email
-      fill_in "Enter Password", with: user1.password
-      fill_in "Confirm Password", with: user1.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path("/")
-    end
-
+  context "as prospective user who signs up" do
     scenario "user fills in sign-up form correctly and sees flash message confirming signup" do
-      visit new_user_registration_path
-      fill_in "First Name", with: user2.first_name
-      fill_in "Last Name", with: user2.last_name
-      fill_in "Username", with: user2.username
-      fill_in "Email", with: user2.email
-      fill_in "Enter Password", with: user2.password
-      fill_in "Confirm Password", with: user2.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
+      sign_up(user_first_name, user_last_name, user_username, user_email, user_enter_password, user_confirm_password)
+
       expect(page).to have_content("You have signed up successfully.")
     end
 
     scenario "user leaves first name blank and sees flash message with error" do
-      visit new_user_registration_path
-      fill_in "Last Name", with: user1.last_name
-      fill_in "Username", with: user1.username
-      fill_in "Email", with: user1.email
-      fill_in "Enter Password", with: user1.password
-      fill_in "Confirm Password", with: user1.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path(users_path)
+      sign_up(first_name, user_last_name, user_username, user_email, user_enter_password, user_confirm_password)
+
       expect(page).to have_content("First name can't be blank")
     end
 
     scenario "user leaves last name blank and sees flash message with error" do
-      visit new_user_registration_path
-      fill_in "First Name", with: user1.first_name
-      fill_in "Username", with: user1.username
-      fill_in "Email", with: user1.email
-      fill_in "Enter Password", with: user1.password
-      fill_in "Confirm Password", with: user1.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path(users_path)
+      sign_up(user_first_name, last_name, user_username, user_email, user_enter_password, user_confirm_password)
+
       expect(page).to have_content("Last name can't be blank")
     end
 
     scenario "user leaves username blank and sees flash message with error" do
-      visit new_user_registration_path
-      fill_in "First Name", with: user1.first_name
-      fill_in "Last Name", with: user1.last_name
-      fill_in "Email", with: user1.email
-      fill_in "Enter Password", with: user1.password
-      fill_in "Confirm Password", with: user1.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path(users_path)
+      sign_up(user_first_name, user_last_name, username, user_email, user_enter_password, user_confirm_password)
+
       expect(page).to have_content("Username can't be blank")
     end
 
     scenario "user leaves email blank and sees flash message with error" do
-      visit new_user_registration_path
-      fill_in "First Name", with: user1.first_name
-      fill_in "Last Name", with: user1.last_name
-      fill_in "Username", with: user1.username
-      fill_in "Enter Password", with: user1.password
-      fill_in "Confirm Password", with: user1.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path(users_path)
+      sign_up(user_first_name, user_last_name, user_username, email, user_enter_password, user_confirm_password)
+
       expect(page).to have_content("Email can't be blank")
     end
 
     scenario "user leaves Enter Password field blank and sees flash message with error" do
-      visit new_user_registration_path
-      fill_in "First Name", with: user1.first_name
-      fill_in "Last Name", with: user1.last_name
-      fill_in "Email", with: user1.email
-      fill_in "Username", with: user1.username
-      fill_in "Confirm Password", with: user1.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path(users_path)
+      sign_up(user_first_name, user_last_name, user_username, user_email, enter_password, user_confirm_password)
+
       expect(page).to have_content("Password can't be blank")
     end
 
     scenario "user leaves Confirm Password field blank and sees flash message with error" do
-      visit new_user_registration_path
-      fill_in "First Name", with: user1.first_name
-      fill_in "Last Name", with: user1.last_name
-      fill_in "Email", with: user1.email
-      fill_in "Username", with: user1.username
-      fill_in "Enter Password", with: user1.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path(users_path)
+      sign_up(user_first_name, user_last_name, user_username, user_email, user_enter_password, confirm_password)
+
       expect(page).to have_content("Password confirmation doesn't match")
     end
 
-    scenario "user leaves newsletter field blank and sees flash message with error" do
-      visit new_user_registration_path
-      fill_in "First Name", with: user1.first_name
-      fill_in "Last Name", with: user1.last_name
-      fill_in "Email", with: user1.email
-      fill_in "Username", with: user1.username
-      fill_in "Enter Password", with: user1.password
-      fill_in "Confirm Password", with: user1.password
-      click_button "Submit"
-      expect(page).to have_current_path("/")
-    end
-
     scenario "user selects username that is taken and is prompted to choose another" do
-      user3 = User.create(
-        first_name: "John",
-        last_name: "Doe",
-        username: "johndoe",
-        email: "john@doe.com",
-        password: "sixchr1",
-        newsletter: true
-      )
-      visit new_user_registration_path
-      fill_in "First Name", with: user2.first_name
-      fill_in "Last Name", with: user2.last_name
-      fill_in "Username", with: user3.username
-      fill_in "Email", with: user2.email
-      fill_in "Enter Password", with: user2.password
-      fill_in "Confirm Password", with: user2.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path(users_path)
+      sign_up(user_first_name, user_last_name, existing_username, user_email, user_enter_password, confirm_password)
+
       expect(page).to have_content("Username has already been taken")
     end
 
     scenario "user inputs email that is already used and is prompted to choose another" do
-      user3 = User.create(
-        first_name: "John",
-        last_name: "Doe",
-        username: "johndoe",
-        email: "john@doe.com",
-        password: "sixchr1",
-        newsletter: true
-      )
-      visit new_user_registration_path
-      fill_in "First Name", with: user2.first_name
-      fill_in "Last Name", with: user2.last_name
-      fill_in "Username", with: user2.username
-      fill_in "Email", with: user3.email
-      fill_in "Enter Password", with: user2.password
-      fill_in "Confirm Password", with: user2.password
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path(users_path)
+      sign_up(user_first_name, user_last_name, user_username, existing_email, user_enter_password, confirm_password)
+
       expect(page).to have_content("Email has already been taken")
     end
 
     scenario "user inputs malformed password and is prompted to choose another" do
-      visit new_user_registration_path
-      fill_in "First Name", with: user2.first_name
-      fill_in "Last Name", with: user2.last_name
-      fill_in "Username", with: user2.username
-      fill_in "Email", with: user2.email
-      fill_in "Enter Password", with: "abc"
-      fill_in "Confirm Password", with: "abc"
-      check "Sign up for newsletter?"
-      click_button "Submit"
-      expect(page).to have_current_path(users_path)
+      sign_up(user_first_name, user_last_name, user_username, user_email, bad_password, bad_password)
+
       expect(page).to have_content(
         "Password is too short (minimum is 6 characters)"
       )
@@ -224,13 +105,9 @@ feature "Prospective user" do
 
     scenario "user attempts to navigate to movie show page/make a review"\
     " and is redirected to homepage with message to sign in" do
-      user1 = FactoryGirl.create(:user)
-      movie1 = FactoryGirl.create(:movie)
       visit "/movies"
-
       click_link movie1.title
-      expect(page).to have_current_path("/")
-      expect(page).to have_content(movie1.title)
+
       expect(page).to have_content("Please sign in or sign up in order to"\
       " view this movie and its reviews")
     end
