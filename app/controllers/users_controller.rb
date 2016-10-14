@@ -31,7 +31,10 @@ class UsersController < ApplicationController
       end
     else
       timestamp = Time.new
-      @user.update_attributes(email: "#{timestamp.to_i}@example.com", username: "#{timestamp}", password: "#{timestamp}" )
+      @user.update_attributes(first_name: "_deleted_at_#{timestamp.to_i}",
+        last_name: "_deleted_at_#{timestamp.to_i}",
+        email: "_deleted_at_#{timestamp.to_i}@example.com",
+        username: "_deleted_at_#{timestamp}", password: "_deleted_at_#{timestamp}" )
       @user.save
       if current_user.admin
         flash[:notice] = "User Deleted."
