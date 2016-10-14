@@ -35,33 +35,40 @@ body {
     display: block;
 }
 
-.user-show-page {
-    margin: 2em;
-    padding-bottom: 5em;
-    display: block;
-}
+// .user-show-page {
+//     margin: 2em;
+//     padding-bottom: 5em;
+//     display: block;
+//     position: relative;
+//     -webkit-column-count: 4;
+//     -moz-column-count: 4;
+//     column-count: 4;
+// }
 
 .user-show img {
   width: 12em;
   height: auto;
+  // clear: left;
 }
 
-.user-show .user-image {
-  float: left;
-}
+// .user-show .user-image {
+//   float: left;
+// }
 
 .sign-in {
   padding: 2em;
   margin-bottom: 5em;
 }
 
-.user-show .user-text {
-  text-align: right;
-}
+// .user-show .user-text {
+  // text-align: right;
+// }
 
-.user-reviews {
-  padding-top: 3em;
-}
+// .user-reviews {
+  // position: relative;
+  // top: 50%;
+  // transform: translateY(-50%);
+// }
 
 .movie-show img {
   width: 15em;
@@ -144,11 +151,6 @@ img {
   text-align: center;
   background: $header-bg;
   background-size: cover;
-  // position: relative;
-  // overflow: visible;
-  // padding-top: $header-height;
-  // padding-bottom: $header-height + ($subnav-link-padding * 2 + $subnav-font-size - 0.15rem);
-  // height: 2em;
 }
 
 .header-subnav {
@@ -202,7 +204,6 @@ img {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
-  // transition: $transition;
 }
 
 div.header-subnav.row {
