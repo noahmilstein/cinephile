@@ -28,7 +28,7 @@ feature "movie poster" do
     attach_file "Add Poster", "#{Rails.root}/spec/support/images/2001.jpg"
     click_button "Submit"
 
-    expect(page).to have_content(movie.title)
+    expect(page).to have_content(movie.title.capitalize)
     expect(page).to have_xpath("//img")
   end
 
@@ -47,7 +47,7 @@ feature "movie poster" do
     fill_in "Or Poster URL", with: movie.poster
     click_button "Submit"
 
-    expect(page).to have_content(movie.title)
+    expect(page).to have_content(movie.title.capitalize)
     expect(page).to have_xpath("//img")
   end
 end

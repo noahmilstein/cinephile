@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  post "/archive_user", to: "users#archive_user"
   root 'movies#index'
 
   resources :movies do
