@@ -8,7 +8,7 @@ class App extends Component {
       admin: false,
       intervalId: null
     }
-    this.handleButtonClick = this.handleButtonClick.bind(this)
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
   handleButtonClick(id) {
@@ -35,7 +35,7 @@ class App extends Component {
   componentDidMount() {
     this.getMovies()
     let intervalId = setInterval(function() {
-      this.getMovies()
+      this.getMovies();
     }.bind(this), 2000);
     this.setState({ intervalId: intervalId });
   }
@@ -73,18 +73,3 @@ class App extends Component {
 }
 
 export default App;
-
-// <div class="erb-display">
-//   <% @movies.each_with_index do |movie, index| %>
-//     <div class="row callout">
-//       <p class="small-2 columns"><%= image_tag movie.poster %></p>
-//       <p class="small-3 columns"><%= link_to movie.title, movie_path(movie) %></p>
-//       <p class="small-7 columns"></p>
-      // <% unless current_user.nil? %>
-      //   <% if current_user.admin %>
-      //     <p><%= link_to "Delete Movie", movie_path(movie), method: :delete, id: "delete #{index + 1}" %></p>
-      //   <% end %>
-      // <% end %>
-//     </div>
-//   <% end %>
-// </div>
