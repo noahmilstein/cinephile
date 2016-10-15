@@ -19,7 +19,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'httparty'
   gem 'rb-readline'
-  gem 'capybara-webkit', '~> 1.11.1'
+
   gem 'faker'
 end
 

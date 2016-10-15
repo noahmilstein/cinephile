@@ -16,10 +16,12 @@ class VotingPanel extends Component {
   }
 
   getVotes(id) {
+    debugger;
     $.ajax({
       url: `/api/votes/${id}`,
       contentType: 'application/json',
       success: function(data) {
+        debugger;
         this.setState({ upvotes: data.upvotes })
         this.setState({ downvotes: data.downvotes })
       }.bind(this)
@@ -55,8 +57,10 @@ class VotingPanel extends Component {
     let downVoteCountKey = `downvote_count_${this.props.id}`;
     let upvotes = this.state.upvotes;
     let downvotes = this.state.downvotes;
+    // debugger;
     let onUpClick = () => this.handleButtonClick(upVoteKey);
     let onDownClick = () => this.handleButtonClick(downVoteKey);
+    let onLoad = () => this.getVotes(this.props.id);
     return(
       <div>
         <UpVoteButton
@@ -79,6 +83,7 @@ class VotingPanel extends Component {
           key={downVoteCountKey}
           id={this.props.id}
           count={downvotes}
+          onLoad={onLoad}
         />
       </div>
     )

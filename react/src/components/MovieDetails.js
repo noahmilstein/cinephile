@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import MovieReview from './MovieReview'
-import UpVoteButton from './UpVoteButton'
-import DownVoteButton from './DownVoteButton'
-import VotingPanel from './VotingPanel'
+import MovieReview from './MovieReview';
+import UpVoteButton from './UpVoteButton';
+import DownVoteButton from './DownVoteButton';
+import VotingPanel from './VotingPanel';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -15,10 +15,10 @@ class MovieDetails extends Component {
       newReviewBody: "",
       newReviewRating: null
     }
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.handleTitleChange = this.handleTitleChange.bind(this)
-    this.handleBodyChange = this.handleBodyChange.bind(this)
-    this.handleRatingChange = this.handleRatingChange.bind(this)
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleBodyChange = this.handleBodyChange.bind(this);
+    this.handleRatingChange = this.handleRatingChange.bind(this);
   }
 
   handleFormSubmit(event) {
@@ -86,12 +86,8 @@ class MovieDetails extends Component {
   render() {
 
     let page = "";
-    // let upVoteKey = "";
-    // let downVoteKey = "";
     let votingPanelKey = "";
     let reviews = this.state.reviews.map(review => {
-      // upVoteKey = `upvote_${review.id}`
-      // downVoteKey = `downvote_${review.id}`
       votingPanelKey = `votingPanel_${review.id}`
       return(
         <div key={review.id}>

@@ -8,7 +8,7 @@ class Api::VotesController < ApiController
     json = {"upvotes": upvotes, "downvotes": downvotes }
 
     respond_to do |format|
-      format.json { render json: json }
+      format.json { render json: json, status: 201 }
     end
   end
 
@@ -26,6 +26,7 @@ class Api::VotesController < ApiController
     else
       @user_vote.update_attributes(upvote: 1)
     end
+    head :created
   end
 
   def downvote
@@ -41,6 +42,10 @@ class Api::VotesController < ApiController
       @user_vote.update_attributes(downvote: 0)
     else
       @user_vote.update_attributes(downvote: 1)
+    end
+
+    respond_to do |format|
+      format.json { render status: :voted }
     end
   end
 
