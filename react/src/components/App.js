@@ -6,6 +6,7 @@ class App extends Component {
     super(props);
     this.state = {
       intervalId: null,
+      admin: false,
       movies: []
     }
     this.handleMovieClick = this.handleMovieClick.bind(this)
@@ -13,16 +14,17 @@ class App extends Component {
 
   getMovies() {
     $.ajax({
-      url: '/api/movies',
+      url: '/movies.json',
       contentType: 'application/json'
     })
     .done(data => {
       this.setState({ movies: data.movies });
+      this.setState({ admin: data.admin });
     });
   }
 
   componentDidMount() {
-    this.getMovies();
+    this.getMovies()
     let intervalId = setInterval(function() {
       this.getMovies();
     }.bind(this), 2000);
@@ -42,6 +44,25 @@ class App extends Component {
   }
 
   render() {
+    let movies = "";
+    let adminDelete = "";
+    if (this.state.movies.length !== 0) {
+      movies = this.state.movies.map(movie => {
+        let movie_url = `/movies/${movie.id}`;
+        let onClick = () => this.handleButtonClick(movie.id);
+        if (this.state.admin) {
+          adminDelete = <button className="button" onClick={onClick}>Delete</button>
+        }
+        return(
+          <div className="row callout" key={movie.id}>
+            <p className="small-2 columns"><img src={movie.poster.url}/></p>
+            <p className="small-3 columns"><a href={movie_url}>{movie.title}</a></p>
+            <p className="small-5 columns">{adminDelete}</p>
+            <p className="small-7 columns"></p>
+          </div>
+        )
+      });
+    }
     return(
       <div>
         <h1>Welcome to Cinephile!</h1>
@@ -50,6 +71,8 @@ class App extends Component {
         <MoviesList
           data={this.state.movies}
         />
+      <div className="movie-show">
+        {movies}
       </div>
     );
   }

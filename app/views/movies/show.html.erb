@@ -1,39 +1,58 @@
-<p><%= @movie.title %></p>
-<p><%= @movie.studio %></p>
-<p><%= @movie.year %></p>
-<p><%= @movie.rating %></p>
-<p><%= @movie.genre %></p>
-<p><%= @movie.cast %></p>
-<p><%= @movie.screen_writer %></p>
-<p><%= @movie.director %></p>
-<p><%= link_to "Edit", edit_movie_path(@movie) %></p>
-<p><%= link_to "Delete", movie_path(@movie), method: :delete %></p>
-<p><%= link_to "Back to Index", movies_path %></p>
+<div class="movie-show-page">
+  <div class="movie-show">
+    <p class="poster"><%= image_tag @movie.poster %></p>
+    <p class="movie-text"><%= @movie.title %></p>
+    <p class="movie-text"><%= @movie.director %></p>
+    <p class="movie-text"><%= @movie.screen_writer %></p>
+    <p class="movie-text"><%= @movie.cast_member %></p>
+    <p class="movie-text"><%= @movie.studio %></p>
+    <p class="movie-text"><%= @movie.year %></p>
+    <p class="movie-text"><%= @movie.rating %></p>
+    <p class="movie-text"><%= @movie.genre %></p>
+    <% if current_user.admin %>
+    <p class="movie-text"><%= link_to "Edit", edit_movie_path(@movie) %></p>
+    <p class="movie-text"><%= link_to "Delete Movie", movie_path(@movie), method: :delete, id: "delete movie" %></p>
+    <% end %>
+    <p class="movie-text"><%= link_to "Back to Index", movies_path %></p>
+  </div>
 
-<h3>Write Review</h3>
+  <div class="review-form"><%= render "reviews/review_form" %></div>
 
-<%= render "reviews/review_form" %>
+  <div id = "error" ></div>
+  <div class="review-contents">
+    <% unless @reviews.nil? %>
+      <% @reviews.each_with_index do |review, index| %>
+        <% upvotes = 0 %>
+        <% downvotes = 0 %>
+        <div class="review">
+          <p id='review-title'><b><%= review.title %></b></p>
+          <p id='review-rating'><b>Rating: <%= review.rating %></b></p>
+          <p id='review-body'><%= review.body %></p>
+          <span id="posted-by">posted by <b><%= link_to review.user.username, user_path(review.user) %></b></span>
+          <% if @user.id == review.user_id || current_user.admin %>
+            <span id="edit-delete-review">
+            <%= link_to "Edit Review", edit_movie_review_path(@movie, review), id: "edit review #{index + 1}" %> |
+            <%= link_to "Delete Review", movie_review_path(@movie, review), method: :delete, id: "delete review #{index + 1}" %>
+          </span>
+          <% end %>
+        </div>
+          <% review.votes.each do |vote|  %>
+            <%  upvotes += vote.upvote %>
+            <%  downvotes += vote.downvote %>
+          <% end %>
 
-<% unless @reviews.nil? %>
-  <% @reviews.each_with_index do |review, index| %>
-    <p>
-      <% upvotes = 0 %>
-      <% downvotes = 0 %>
-      <%= review.title %>
-      <%= review.rating %>
-      <%= review.body %>
-      <% if @user.id == review.user_id %>
-        <%= link_to "Edit Review", edit_movie_review_path(@movie, review) %>
-        <%= link_to "Delete Review", movie_review_path(@movie, review), method: :delete %>
+        <div class="votes">
+          <span id="upvote_span">
+            <span class="vote-component"><%= button_to "Upvote",  upvote_review_votes_path(review), method: :post, class: 'Upvote', id: "Upvote_#{review.id}" %></span>
+            <span class="vote-component vote-number" id = <%="Upvote-sum_#{review.id}" %>> <%= upvotes %> </span>
+          </span>
+
+          <span id="downvote_span">
+            <span class="vote-component"><%= button_to "Downvote", downvote_review_votes_path(review), method: :post, class: 'Downvote', id: "Downvote_#{review.id}" %></span>
+            <span class="vote-component vote-number" id = <%="Downvote-sum_#{review.id}" %>> <%= downvotes %> </span>
+          </span>
+        </div>
       <% end %>
-      <% review.votes.each do |vote|  %>
-        <%  upvotes += vote.upvote %>
-        <%  downvotes += vote.downvote %>
-      <% end %>
-      <% upvote_id = "Upvote_#{index + 1}" %>
-      <% downvote_id = "Downvote_#{index + 1}" %>
-      <%= button_to "Upvote", upvote_review_votes_path(review), method: :post, id: upvote_id %> <%=  upvotes %>
-      <%= button_to "Downvote", downvote_review_votes_path(review), method: :post, id: downvote_id %> <%=  downvotes %>
-    </p>
-  <% end %>
-<% end %>
+    <% end %>
+  </div>
+</div>

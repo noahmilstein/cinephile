@@ -1,1 +1,11 @@
+<div id="index">
+  <% if params[:search].nil?%>
+  <%= render "searchform" %>
+  <%= render "indexform" %>
+<% else %>
+  <%= render "searchresult" %>
+
+<% end %>
+</div>
+
 <div id="app"></div>

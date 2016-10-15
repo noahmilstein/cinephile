@@ -9,6 +9,9 @@ gem 'jquery-rails'
 gem 'listen'
 gem 'devise'
 gem 'ruby_dep', '~> 1.4'
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'capybara', '~> 2.7.0'
@@ -19,8 +22,8 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'httparty'
   gem 'rb-readline'
-
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :test do

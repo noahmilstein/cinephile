@@ -5,5 +5,6 @@ FactoryGirl.define do
     sequence(:username) { |n| "#{n}username" }
     sequence(:email) { |n| "#{n}email@website.com" }
     sequence(:password) { |n| "#{n}password" }
+    image "twitter-egg-icon.jpg"
   end
 end

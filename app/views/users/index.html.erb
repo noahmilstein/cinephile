@@ -1,0 +1,12 @@
+<div class="sign-in">
+  <% if current_user.admin %>
+    <% unless @users.nil? %>
+      <% @users.each_with_index do |user, index| %>
+        <p><%= link_to user.username, user_path(user) %></br>
+        <%= user.first_name %>
+        <%= user.last_name %></br>
+        <%= link_to "Delete User", archive_user_path(user), method: :post, id: "delete #{index + 1}" %></br></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

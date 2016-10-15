@@ -24,11 +24,11 @@ feature "Authenticated user" do
     expect(page).to have_content(movie1.year)
     expect(page).to have_content(movie1.rating)
     expect(page).to have_content(movie1.genre)
-    expect(page).to have_content(movie1.cast)
+    expect(page).to have_content(movie1.cast_member)
     expect(page).to have_content(movie1.director)
     expect(page).to have_content(movie1.screen_writer)
     expect(page).to have_content("Back to Index")
     click_link "Back to Index"
-    expect(page).to have_content("Welcome to Cinephile!")
+    expect(page).to have_content("Cinephile")
   end
 end

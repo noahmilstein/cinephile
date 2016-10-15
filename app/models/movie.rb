@@ -8,17 +8,22 @@ class Movie < ActiveRecord::Base
     [5, "5"]
   ]
 
+  def self.search(search)
+    where("title LIKE ? OR studio LIKE ? OR year LIKE ? OR rating LIKE ? OR genre LIKE ? OR cast_member LIKE ? OR director LIKE ? OR screen_writer LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+  end
+
   validates :user, presence: true
   validates :title, presence: true
   validates :studio, presence: true
-  validates :year, numericality: { integer_only: true }, presence: true
+  validates :year, presence: true
   validates :rating, presence: true
   validates :genre, presence: true
-  validates :cast, presence: true
+  validates :cast_member, presence: true
   validates :director, presence: true
   validates :screen_writer, presence: true
 
   has_many :reviews, dependent: :destroy
   has_many :users, through: :reviews
   belongs_to :user
+  mount_uploader :poster, PosterUploader
 end

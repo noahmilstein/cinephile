@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <javascript_include_tag "vendor/modernizr" />
     <title>Cinephile</title>
     <%= csrf_meta_tags %>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js">
 
+    </script>
+
+  </head>
   <body>
-    <ul class="hmenu">
-      <%= render 'devise/menu/registration_items' %>
-      <%= render 'devise/menu/login_items' %>
-    </ul>
+    <div id="main">
+      <header class="header">
+        <div class="header-subnav row">
+          <div class="leftnav">
+          <% if user_signed_in? %>
+          <div class="navbaritems" ><%= link_to('Home', root_path) %> </div>
+          <div class="navbaritems" ><%= link_to('Add New Movie', new_movie_path) %> </div>
+          <div class="navbaritems" ><%= link_to('My Profile', user_path(current_user.id)) %></div>
+          <% if current_user.admin %>
+          <div class="navbaritems" > <%= link_to("All Users", users_path) %></div>
+          <% end %>
+          </div>
+          <div class="rightnav">
+          <div class="navbaritems" >Logged in as <%= current_user.username %> <%= image_tag current_user.image %> </div>
+          <% else %>
+          <div class="navbaritems" ><%= link_to('Sign Up', new_user_registration_path)  %></div>
+          <% end %>
+          <% if user_signed_in? %>
+          <div class="navbaritems" > <%= link_to('Sign Out', destroy_user_session_path, method: :delete) %></div>
+          <% else %>
+          <div class="navbaritems" ><%= link_to('Sign In', new_user_session_path)  %></div>
+          <% end %>
+          </div>
+        </div>
+      </header>
+      <h1 class="header">Cinephile</h1>
+      <p class="notice flash"><%= notice %></p>
+      <p class="alert flash"><%= alert %></p>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>
