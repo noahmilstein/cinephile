@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const DownVoteButton = props => {
   return (
-    <button onClick={props.onClick}>Downvote</button>
+    <button className="button" onClick={props.onClick}>Downvote</button>
   )
 }
 

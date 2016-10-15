@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, :defaults => { :format => 'json' } do
-    resources :votes do
+    resources :votes, param: :review_id do
       post "/upvote", to: "votes#upvote", defaults: { format: 'json'}
       post "/downvote", to: "votes#downvote", defaults: { format: 'json'}
     end

@@ -1,7 +1,6 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from "./components/App"
 import MoviesList from './components/MoviesList'

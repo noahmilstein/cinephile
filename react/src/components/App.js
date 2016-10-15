@@ -71,8 +71,9 @@ class App extends Component {
         <MoviesList
           data={this.state.movies}
         />
-      <div className="movie-show">
-        {movies}
+        <div className="movie-show">
+          {movies}
+        </div>
       </div>
     );
   }

@@ -16,12 +16,10 @@ class VotingPanel extends Component {
   }
 
   getVotes(id) {
-    debugger;
     $.ajax({
       url: `/api/votes/${id}`,
       contentType: 'application/json',
       success: function(data) {
-        debugger;
         this.setState({ upvotes: data.upvotes })
         this.setState({ downvotes: data.downvotes })
       }.bind(this)
@@ -33,20 +31,26 @@ class VotingPanel extends Component {
   }
 
   handleButtonClick(id) {
+    debugger;
     event.preventDefault();
     let path = "";
     if (id.includes("upvote_")) {
-      path = `/api/votes/${id.replace("upvote_", "")}/upvote`
+      path = `/api/votes/${this.props.id}/upvote`
     } else {
-      path = `/api/votes/${id.replace("downvote_", "")}/downvote`
+      path = `/api/votes/${this.props.id}/downvote`
     }
+    debugger;
     $.ajax({
       url: path,
-      contentType: 'application/json',
+      dataType: 'json',
       method: 'POST',
       success: function(data) {
-        this.getVotes(this.props.id)
-      }.bind(this)
+        this.setState({ upvotes: data.upvotes })
+        this.setState({ downvotes: data.downvotes })
+      }.bind(this),
+      error: function(data) {
+        console.log(data);
+      }
     });
   }
 
@@ -60,7 +64,6 @@ class VotingPanel extends Component {
     // debugger;
     let onUpClick = () => this.handleButtonClick(upVoteKey);
     let onDownClick = () => this.handleButtonClick(downVoteKey);
-    let onLoad = () => this.getVotes(this.props.id);
     return(
       <div>
         <UpVoteButton
@@ -83,7 +86,6 @@ class VotingPanel extends Component {
           key={downVoteCountKey}
           id={this.props.id}
           count={downvotes}
-          onLoad={onLoad}
         />
       </div>
     )

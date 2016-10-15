@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const DownVoteCount = props => {
   return (
-    <span onLoad={props.onLoad}> Downvote Count: {props.count} </span>
+    <span> Downvote Count: {props.count} </span>
   )
 }
 
